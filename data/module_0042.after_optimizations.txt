@@ -1,0 +1,27 @@
+HloModule cluster_14__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.22
+
+%fused_computation.1 (param_0.1: f64[], param_1.3: f64[], param_2.5: f64[], param_3.2: f64[], param_4.3: f64[]) -> (f64[], f64[]) {
+  %param_0.1 = f64[] parameter(0)
+  %param_1.3 = f64[] parameter(1)
+  %constant_1 = f64[] constant(0.95), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/Pow"}
+  %param_2.5 = f64[] parameter(2)
+  %power.1 = f64[] power(f64[] %constant_1, f64[] %param_2.5), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/Pow"}
+  %subtract.1 = f64[] subtract(f64[] %param_1.3, f64[] %power.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/sub_2"}
+  %divide.1 = f64[] divide(f64[] %param_0.1, f64[] %subtract.1), metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/truediv"}
+  %param_3.2 = f64[] parameter(3)
+  %param_4.3 = f64[] parameter(4)
+  %power.0.clone.1 = f64[] power(f64[] %constant_1, f64[] %param_4.3), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/Pow"}
+  %subtract.0.clone.1 = f64[] subtract(f64[] %param_1.3, f64[] %power.0.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/sub_2"}
+  %divide.0.clone.1 = f64[] divide(f64[] %param_3.2, f64[] %subtract.0.clone.1), metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/truediv"}
+  ROOT %tuple = (f64[], f64[]) tuple(f64[] %divide.1, f64[] %divide.0.clone.1)
+}
+
+ENTRY %cluster_14__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.22 (arg0.1: f64[], arg1.2: f64[], arg2.3: f64[], arg3.4: f64[], arg4.5: f64[]) -> (f64[], f64[]) {
+  %arg3.4 = f64[] parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f64[] parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = f64[] parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg4.5 = f64[] parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f64[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  ROOT %fusion.1 = (f64[], f64[]) fusion(f64[] %arg3.4, f64[] %arg2.3, f64[] %arg0.1, f64[] %arg4.5, f64[] %arg1.2), kind=kLoop, calls=%fused_computation.1, metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/truediv"}
+}
+

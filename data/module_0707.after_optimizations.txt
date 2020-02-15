@@ -1,0 +1,190 @@
+HloModule cluster_29__XlaCompiledKernel_true__XlaNumConstantArgs_7__XlaNumResourceArgs_0_.158
+
+%fused_computation (param_0: f32[80,1000]) -> pred[80,1000] {
+  %param_0 = f32[80,1000]{1,0} parameter(0)
+  %constant_0 = f32[] constant(0.05), metadata={op_type="Greater" op_name="tower-pred-0/output/Greater"}
+  %broadcast.0 = f32[80,1000]{1,0} broadcast(f32[] %constant_0), dimensions={}, metadata={op_type="Greater" op_name="tower-pred-0/output/Greater"}
+  ROOT %compare.0 = pred[80,1000]{1,0} compare(f32[80,1000]{1,0} %param_0, f32[80,1000]{1,0} %broadcast.0), direction=GT, metadata={op_type="Greater" op_name="tower-pred-0/output/Greater"}
+}
+
+%fused_computation.1 (param_0.3: f32[1000,81], param_1.3: f32[1000]) -> f32[80,1000] {
+  %param_0.3 = f32[1000,81]{0,1} parameter(0)
+  %param_1.3 = f32[1000]{0} parameter(1)
+  %broadcast.1 = f32[1000,81]{0,1} broadcast(f32[1000]{0} %param_1.3), dimensions={0}, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %divide.0 = f32[1000,81]{0,1} divide(f32[1000,81]{0,1} %param_0.3, f32[1000,81]{0,1} %broadcast.1), metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %slice.0 = f32[1000,80]{0,1} slice(f32[1000,81]{0,1} %divide.0), slice={[0:1000], [1:81]}, metadata={op_type="StridedSlice" op_name="tower-pred-0/output/strided_slice_1"}
+  ROOT %bitcast.6 = f32[80,1000]{1,0} bitcast(f32[1000,80]{0,1} %slice.0), metadata={op_type="Transpose" op_name="tower-pred-0/output/transpose_1"}
+}
+
+%fused_computation.4 (param_0.26: f32[1000,1024], param_1.25: f32[1024]) -> f32[1000,1024] {
+  %constant_7 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %broadcast.11 = f32[1000,1024]{1,0} broadcast(f32[] %constant_7), dimensions={}, metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc7/Relu"}
+  %param_0.26 = f32[1000,1024]{1,0} parameter(0)
+  %param_1.25 = f32[1024]{0} parameter(1)
+  %broadcast.4 = f32[1000,1024]{1,0} broadcast(f32[1024]{0} %param_1.25), dimensions={1}, metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/fc7/BiasAdd"}
+  %add.1 = f32[1000,1024]{1,0} add(f32[1000,1024]{1,0} %param_0.26, f32[1000,1024]{1,0} %broadcast.4), metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/fc7/BiasAdd"}
+  ROOT %maximum.0 = f32[1000,1024]{1,0} maximum(f32[1000,1024]{1,0} %broadcast.11, f32[1000,1024]{1,0} %add.1), metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc7/Relu"}
+}
+
+%fused_computation.5 (param_0.27: f32[1000,1024], param_1.26: f32[1024]) -> f32[1000,1024] {
+  %constant_8 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %broadcast.12 = f32[1000,1024]{1,0} broadcast(f32[] %constant_8), dimensions={}, metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc7/Relu"}
+  %param_0.27 = f32[1000,1024]{1,0} parameter(0)
+  %param_1.26 = f32[1024]{0} parameter(1)
+  %broadcast.5 = f32[1000,1024]{1,0} broadcast(f32[1024]{0} %param_1.26), dimensions={1}, metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/fc6/BiasAdd"}
+  %add.2 = f32[1000,1024]{1,0} add(f32[1000,1024]{1,0} %param_0.27, f32[1000,1024]{1,0} %broadcast.5), metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/fc6/BiasAdd"}
+  ROOT %maximum.1 = f32[1000,1024]{1,0} maximum(f32[1000,1024]{1,0} %broadcast.12, f32[1000,1024]{1,0} %add.2), metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc6/Relu"}
+}
+
+%fused_computation.6 (param_0.11: s64[1000], param_1.14: f32[1,256,7,7], param_2.6: f32[7,7], param_3.3: f32[4,256,7,7], param_4.4: f32[34,256,7,7], param_5.4: f32[961,256,7,7]) -> f32[1000,12544] {
+  %param_5.4 = f32[961,256,7,7]{1,3,2,0} parameter(5)
+  %param_2.6 = f32[7,7]{1,0} parameter(2)
+  %broadcast.9 = f32[961,256,7,7]{1,3,2,0} broadcast(f32[7,7]{1,0} %param_2.6), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %divide.4 = f32[961,256,7,7]{1,3,2,0} divide(f32[961,256,7,7]{1,3,2,0} %param_5.4, f32[961,256,7,7]{1,3,2,0} %broadcast.9), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %param_4.4 = f32[34,256,7,7]{1,3,2,0} parameter(4)
+  %broadcast.8 = f32[34,256,7,7]{1,3,2,0} broadcast(f32[7,7]{1,0} %param_2.6), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level3/roi_align/AvgPool"}
+  %divide.3 = f32[34,256,7,7]{1,3,2,0} divide(f32[34,256,7,7]{1,3,2,0} %param_4.4, f32[34,256,7,7]{1,3,2,0} %broadcast.8), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level3/roi_align/AvgPool"}
+  %param_3.3 = f32[4,256,7,7]{1,3,2,0} parameter(3)
+  %broadcast.7 = f32[4,256,7,7]{1,3,2,0} broadcast(f32[7,7]{1,0} %param_2.6), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level4/roi_align/AvgPool"}
+  %divide.2 = f32[4,256,7,7]{1,3,2,0} divide(f32[4,256,7,7]{1,3,2,0} %param_3.3, f32[4,256,7,7]{1,3,2,0} %broadcast.7), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level4/roi_align/AvgPool"}
+  %param_1.14 = f32[1,256,7,7]{1,3,2,0} parameter(1)
+  %broadcast.6 = f32[1,256,7,7]{1,3,2,0} broadcast(f32[7,7]{1,0} %param_2.6), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level5/roi_align/AvgPool"}
+  %divide.1 = f32[1,256,7,7]{1,3,2,0} divide(f32[1,256,7,7]{1,3,2,0} %param_1.14, f32[1,256,7,7]{1,3,2,0} %broadcast.6), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level5/roi_align/AvgPool"}
+  %concatenate.0 = f32[1000,256,7,7]{1,3,2,0} concatenate(f32[961,256,7,7]{1,3,2,0} %divide.4, f32[34,256,7,7]{1,3,2,0} %divide.3, f32[4,256,7,7]{1,3,2,0} %divide.2, f32[1,256,7,7]{1,3,2,0} %divide.1), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower-pred-0/multilevel_roi_align/concat"}
+  %param_0.11 = s64[1000]{0} parameter(0)
+  %gather.0 = f32[1000,256,7,7]{3,2,1,0} gather(f32[1000,256,7,7]{1,3,2,0} %concatenate.0, s64[1000]{0} %param_0.11), offset_dims={1,2,3}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,256,7,7}, metadata={op_type="GatherV2" op_name="tower-pred-0/multilevel_roi_align/output"}
+  ROOT %bitcast.7 = f32[1000,12544]{1,0} bitcast(f32[1000,256,7,7]{3,2,1,0} %gather.0), metadata={op_type="Reshape" op_name="tower-pred-0/fastrcnn/fc6/Reshape"}
+}
+
+%add_F32.94 (lhs.95: f32[], rhs.96: f32[]) -> f32[] {
+  %lhs.95 = f32[] parameter(0)
+  %rhs.96 = f32[] parameter(1)
+  ROOT %add.97 = f32[] add(f32[] %lhs.95, f32[] %rhs.96)
+}
+
+%fused_computation.7 (param_0.14: f32[1,14,14,256]) -> f32[1,256,7,7] {
+  %param_0.14 = f32[1,14,14,256]{3,2,1,0} parameter(0)
+  %bitcast.8 = f32[1,256,14,14]{1,3,2,0} bitcast(f32[1,14,14,256]{3,2,1,0} %param_0.14), metadata={op_type="Transpose" op_name="tower-pred-0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transpose_1"}
+  %constant_1 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  ROOT %reduce-window.0 = f32[1,256,7,7]{1,3,2,0} reduce-window(f32[1,256,14,14]{1,3,2,0} %bitcast.8, f32[] %constant_1), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.94, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level5/roi_align/AvgPool"}
+}
+
+%add_F32.72 (lhs.73: f32[], rhs.74: f32[]) -> f32[] {
+  %lhs.73 = f32[] parameter(0)
+  %rhs.74 = f32[] parameter(1)
+  ROOT %add.75 = f32[] add(f32[] %lhs.73, f32[] %rhs.74)
+}
+
+%fused_computation.8 (param_0.17: f32[4,14,14,256]) -> f32[4,256,7,7] {
+  %param_0.17 = f32[4,14,14,256]{3,2,1,0} parameter(0)
+  %bitcast.9 = f32[4,256,14,14]{1,3,2,0} bitcast(f32[4,14,14,256]{3,2,1,0} %param_0.17), metadata={op_type="Transpose" op_name="tower-pred-0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transpose_1"}
+  %constant_2 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  ROOT %reduce-window.1 = f32[4,256,7,7]{1,3,2,0} reduce-window(f32[4,256,14,14]{1,3,2,0} %bitcast.9, f32[] %constant_2), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.72, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level4/roi_align/AvgPool"}
+}
+
+%add_F32.50 (lhs.51: f32[], rhs.52: f32[]) -> f32[] {
+  %lhs.51 = f32[] parameter(0)
+  %rhs.52 = f32[] parameter(1)
+  ROOT %add.53 = f32[] add(f32[] %lhs.51, f32[] %rhs.52)
+}
+
+%fused_computation.9 (param_0.20: f32[34,14,14,256]) -> f32[34,256,7,7] {
+  %param_0.20 = f32[34,14,14,256]{3,2,1,0} parameter(0)
+  %bitcast.10 = f32[34,256,14,14]{1,3,2,0} bitcast(f32[34,14,14,256]{3,2,1,0} %param_0.20), metadata={op_type="Transpose" op_name="tower-pred-0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transpose_1"}
+  %constant_3 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  ROOT %reduce-window.2 = f32[34,256,7,7]{1,3,2,0} reduce-window(f32[34,256,14,14]{1,3,2,0} %bitcast.10, f32[] %constant_3), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.50, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level3/roi_align/AvgPool"}
+}
+
+%add_F32.37 (lhs.38: f32[], rhs.39: f32[]) -> f32[] {
+  %lhs.38 = f32[] parameter(0)
+  %rhs.39 = f32[] parameter(1)
+  ROOT %add.40 = f32[] add(f32[] %lhs.38, f32[] %rhs.39)
+}
+
+%fused_computation.10 () -> f32[7,7] {
+  %constant_4 = f32[] constant(1), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %broadcast.10 = f32[14,14]{1,0} broadcast(f32[] %constant_4), dimensions={}, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %constant_5 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  ROOT %reduce-window.3 = f32[7,7]{1,0} reduce-window(f32[14,14]{1,0} %broadcast.10, f32[] %constant_5), window={size=2x2 stride=2x2}, to_apply=%add_F32.37, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+}
+
+%add_F32.28 (lhs.29: f32[], rhs.30: f32[]) -> f32[] {
+  %lhs.29 = f32[] parameter(0)
+  %rhs.30 = f32[] parameter(1)
+  ROOT %add.31 = f32[] add(f32[] %lhs.29, f32[] %rhs.30)
+}
+
+%fused_computation.11 (param_0.25: f32[961,14,14,256]) -> f32[961,256,7,7] {
+  %param_0.25 = f32[961,14,14,256]{3,2,1,0} parameter(0)
+  %bitcast.11 = f32[961,256,14,14]{1,3,2,0} bitcast(f32[961,14,14,256]{3,2,1,0} %param_0.25), metadata={op_type="Transpose" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transpose_1"}
+  %constant_6 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  ROOT %reduce-window.4 = f32[961,256,7,7]{1,3,2,0} reduce-window(f32[961,256,14,14]{1,3,2,0} %bitcast.11, f32[] %constant_6), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.28, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+}
+
+%max_float_.130 (x.131: f32[], y.132: f32[]) -> f32[] {
+  %x.131 = f32[] parameter(0)
+  %y.132 = f32[] parameter(1)
+  ROOT %maximum.133 = f32[] maximum(f32[] %x.131, f32[] %y.132)
+}
+
+%fused_computation.12 (param_0.33: f32[1000,81], param_1.33: f32[81]) -> (f32[1000], f32[1000,81]) {
+  %param_0.33 = f32[1000,81]{0,1} parameter(0)
+  %param_1.33 = f32[81]{0} parameter(1)
+  %broadcast.3.clone.1 = f32[1000,81]{0,1} broadcast(f32[81]{0} %param_1.33), dimensions={1}, metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/class/BiasAdd"}
+  %add.0.clone.1 = f32[1000,81]{0,1} add(f32[1000,81]{0,1} %param_0.33, f32[1000,81]{0,1} %broadcast.3.clone.1), metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/class/BiasAdd"}
+  %constant_10 = f32[] constant(-inf), metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %reduce.0 = f32[1000]{0} reduce(f32[1000,81]{0,1} %add.0.clone.1, f32[] %constant_10), dimensions={1}, to_apply=%max_float_.130, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  ROOT %tuple = (f32[1000]{0}, f32[1000,81]{0,1}) tuple(f32[1000]{0} %reduce.0, f32[1000,81]{0,1} %add.0.clone.1)
+}
+
+%add_float_.140 (x.141: f32[], y.142: f32[]) -> f32[] {
+  %x.141 = f32[] parameter(0)
+  %y.142 = f32[] parameter(1)
+  ROOT %add.143 = f32[] add(f32[] %x.141, f32[] %y.142)
+}
+
+%fused_computation.13 (param_0.32: f32[1000,81], param_1.32: f32[1000]) -> (f32[1000], f32[1000,81]) {
+  %param_0.32 = f32[1000,81]{0,1} parameter(0)
+  %param_1.32 = f32[1000]{0} parameter(1)
+  %broadcast.2.clone.1 = f32[1000,81]{0,1} broadcast(f32[1000]{0} %param_1.32), dimensions={0}, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %subtract.0.clone.1 = f32[1000,81]{0,1} subtract(f32[1000,81]{0,1} %param_0.32, f32[1000,81]{0,1} %broadcast.2.clone.1), metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %exponential.0.clone.1 = f32[1000,81]{0,1} exponential(f32[1000,81]{0,1} %subtract.0.clone.1), metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %constant_9 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %reduce.1 = f32[1000]{0} reduce(f32[1000,81]{0,1} %exponential.0.clone.1, f32[] %constant_9), dimensions={1}, to_apply=%add_float_.140, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  ROOT %tuple.1 = (f32[1000]{0}, f32[1000,81]{0,1}) tuple(f32[1000]{0} %reduce.1, f32[1000,81]{0,1} %exponential.0.clone.1)
+}
+
+ENTRY %cluster_29__XlaCompiledKernel_true__XlaNumConstantArgs_7__XlaNumResourceArgs_0_.158 (arg0.1: f32[1,14,14,256], arg1.2: f32[4,14,14,256], arg2.3: f32[34,14,14,256], arg3.4: f32[961,14,14,256], arg4.5: s64[1000], arg5.6: f32[12544,1024], arg6.7: f32[1024], arg7.8: f32[1024,1024], arg8.9: f32[1024], arg9.10: f32[1024,81], arg10.11: f32[81]) -> (f32[1000,1024], pred[80,1000], f32[80,1000]) {
+  %arg4.5 = s64[1000]{0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = f32[1,14,14,256]{3,2,1,0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[1,256,7,7]{1,3,2,0} fusion(f32[1,14,14,256]{3,2,1,0} %arg0.1), kind=kLoop, calls=%fused_computation.7, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level5/roi_align/AvgPool"}
+  %fusion.10 = f32[7,7]{1,0} fusion(), kind=kLoop, calls=%fused_computation.10, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %arg1.2 = f32[4,14,14,256]{3,2,1,0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.8 = f32[4,256,7,7]{1,3,2,0} fusion(f32[4,14,14,256]{3,2,1,0} %arg1.2), kind=kLoop, calls=%fused_computation.8, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level4/roi_align/AvgPool"}
+  %arg2.3 = f32[34,14,14,256]{3,2,1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.9 = f32[34,256,7,7]{1,3,2,0} fusion(f32[34,14,14,256]{3,2,1,0} %arg2.3), kind=kLoop, calls=%fused_computation.9, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level3/roi_align/AvgPool"}
+  %arg3.4 = f32[961,14,14,256]{3,2,1,0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.11 = f32[961,256,7,7]{1,3,2,0} fusion(f32[961,14,14,256]{3,2,1,0} %arg3.4), kind=kLoop, calls=%fused_computation.11, metadata={op_type="AvgPool" op_name="tower-pred-0/multilevel_roi_align/roi_level2/roi_align/AvgPool"}
+  %fusion.6 = f32[1000,12544]{1,0} fusion(s64[1000]{0} %arg4.5, f32[1,256,7,7]{1,3,2,0} %fusion.7, f32[7,7]{1,0} %fusion.10, f32[4,256,7,7]{1,3,2,0} %fusion.8, f32[34,256,7,7]{1,3,2,0} %fusion.9, f32[961,256,7,7]{1,3,2,0} %fusion.11), kind=kLoop, calls=%fused_computation.6, metadata={op_type="Reshape" op_name="tower-pred-0/fastrcnn/fc6/Reshape"}
+  %arg5.6 = f32[12544,1024]{1,0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %dot.114 = f32[1000,1024]{1,0} dot(f32[1000,12544]{1,0} %fusion.6, f32[12544,1024]{1,0} %arg5.6), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="tower-pred-0/fastrcnn/fc6/MatMul"}
+  %arg6.7 = f32[1024]{0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.5 = f32[1000,1024]{1,0} fusion(f32[1000,1024]{1,0} %dot.114, f32[1024]{0} %arg6.7), kind=kLoop, calls=%fused_computation.5, metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc6/Relu"}
+  %arg7.8 = f32[1024,1024]{1,0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %dot.120 = f32[1000,1024]{1,0} dot(f32[1000,1024]{1,0} %fusion.5, f32[1024,1024]{1,0} %arg7.8), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="tower-pred-0/fastrcnn/fc7/MatMul"}
+  %arg8.9 = f32[1024]{0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.4 = f32[1000,1024]{1,0} fusion(f32[1000,1024]{1,0} %dot.120, f32[1024]{0} %arg8.9), kind=kLoop, calls=%fused_computation.4, metadata={op_type="Relu" op_name="tower-pred-0/fastrcnn/fc7/Relu"}
+  %arg9.10 = f32[1024,81]{1,0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %dot.126 = f32[1000,81]{0,1} dot(f32[1000,1024]{1,0} %fusion.4, f32[1024,81]{1,0} %arg9.10), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="tower-pred-0/fastrcnn/outputs/class/MatMul"}
+  %arg10.11 = f32[81]{0} parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.12 = (f32[1000]{0}, f32[1000,81]{0,1}) fusion(f32[1000,81]{0,1} %dot.126, f32[81]{0} %arg10.11), kind=kInput, calls=%fused_computation.12, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %get-tuple-element.1 = f32[1000,81]{0,1} get-tuple-element((f32[1000]{0}, f32[1000,81]{0,1}) %fusion.12), index=1
+  %get-tuple-element = f32[1000]{0} get-tuple-element((f32[1000]{0}, f32[1000,81]{0,1}) %fusion.12), index=0
+  %fusion.13 = (f32[1000]{0}, f32[1000,81]{0,1}) fusion(f32[1000,81]{0,1} %get-tuple-element.1, f32[1000]{0} %get-tuple-element), kind=kInput, calls=%fused_computation.13, metadata={op_type="Softmax" op_name="tower-pred-0/fastrcnn_all_scores"}
+  %get-tuple-element.3 = f32[1000,81]{0,1} get-tuple-element((f32[1000]{0}, f32[1000,81]{0,1}) %fusion.13), index=1
+  %get-tuple-element.2 = f32[1000]{0} get-tuple-element((f32[1000]{0}, f32[1000,81]{0,1}) %fusion.13), index=0
+  %fusion.1 = f32[80,1000]{1,0} fusion(f32[1000,81]{0,1} %get-tuple-element.3, f32[1000]{0} %get-tuple-element.2), kind=kLoop, calls=%fused_computation.1, metadata={op_type="Transpose" op_name="tower-pred-0/output/transpose_1"}
+  %fusion = pred[80,1000]{1,0} fusion(f32[80,1000]{1,0} %fusion.1), kind=kLoop, calls=%fused_computation, metadata={op_type="Greater" op_name="tower-pred-0/output/Greater"}
+  ROOT %tuple.157 = (f32[1000,1024]{1,0}, pred[80,1000]{1,0}, f32[80,1000]{1,0}) tuple(f32[1000,1024]{1,0} %fusion.4, pred[80,1000]{1,0} %fusion, f32[80,1000]{1,0} %fusion.1), metadata={op_name="XLA_Retvals"}
+}
+

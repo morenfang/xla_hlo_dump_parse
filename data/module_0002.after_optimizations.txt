@@ -1,0 +1,162 @@
+HloModule cluster_1__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.119
+
+%fused_computation (param_0.13: f32[256]) -> f32[256] {
+  %constant_1 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.1 = f32[256]{0} broadcast(f32[] %constant_1), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.13 = f32[256]{0} parameter(0)
+  %constant_0 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.0 = f32[256]{0} broadcast(f32[] %constant_0), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.0 = f32[256]{0} multiply(f32[256]{0} %param_0.13, f32[256]{0} %broadcast.0), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.0 = f32[256]{0} add(f32[256]{0} %broadcast.1, f32[256]{0} %multiply.0), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.1 (param_0.14: f32[256]) -> f32[256] {
+  %constant_3 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.3 = f32[256]{0} broadcast(f32[] %constant_3), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.14 = f32[256]{0} parameter(0)
+  %constant_2 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.2 = f32[256]{0} broadcast(f32[] %constant_2), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.1 = f32[256]{0} multiply(f32[256]{0} %param_0.14, f32[256]{0} %broadcast.2), metadata={op_type="Mul" op_name="group2/block0/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.1 = f32[256]{0} add(f32[256]{0} %broadcast.3, f32[256]{0} %multiply.1), metadata={op_type="Add" op_name="group2/block0/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.2 (param_0.15: f32[256]) -> f32[256] {
+  %constant_5 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.5 = f32[256]{0} broadcast(f32[] %constant_5), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.15 = f32[256]{0} parameter(0)
+  %constant_4 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.4 = f32[256]{0} broadcast(f32[] %constant_4), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.2 = f32[256]{0} multiply(f32[256]{0} %param_0.15, f32[256]{0} %broadcast.4), metadata={op_type="Mul" op_name="group2/block0/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.2 = f32[256]{0} add(f32[256]{0} %broadcast.5, f32[256]{0} %multiply.2), metadata={op_type="Add" op_name="group2/block0/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.3 (param_0.16: f32[256]) -> f32[256] {
+  %constant_7 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.7 = f32[256]{0} broadcast(f32[] %constant_7), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.16 = f32[256]{0} parameter(0)
+  %constant_6 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.6 = f32[256]{0} broadcast(f32[] %constant_6), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.3 = f32[256]{0} multiply(f32[256]{0} %param_0.16, f32[256]{0} %broadcast.6), metadata={op_type="Mul" op_name="group2/block1/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.3 = f32[256]{0} add(f32[256]{0} %broadcast.7, f32[256]{0} %multiply.3), metadata={op_type="Add" op_name="group2/block1/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.4 (param_0.17: f32[256]) -> f32[256] {
+  %constant_9 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.9 = f32[256]{0} broadcast(f32[] %constant_9), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.17 = f32[256]{0} parameter(0)
+  %constant_8 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.8 = f32[256]{0} broadcast(f32[] %constant_8), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.4 = f32[256]{0} multiply(f32[256]{0} %param_0.17, f32[256]{0} %broadcast.8), metadata={op_type="Mul" op_name="group2/block1/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.4 = f32[256]{0} add(f32[256]{0} %broadcast.9, f32[256]{0} %multiply.4), metadata={op_type="Add" op_name="group2/block1/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.5 (param_0.18: f32[256]) -> f32[256] {
+  %constant_11 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.11 = f32[256]{0} broadcast(f32[] %constant_11), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.18 = f32[256]{0} parameter(0)
+  %constant_10 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.10 = f32[256]{0} broadcast(f32[] %constant_10), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.5 = f32[256]{0} multiply(f32[256]{0} %param_0.18, f32[256]{0} %broadcast.10), metadata={op_type="Mul" op_name="group2/block2/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.5 = f32[256]{0} add(f32[256]{0} %broadcast.11, f32[256]{0} %multiply.5), metadata={op_type="Add" op_name="group2/block2/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.6 (param_0.19: f32[256]) -> f32[256] {
+  %constant_13 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.13 = f32[256]{0} broadcast(f32[] %constant_13), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.19 = f32[256]{0} parameter(0)
+  %constant_12 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.12 = f32[256]{0} broadcast(f32[] %constant_12), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.6 = f32[256]{0} multiply(f32[256]{0} %param_0.19, f32[256]{0} %broadcast.12), metadata={op_type="Mul" op_name="group2/block2/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.6 = f32[256]{0} add(f32[256]{0} %broadcast.13, f32[256]{0} %multiply.6), metadata={op_type="Add" op_name="group2/block2/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.7 (param_0.20: f32[256]) -> f32[256] {
+  %constant_15 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.15 = f32[256]{0} broadcast(f32[] %constant_15), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.20 = f32[256]{0} parameter(0)
+  %constant_14 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.14 = f32[256]{0} broadcast(f32[] %constant_14), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.7 = f32[256]{0} multiply(f32[256]{0} %param_0.20, f32[256]{0} %broadcast.14), metadata={op_type="Mul" op_name="group2/block3/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.7 = f32[256]{0} add(f32[256]{0} %broadcast.15, f32[256]{0} %multiply.7), metadata={op_type="Add" op_name="group2/block3/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.8 (param_0.21: f32[256]) -> f32[256] {
+  %constant_17 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.17 = f32[256]{0} broadcast(f32[] %constant_17), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.21 = f32[256]{0} parameter(0)
+  %constant_16 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.16 = f32[256]{0} broadcast(f32[] %constant_16), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.8 = f32[256]{0} multiply(f32[256]{0} %param_0.21, f32[256]{0} %broadcast.16), metadata={op_type="Mul" op_name="group2/block3/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.8 = f32[256]{0} add(f32[256]{0} %broadcast.17, f32[256]{0} %multiply.8), metadata={op_type="Add" op_name="group2/block3/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.9 (param_0.22: f32[256]) -> f32[256] {
+  %constant_19 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.19 = f32[256]{0} broadcast(f32[] %constant_19), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.22 = f32[256]{0} parameter(0)
+  %constant_18 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.18 = f32[256]{0} broadcast(f32[] %constant_18), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.9 = f32[256]{0} multiply(f32[256]{0} %param_0.22, f32[256]{0} %broadcast.18), metadata={op_type="Mul" op_name="group2/block4/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.9 = f32[256]{0} add(f32[256]{0} %broadcast.19, f32[256]{0} %multiply.9), metadata={op_type="Add" op_name="group2/block4/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.10 (param_0.23: f32[256]) -> f32[256] {
+  %constant_21 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.21 = f32[256]{0} broadcast(f32[] %constant_21), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.23 = f32[256]{0} parameter(0)
+  %constant_20 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.20 = f32[256]{0} broadcast(f32[] %constant_20), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.10 = f32[256]{0} multiply(f32[256]{0} %param_0.23, f32[256]{0} %broadcast.20), metadata={op_type="Mul" op_name="group2/block4/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.10 = f32[256]{0} add(f32[256]{0} %broadcast.21, f32[256]{0} %multiply.10), metadata={op_type="Add" op_name="group2/block4/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.11 (param_0.24: f32[256]) -> f32[256] {
+  %constant_23 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.23 = f32[256]{0} broadcast(f32[] %constant_23), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.24 = f32[256]{0} parameter(0)
+  %constant_22 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.22 = f32[256]{0} broadcast(f32[] %constant_22), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.11 = f32[256]{0} multiply(f32[256]{0} %param_0.24, f32[256]{0} %broadcast.22), metadata={op_type="Mul" op_name="group2/block5/conv1/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.11 = f32[256]{0} add(f32[256]{0} %broadcast.23, f32[256]{0} %multiply.11), metadata={op_type="Add" op_name="group2/block5/conv1/bn/gamma/Initializer/random_uniform"}
+}
+
+%fused_computation.12 (param_0.25: f32[256]) -> f32[256] {
+  %constant_25 = f32[] constant(-0.108253), metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  %broadcast.25 = f32[256]{0} broadcast(f32[] %constant_25), dimensions={}, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %param_0.25 = f32[256]{0} parameter(0)
+  %constant_24 = f32[] constant(0.216506), metadata={op_type="Mul" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform/mul"}
+  %broadcast.24 = f32[256]{0} broadcast(f32[] %constant_24), dimensions={}, metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  %multiply.12 = f32[256]{0} multiply(f32[256]{0} %param_0.25, f32[256]{0} %broadcast.24), metadata={op_type="Mul" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform/mul"}
+  ROOT %add.12 = f32[256]{0} add(f32[256]{0} %broadcast.25, f32[256]{0} %multiply.12), metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+}
+
+ENTRY %cluster_1__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.119 (arg0.1: f32[256], arg1.2: f32[256], arg2.3: f32[256], arg3.4: f32[256], arg4.5: f32[256], arg5.6: f32[256], arg6.7: f32[256], arg7.8: f32[256], arg8.9: f32[256], arg9.10: f32[256], arg10.11: f32[256], arg11.12: f32[256], arg12.13: f32[256]) -> (f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256], f32[256]) {
+  %arg0.1 = f32[256]{0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.12 = f32[256]{0} fusion(f32[256]{0} %arg0.1), kind=kLoop, calls=%fused_computation.12, metadata={op_type="Add" op_name="group2/block5/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg1.2 = f32[256]{0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.11 = f32[256]{0} fusion(f32[256]{0} %arg1.2), kind=kLoop, calls=%fused_computation.11, metadata={op_type="Add" op_name="group2/block5/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg2.3 = f32[256]{0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.10 = f32[256]{0} fusion(f32[256]{0} %arg2.3), kind=kLoop, calls=%fused_computation.10, metadata={op_type="Add" op_name="group2/block4/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg3.4 = f32[256]{0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.9 = f32[256]{0} fusion(f32[256]{0} %arg3.4), kind=kLoop, calls=%fused_computation.9, metadata={op_type="Add" op_name="group2/block4/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg4.5 = f32[256]{0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.8 = f32[256]{0} fusion(f32[256]{0} %arg4.5), kind=kLoop, calls=%fused_computation.8, metadata={op_type="Add" op_name="group2/block3/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg5.6 = f32[256]{0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[256]{0} fusion(f32[256]{0} %arg5.6), kind=kLoop, calls=%fused_computation.7, metadata={op_type="Add" op_name="group2/block3/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg6.7 = f32[256]{0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.6 = f32[256]{0} fusion(f32[256]{0} %arg6.7), kind=kLoop, calls=%fused_computation.6, metadata={op_type="Add" op_name="group2/block2/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg7.8 = f32[256]{0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.5 = f32[256]{0} fusion(f32[256]{0} %arg7.8), kind=kLoop, calls=%fused_computation.5, metadata={op_type="Add" op_name="group2/block2/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg8.9 = f32[256]{0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.4 = f32[256]{0} fusion(f32[256]{0} %arg8.9), kind=kLoop, calls=%fused_computation.4, metadata={op_type="Add" op_name="group2/block1/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg9.10 = f32[256]{0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.3 = f32[256]{0} fusion(f32[256]{0} %arg9.10), kind=kLoop, calls=%fused_computation.3, metadata={op_type="Add" op_name="group2/block1/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg10.11 = f32[256]{0} parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.2 = f32[256]{0} fusion(f32[256]{0} %arg10.11), kind=kLoop, calls=%fused_computation.2, metadata={op_type="Add" op_name="group2/block0/conv2/bn/gamma/Initializer/random_uniform"}
+  %arg11.12 = f32[256]{0} parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.1 = f32[256]{0} fusion(f32[256]{0} %arg11.12), kind=kLoop, calls=%fused_computation.1, metadata={op_type="Add" op_name="group2/block0/conv1/bn/gamma/Initializer/random_uniform"}
+  %arg12.13 = f32[256]{0} parameter(12), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion = f32[256]{0} fusion(f32[256]{0} %arg12.13), kind=kLoop, calls=%fused_computation, metadata={op_type="Add" op_name="group0/block0/convshortcut/bn/gamma/Initializer/random_uniform"}
+  ROOT %tuple.118 = (f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}, f32[256]{0}) tuple(f32[256]{0} %fusion.12, f32[256]{0} %fusion.11, f32[256]{0} %fusion.10, f32[256]{0} %fusion.9, f32[256]{0} %fusion.8, f32[256]{0} %fusion.7, f32[256]{0} %fusion.6, f32[256]{0} %fusion.5, f32[256]{0} %fusion.4, f32[256]{0} %fusion.3, f32[256]{0} %fusion.2, f32[256]{0} %fusion.1, f32[256]{0} %fusion), metadata={op_name="XLA_Retvals"}
+}
+

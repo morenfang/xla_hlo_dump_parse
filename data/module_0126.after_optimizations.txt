@@ -1,0 +1,122 @@
+HloModule cluster_11__XlaCompiledKernel_true__XlaNumConstantArgs_2__XlaNumResourceArgs_0_.147
+
+%fused_computation.2 (param_0.5: s64[], param_1.7: s32[]) -> s64[] {
+  %param_1.7 = s32[] parameter(1)
+  %convert.1 = s64[] convert(s32[] %param_1.7), metadata={op_type="Cast" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/ArithmeticOptimizer/ReorderCastLikeAndValuePreserving_int64_Cast"}
+  %param_0.5 = s64[] parameter(0)
+  ROOT %add.1 = s64[] add(s64[] %convert.1, s64[] %param_0.5), metadata={op_type="Add" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/add_2"}
+}
+
+%fused_computation.3 (param_0.7: s64[5], param_1.33: s64[], param_2.22: s32[], param_3.4: s64[], param_4.8: s32[]) -> (pred[5], pred[5], pred[5], pred[5]) {
+  %param_0.7 = s64[5]{0} parameter(0)
+  %param_2.22 = s32[] parameter(2)
+  %convert.6 = s64[] convert(s32[] %param_2.22), metadata={op_type="Cast" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/ArithmeticOptimizer/ReorderCastLikeAndValuePreserving_int64_Cast"}
+  %broadcast.12 = s64[5]{0} broadcast(s64[] %convert.6), dimensions={}, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less"}
+  %compare.5 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.12), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual_1"}
+  %param_1.33 = s64[] parameter(1)
+  %broadcast.9 = s64[5]{0} broadcast(s64[] %param_1.33), dimensions={}, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_1"}
+  %compare.4 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.9), direction=LT, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_1"}
+  %and.2 = pred[5]{0} and(pred[5]{0} %compare.5, pred[5]{0} %compare.4), metadata={op_type="LogicalAnd" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/LogicalAnd_1"}
+  %compare.3.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.9), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual_2"}
+  %param_3.4 = s64[] parameter(3)
+  %broadcast.7.clone.1 = s64[5]{0} broadcast(s64[] %param_3.4), dimensions={}, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_2"}
+  %compare.2.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.7.clone.1), direction=LT, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_2"}
+  %and.1.clone.1 = pred[5]{0} and(pred[5]{0} %compare.3.clone.1, pred[5]{0} %compare.2.clone.1), metadata={op_type="LogicalAnd" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/LogicalAnd_2"}
+  %constant_18_clone_1 = s64[] constant(0), metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual"}
+  %broadcast.1.clone.1 = s64[5]{0} broadcast(s64[] %constant_18_clone_1), dimensions={}, metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual"}
+  %compare.7.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.1.clone.1), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual"}
+  %compare.6.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.12), direction=LT, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less"}
+  %and.3.clone.1 = pred[5]{0} and(pred[5]{0} %compare.7.clone.1, pred[5]{0} %compare.6.clone.1), metadata={op_type="LogicalAnd" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/LogicalAnd"}
+  %compare.1.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.7.clone.1), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GreaterEqual_3"}
+  %param_4.8 = s32[] parameter(4)
+  %convert.0.clone.1 = s64[] convert(s32[] %param_4.8), metadata={op_type="Cast" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Cast_3"}
+  %add.0.clone.1 = s64[] add(s64[] %convert.0.clone.1, s64[] %param_3.4), metadata={op_type="Add" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/add_3"}
+  %broadcast.0.clone.1 = s64[5]{0} broadcast(s64[] %add.0.clone.1), dimensions={}, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_3"}
+  %compare.0.clone.1 = pred[5]{0} compare(s64[5]{0} %param_0.7, s64[5]{0} %broadcast.0.clone.1), direction=LT, metadata={op_type="Less" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Less_3"}
+  %and.0.clone.1 = pred[5]{0} and(pred[5]{0} %compare.1.clone.1, pred[5]{0} %compare.0.clone.1), metadata={op_type="LogicalAnd" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/LogicalAnd_3"}
+  ROOT %tuple.2 = (pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) tuple(pred[5]{0} %and.2, pred[5]{0} %and.1.clone.1, pred[5]{0} %and.3.clone.1, pred[5]{0} %and.0.clone.1)
+}
+
+%fused_computation.4 (param_0.9: s32[4], param_1.14: s32[], param_2.10: s32[]) -> (s64[], s64[]) {
+  %param_2.10 = s32[] parameter(2)
+  %convert.3 = s64[] convert(s32[] %param_2.10), metadata={op_type="Cast" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/ArithmeticOptimizer/ReorderCastLikeAndValuePreserving_int64_Cast"}
+  %param_0.9 = s32[4]{0} parameter(0)
+  %param_1.14 = s32[] parameter(1)
+  %gather.0 = s32[] gather(s32[4]{0} %param_0.9, s32[] %param_1.14), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=0, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2_3"}
+  %convert.2 = s64[] convert(s32[] %gather.0), metadata={op_type="Cast" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/Cast_1"}
+  %add.2 = s64[] add(s64[] %convert.3, s64[] %convert.2), metadata={op_type="Add" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/add_1"}
+  ROOT %tuple.3 = (s64[], s64[]) tuple(s64[] %add.2, s64[] %convert.3)
+}
+
+%add_F32.111 (lhs.112: f32[], rhs.113: f32[]) -> f32[] {
+  %lhs.112 = f32[] parameter(0)
+  %rhs.113 = f32[] parameter(1)
+  ROOT %add.114 = f32[] add(f32[] %lhs.112, f32[] %rhs.113)
+}
+
+%fused_computation.7 (param_0.15: f32[14,14], param_1.22: f32[2,28,28,256]) -> f32[2,256,14,14] {
+  %param_1.22 = f32[2,28,28,256]{3,2,1,0} parameter(1)
+  %copy.4 = f32[2,28,28,256]{2,1,3,0} copy(f32[2,28,28,256]{3,2,1,0} %param_1.22), metadata={op_name="XLA_Args"}
+  %bitcast.2 = f32[2,256,28,28]{3,2,1,0} bitcast(f32[2,28,28,256]{2,1,3,0} %copy.4), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/transpose_1"}
+  %constant_19 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %reduce-window.0 = f32[2,256,14,14]{3,2,1,0} reduce-window(f32[2,256,28,28]{3,2,1,0} %bitcast.2, f32[] %constant_19), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.111, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/AvgPool"}
+  %param_0.15 = f32[14,14]{1,0} parameter(0)
+  %broadcast.3 = f32[2,256,14,14]{3,2,1,0} broadcast(f32[14,14]{1,0} %param_0.15), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/AvgPool"}
+  ROOT %divide.0 = f32[2,256,14,14]{3,2,1,0} divide(f32[2,256,14,14]{3,2,1,0} %reduce-window.0, f32[2,256,14,14]{3,2,1,0} %broadcast.3), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/AvgPool"}
+}
+
+%add_F32.48 (lhs.49: f32[], rhs.50: f32[]) -> f32[] {
+  %lhs.49 = f32[] parameter(0)
+  %rhs.50 = f32[] parameter(1)
+  ROOT %add.51 = f32[] add(f32[] %lhs.49, f32[] %rhs.50)
+}
+
+%fused_computation.8 (param_0.17: f32[14,14], param_1.27: f32[3,28,28,256]) -> f32[3,256,14,14] {
+  %param_1.27 = f32[3,28,28,256]{3,2,1,0} parameter(1)
+  %copy.5 = f32[3,28,28,256]{2,1,3,0} copy(f32[3,28,28,256]{3,2,1,0} %param_1.27), metadata={op_name="XLA_Args"}
+  %bitcast.3 = f32[3,256,28,28]{3,2,1,0} bitcast(f32[3,28,28,256]{2,1,3,0} %copy.5), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transpose_1"}
+  %constant_20 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %reduce-window.1 = f32[3,256,14,14]{3,2,1,0} reduce-window(f32[3,256,28,28]{3,2,1,0} %bitcast.3, f32[] %constant_20), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%add_F32.48, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %param_0.17 = f32[14,14]{1,0} parameter(0)
+  %broadcast.4 = f32[3,256,14,14]{3,2,1,0} broadcast(f32[14,14]{1,0} %param_0.17), dimensions={2,3}, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  ROOT %divide.1 = f32[3,256,14,14]{3,2,1,0} divide(f32[3,256,14,14]{3,2,1,0} %reduce-window.1, f32[3,256,14,14]{3,2,1,0} %broadcast.4), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+}
+
+%add_F32.57 (lhs.58: f32[], rhs.59: f32[]) -> f32[] {
+  %lhs.58 = f32[] parameter(0)
+  %rhs.59 = f32[] parameter(1)
+  ROOT %add.60 = f32[] add(f32[] %lhs.58, f32[] %rhs.59)
+}
+
+%fused_computation.9 () -> f32[14,14] {
+  %constant_21 = f32[] constant(1), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %broadcast.5 = f32[28,28]{1,0} broadcast(f32[] %constant_21), dimensions={}, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %constant_22 = f32[] constant(0), metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  ROOT %reduce-window.2 = f32[14,14]{1,0} reduce-window(f32[28,28]{1,0} %broadcast.5, f32[] %constant_22), window={size=2x2 stride=2x2}, to_apply=%add_F32.57, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+}
+
+ENTRY %cluster_11__XlaCompiledKernel_true__XlaNumConstantArgs_2__XlaNumResourceArgs_0_.147 (arg0.1: s64[5], arg1.2: f32[2,28,28,256], arg2.3: f32[3,28,28,256], arg3.4: s32[]) -> (f32[3,256,14,14], f32[2,256,14,14], pred[5], pred[5], pred[5], pred[5], s64[], s64[], s64[]) {
+  %fusion.9 = f32[14,14]{1,0} fusion(), kind=kLoop, calls=%fused_computation.9, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %arg2.3 = f32[3,28,28,256]{3,2,1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.8 = f32[3,256,14,14]{3,2,1,0} fusion(f32[14,14]{1,0} %fusion.9, f32[3,28,28,256]{3,2,1,0} %arg2.3), kind=kLoop, calls=%fused_computation.8, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/AvgPool"}
+  %arg1.2 = f32[2,28,28,256]{3,2,1,0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[2,256,14,14]{3,2,1,0} fusion(f32[14,14]{1,0} %fusion.9, f32[2,28,28,256]{3,2,1,0} %arg1.2), kind=kLoop, calls=%fused_computation.7, metadata={op_type="AvgPool" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/AvgPool"}
+  %arg0.1 = s64[5]{0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_65 = s32[4]{0} constant({3, 256, 14, 14}), metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2_3"}
+  %arg3.4 = s32[] parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_35 = s32[4]{0} constant({0, 256, 14, 14}), metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2"}
+  %gather.36 = s32[] gather(s32[4]{0} %constant_35, s32[] %arg3.4), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=0, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2"}
+  %fusion.4 = (s64[], s64[]) fusion(s32[4]{0} %constant_65, s32[] %arg3.4, s32[] %gather.36), kind=kLoop, calls=%fused_computation.4, metadata={op_type="Add" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/add_1"}
+  %get-tuple-element.4 = s64[] get-tuple-element((s64[], s64[]) %fusion.4), index=0
+  %fusion.2 = s64[] fusion(s64[] %get-tuple-element.4, s32[] %gather.36), kind=kLoop, calls=%fused_computation.2, metadata={op_type="Add" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/add_2"}
+  %constant_128 = s32[4]{0} constant({2, 256, 14, 14}), metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2_9"}
+  %gather.129 = s32[] gather(s32[4]{0} %constant_128, s32[] %arg3.4), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=0, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/GatherV2_9"}
+  %fusion.3 = (pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) fusion(s64[5]{0} %arg0.1, s64[] %get-tuple-element.4, s32[] %gather.36, s64[] %fusion.2, s32[] %gather.129), kind=kLoop, calls=%fused_computation.3, metadata={op_type="LogicalAnd" op_name="tower0/gradients/tower0/multilevel_roi_align_mask/concat_grad/LogicalAnd_1"}
+  %get-tuple-element.2 = pred[5]{0} get-tuple-element((pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) %fusion.3), index=2
+  %get-tuple-element = pred[5]{0} get-tuple-element((pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) %fusion.3), index=0
+  %get-tuple-element.1 = pred[5]{0} get-tuple-element((pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) %fusion.3), index=1
+  %get-tuple-element.3 = pred[5]{0} get-tuple-element((pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}) %fusion.3), index=3
+  %get-tuple-element.5 = s64[] get-tuple-element((s64[], s64[]) %fusion.4), index=1
+  ROOT %tuple.146 = (f32[3,256,14,14]{3,2,1,0}, f32[2,256,14,14]{3,2,1,0}, pred[5]{0}, pred[5]{0}, pred[5]{0}, pred[5]{0}, s64[], s64[], s64[]) tuple(f32[3,256,14,14]{3,2,1,0} %fusion.8, f32[2,256,14,14]{3,2,1,0} %fusion.7, pred[5]{0} %get-tuple-element.2, pred[5]{0} %get-tuple-element, pred[5]{0} %get-tuple-element.1, pred[5]{0} %get-tuple-element.3, s64[] %get-tuple-element.5, s64[] %get-tuple-element.4, s64[] %fusion.2), metadata={op_name="XLA_Retvals"}
+}
+

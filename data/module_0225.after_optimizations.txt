@@ -1,0 +1,643 @@
+HloModule cluster_25__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.688
+
+%fused_computation.42 (param_0.42: f32[], param_1.85: f32[], param_2.128: f32[], param_3.82: f32[], param_4.27: f32[], param_5.12: f32[], param_6.14: f32[], param_7.9: f32[], param_8.16: f32[], param_9.11: f32[], param_10.18: f32[], param_11.13: f32[], param_12.20: f32[], param_13.16: f32[], param_14.22: f32[], param_15.15: f32[], param_16.20: f32[], param_17.12: f32[], param_18.14: f32[], param_19.9: f32[], param_20.12: f32[], param_21.5: f32[], param_22.11: f32[], param_23.5: f32[], param_24.11: f32[], param_25.6: f32[], param_26.10: f32[], param_27.8: f32[], param_28.12: f32[], param_29.5: f32[], param_30.11: f32[], param_31.6: f32[], param_32.10: f32[], param_33.8: f32[], param_34.12: f32[], param_35.5: f32[], param_36.11: f32[], param_37.5: f32[], param_38.11: f32[], param_39.5: f32[], param_40.11: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %param_0.42 = f32[] parameter(0)
+  %param_1.85 = f32[] parameter(1)
+  %constant_42 = f32[] constant(0.95), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/Pow"}
+  %param_2.128 = f32[] parameter(2)
+  %power.42 = f32[] power(f32[] %constant_42, f32[] %param_2.128), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/box_loss_EMA_apply/Pow"}
+  %subtract.42 = f32[] subtract(f32[] %param_1.85, f32[] %power.42), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/box_loss_EMA_apply/sub_2"}
+  %divide.42 = f32[] divide(f32[] %param_0.42, f32[] %subtract.42), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/box_loss_EMA_apply/truediv"}
+  %param_3.82 = f32[] parameter(3)
+  %param_4.27 = f32[] parameter(4)
+  %power.11.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_4.27), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/Pow"}
+  %subtract.11.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.11.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/sub_2"}
+  %divide.11.clone.1 = f32[] divide(f32[] %param_3.82, f32[] %subtract.11.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/truediv"}
+  %param_19.9 = f32[] parameter(19)
+  %param_20.12 = f32[] parameter(20)
+  %power.69.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_20.12), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/num_valid_anchor_EMA_apply/Pow"}
+  %subtract.69.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.69.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/num_valid_anchor_EMA_apply/sub_2"}
+  %divide.69.clone.1 = f32[] divide(f32[] %param_19.9, f32[] %subtract.69.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/num_valid_anchor_EMA_apply/truediv"}
+  %param_17.12 = f32[] parameter(17)
+  %param_18.14 = f32[] parameter(18)
+  %power.35.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_18.14), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.2_EMA_apply/Pow"}
+  %subtract.35.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.35.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.2_EMA_apply/sub_2"}
+  %divide.35.clone.1.clone.1 = f32[] divide(f32[] %param_17.12, f32[] %subtract.35.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.2_EMA_apply/truediv"}
+  %param_15.15 = f32[] parameter(15)
+  %param_16.20 = f32[] parameter(16)
+  %power.36.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_16.20), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.2_EMA_apply/Pow"}
+  %subtract.36.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.36.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.2_EMA_apply/sub_2"}
+  %divide.36.clone.1.clone.1 = f32[] divide(f32[] %param_15.15, f32[] %subtract.36.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.2_EMA_apply/truediv"}
+  %param_13.16 = f32[] parameter(13)
+  %param_14.22 = f32[] parameter(14)
+  %power.37.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_14.22), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.5_EMA_apply/Pow"}
+  %subtract.37.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.37.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.5_EMA_apply/sub_2"}
+  %divide.37.clone.1.clone.1 = f32[] divide(f32[] %param_13.16, f32[] %subtract.37.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.5_EMA_apply/truediv"}
+  %param_11.13 = f32[] parameter(11)
+  %param_12.20 = f32[] parameter(12)
+  %power.38.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_12.20), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.5_EMA_apply/Pow"}
+  %subtract.38.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.38.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.5_EMA_apply/sub_2"}
+  %divide.38.clone.1.clone.1 = f32[] divide(f32[] %param_11.13, f32[] %subtract.38.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.5_EMA_apply/truediv"}
+  %param_9.11 = f32[] parameter(9)
+  %param_10.18 = f32[] parameter(10)
+  %power.39.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_10.18), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_loss_EMA_apply/Pow"}
+  %subtract.39.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.39.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_loss_EMA_apply/sub_2"}
+  %divide.39.clone.1.clone.1 = f32[] divide(f32[] %param_9.11, f32[] %subtract.39.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_loss_EMA_apply/truediv"}
+  %param_7.9 = f32[] parameter(7)
+  %param_8.16 = f32[] parameter(8)
+  %power.40.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_8.16), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/num_pos_anchor_EMA_apply/Pow"}
+  %subtract.40.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.40.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/num_pos_anchor_EMA_apply/sub_2"}
+  %divide.40.clone.1.clone.1 = f32[] divide(f32[] %param_7.9, f32[] %subtract.40.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/num_pos_anchor_EMA_apply/truediv"}
+  %param_5.12 = f32[] parameter(5)
+  %param_6.14 = f32[] parameter(6)
+  %power.41.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_6.14), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/num_valid_anchor_EMA_apply/Pow"}
+  %subtract.41.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.41.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/num_valid_anchor_EMA_apply/sub_2"}
+  %divide.41.clone.1.clone.1 = f32[] divide(f32[] %param_5.12, f32[] %subtract.41.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/num_valid_anchor_EMA_apply/truediv"}
+  %param_21.5 = f32[] parameter(21)
+  %param_22.11 = f32[] parameter(22)
+  %power.68.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_22.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/num_pos_anchor_EMA_apply/Pow"}
+  %subtract.68.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.68.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/num_pos_anchor_EMA_apply/sub_2"}
+  %divide.68.clone.1 = f32[] divide(f32[] %param_21.5, f32[] %subtract.68.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/num_pos_anchor_EMA_apply/truediv"}
+  %param_23.5 = f32[] parameter(23)
+  %param_24.11 = f32[] parameter(24)
+  %power.67.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_24.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_loss_EMA_apply/Pow"}
+  %subtract.67.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.67.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_loss_EMA_apply/sub_2"}
+  %divide.67.clone.1 = f32[] divide(f32[] %param_23.5, f32[] %subtract.67.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_loss_EMA_apply/truediv"}
+  %param_27.8 = f32[] parameter(27)
+  %param_28.12 = f32[] parameter(28)
+  %power.66.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_28.12), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_loss_EMA_apply/Pow"}
+  %subtract.66.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.66.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_loss_EMA_apply/sub_2"}
+  %divide.66.clone.1 = f32[] divide(f32[] %param_27.8, f32[] %subtract.66.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_loss_EMA_apply/truediv"}
+  %param_25.6 = f32[] parameter(25)
+  %param_26.10 = f32[] parameter(26)
+  %power.59.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_26.10), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.5_EMA_apply/Pow"}
+  %subtract.59.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.59.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.5_EMA_apply/sub_2"}
+  %divide.59.clone.1.clone.1 = f32[] divide(f32[] %param_25.6, f32[] %subtract.59.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.5_EMA_apply/truediv"}
+  %param_29.5 = f32[] parameter(29)
+  %param_30.11 = f32[] parameter(30)
+  %power.65.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_30.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.5_EMA_apply/Pow"}
+  %subtract.65.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.65.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.5_EMA_apply/sub_2"}
+  %divide.65.clone.1 = f32[] divide(f32[] %param_29.5, f32[] %subtract.65.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.5_EMA_apply/truediv"}
+  %param_33.8 = f32[] parameter(33)
+  %param_34.12 = f32[] parameter(34)
+  %power.63.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_34.12), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.2_EMA_apply/Pow"}
+  %subtract.63.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.63.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.2_EMA_apply/sub_2"}
+  %divide.63.clone.1 = f32[] divide(f32[] %param_33.8, f32[] %subtract.63.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.2_EMA_apply/truediv"}
+  %param_31.6 = f32[] parameter(31)
+  %param_32.10 = f32[] parameter(32)
+  %power.30.clone.1.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_32.10), metadata={op_type="Pow" op_name="EMA/rpn_losses/label_loss_EMA_apply/Pow"}
+  %subtract.30.clone.1.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.30.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/label_loss_EMA_apply/sub_2"}
+  %divide.30.clone.1.clone.1 = f32[] divide(f32[] %param_31.6, f32[] %subtract.30.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/label_loss_EMA_apply/truediv"}
+  %param_35.5 = f32[] parameter(35)
+  %param_36.11 = f32[] parameter(36)
+  %power.62.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_36.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.2_EMA_apply/Pow"}
+  %subtract.62.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.62.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.2_EMA_apply/sub_2"}
+  %divide.62.clone.1 = f32[] divide(f32[] %param_35.5, f32[] %subtract.62.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.2_EMA_apply/truediv"}
+  %param_37.5 = f32[] parameter(37)
+  %param_38.11 = f32[] parameter(38)
+  %power.61.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_38.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.1_EMA_apply/Pow"}
+  %subtract.61.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.61.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.1_EMA_apply/sub_2"}
+  %divide.61.clone.1 = f32[] divide(f32[] %param_37.5, f32[] %subtract.61.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/recall_th0.1_EMA_apply/truediv"}
+  %param_39.5 = f32[] parameter(39)
+  %param_40.11 = f32[] parameter(40)
+  %power.60.clone.1 = f32[] power(f32[] %constant_42, f32[] %param_40.11), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.1_EMA_apply/Pow"}
+  %subtract.60.clone.1 = f32[] subtract(f32[] %param_1.85, f32[] %power.60.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.1_EMA_apply/sub_2"}
+  %divide.60.clone.1 = f32[] divide(f32[] %param_39.5, f32[] %subtract.60.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  ROOT %tuple.58 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %divide.42, f32[] %divide.11.clone.1, f32[] %divide.69.clone.1, f32[] %divide.35.clone.1.clone.1, f32[] %divide.36.clone.1.clone.1, f32[] %divide.37.clone.1.clone.1, f32[] %divide.38.clone.1.clone.1, f32[] %divide.39.clone.1.clone.1, f32[] %divide.40.clone.1.clone.1, f32[] %divide.41.clone.1.clone.1, f32[] %divide.68.clone.1, f32[] %divide.67.clone.1, f32[] %divide.66.clone.1, f32[] %divide.59.clone.1.clone.1, f32[] %divide.65.clone.1, f32[] %divide.63.clone.1, f32[] %divide.30.clone.1.clone.1, f32[] %divide.62.clone.1, f32[] %divide.61.clone.1, f32[] %divide.60.clone.1)
+}
+
+%fused_computation.54 (param_0.54: f32[], param_1.109: f32[], param_2.164: f32[], param_3.79: f32[], param_4.15: f32[], param_5.15: f32[], param_6.21: f32[], param_7.15: f32[], param_8.25: f32[], param_9.19: f32[], param_10.29: f32[], param_11.23: f32[], param_12.33: f32[], param_13.28: f32[], param_14.37: f32[], param_15.29: f32[], param_16.38: f32[], param_17.28: f32[], param_18.31: f32[], param_19.23: f32[], param_20.27: f32[], param_21.17: f32[], param_22.24: f32[], param_23.14: f32[], param_24.18: f32[], param_25.12: f32[], param_26.15: f32[], param_27.10: f32[], param_28.16: f32[], param_29.7: f32[], param_30.15: f32[], param_31.8: f32[], param_32.14: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %param_0.54 = f32[] parameter(0)
+  %param_1.109 = f32[] parameter(1)
+  %constant_54 = f32[] constant(0.95), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/Pow"}
+  %param_2.164 = f32[] parameter(2)
+  %power.54 = f32[] power(f32[] %constant_54, f32[] %param_2.164), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.1_EMA_apply/Pow"}
+  %subtract.54 = f32[] subtract(f32[] %param_1.109, f32[] %power.54), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.1_EMA_apply/sub_2"}
+  %divide.54 = f32[] divide(f32[] %param_0.54, f32[] %subtract.54), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  %param_3.79 = f32[] parameter(3)
+  %param_4.15 = f32[] parameter(4)
+  %power.52.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_4.15), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/box_loss_EMA_apply/Pow"}
+  %subtract.52.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.52.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/box_loss_EMA_apply/sub_2"}
+  %divide.52.clone.1 = f32[] divide(f32[] %param_3.79, f32[] %subtract.52.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/box_loss_EMA_apply/truediv"}
+  %param_25.12 = f32[] parameter(25)
+  %param_26.15 = f32[] parameter(26)
+  %power.58.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_26.15), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.5_EMA_apply/Pow"}
+  %subtract.58.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.58.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.5_EMA_apply/sub_2"}
+  %divide.58.clone.1 = f32[] divide(f32[] %param_25.12, f32[] %subtract.58.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.5_EMA_apply/truediv"}
+  %param_23.14 = f32[] parameter(23)
+  %param_24.18 = f32[] parameter(24)
+  %power.43.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_24.18), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.1_EMA_apply/Pow"}
+  %subtract.43.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.43.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.1_EMA_apply/sub_2"}
+  %divide.43.clone.1.clone.1 = f32[] divide(f32[] %param_23.14, f32[] %subtract.43.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  %param_21.17 = f32[] parameter(21)
+  %param_22.24 = f32[] parameter(22)
+  %power.44.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_22.24), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.1_EMA_apply/Pow"}
+  %subtract.44.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.44.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.1_EMA_apply/sub_2"}
+  %divide.44.clone.1.clone.1 = f32[] divide(f32[] %param_21.17, f32[] %subtract.44.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.1_EMA_apply/truediv"}
+  %param_19.23 = f32[] parameter(19)
+  %param_20.27 = f32[] parameter(20)
+  %power.45.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_20.27), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.2_EMA_apply/Pow"}
+  %subtract.45.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.45.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.2_EMA_apply/sub_2"}
+  %divide.45.clone.1.clone.1 = f32[] divide(f32[] %param_19.23, f32[] %subtract.45.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.2_EMA_apply/truediv"}
+  %param_17.28 = f32[] parameter(17)
+  %param_18.31 = f32[] parameter(18)
+  %power.46.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_18.31), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.2_EMA_apply/Pow"}
+  %subtract.46.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.46.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.2_EMA_apply/sub_2"}
+  %divide.46.clone.1.clone.1 = f32[] divide(f32[] %param_17.28, f32[] %subtract.46.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.2_EMA_apply/truediv"}
+  %param_15.29 = f32[] parameter(15)
+  %param_16.38 = f32[] parameter(16)
+  %power.47.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_16.38), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.5_EMA_apply/Pow"}
+  %subtract.47.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.47.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.5_EMA_apply/sub_2"}
+  %divide.47.clone.1.clone.1 = f32[] divide(f32[] %param_15.29, f32[] %subtract.47.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/precision_th0.5_EMA_apply/truediv"}
+  %param_13.28 = f32[] parameter(13)
+  %param_14.37 = f32[] parameter(14)
+  %power.48.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_14.37), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.5_EMA_apply/Pow"}
+  %subtract.48.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.48.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.5_EMA_apply/sub_2"}
+  %divide.48.clone.1.clone.1 = f32[] divide(f32[] %param_13.28, f32[] %subtract.48.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_metrics/recall_th0.5_EMA_apply/truediv"}
+  %param_11.23 = f32[] parameter(11)
+  %param_12.33 = f32[] parameter(12)
+  %power.49.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_12.33), metadata={op_type="Pow" op_name="EMA/rpn_losses/level4/label_loss_EMA_apply/Pow"}
+  %subtract.49.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.49.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level4/label_loss_EMA_apply/sub_2"}
+  %divide.49.clone.1.clone.1 = f32[] divide(f32[] %param_11.23, f32[] %subtract.49.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/label_loss_EMA_apply/truediv"}
+  %param_9.19 = f32[] parameter(9)
+  %param_10.29 = f32[] parameter(10)
+  %power.50.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_10.29), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/num_pos_anchor_EMA_apply/Pow"}
+  %subtract.50.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.50.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/num_pos_anchor_EMA_apply/sub_2"}
+  %divide.50.clone.1.clone.1 = f32[] divide(f32[] %param_9.19, f32[] %subtract.50.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/num_pos_anchor_EMA_apply/truediv"}
+  %param_7.15 = f32[] parameter(7)
+  %param_8.25 = f32[] parameter(8)
+  %power.51.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_8.25), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/num_valid_anchor_EMA_apply/Pow"}
+  %subtract.51.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.51.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/num_valid_anchor_EMA_apply/sub_2"}
+  %divide.51.clone.1.clone.1 = f32[] divide(f32[] %param_7.15, f32[] %subtract.51.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/num_valid_anchor_EMA_apply/truediv"}
+  %param_5.15 = f32[] parameter(5)
+  %param_6.21 = f32[] parameter(6)
+  %power.53.clone.1.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_6.21), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/box_loss_EMA_apply/Pow"}
+  %subtract.53.clone.1.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.53.clone.1.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/box_loss_EMA_apply/sub_2"}
+  %divide.53.clone.1.clone.1 = f32[] divide(f32[] %param_5.15, f32[] %subtract.53.clone.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/box_loss_EMA_apply/truediv"}
+  %param_27.10 = f32[] parameter(27)
+  %param_28.16 = f32[] parameter(28)
+  %power.57.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_28.16), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.2_EMA_apply/Pow"}
+  %subtract.57.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.57.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.2_EMA_apply/sub_2"}
+  %divide.57.clone.1 = f32[] divide(f32[] %param_27.10, f32[] %subtract.57.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.2_EMA_apply/truediv"}
+  %param_29.7 = f32[] parameter(29)
+  %param_30.15 = f32[] parameter(30)
+  %power.56.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_30.15), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.2_EMA_apply/Pow"}
+  %subtract.56.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.56.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.2_EMA_apply/sub_2"}
+  %divide.56.clone.1 = f32[] divide(f32[] %param_29.7, f32[] %subtract.56.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.2_EMA_apply/truediv"}
+  %param_31.8 = f32[] parameter(31)
+  %param_32.14 = f32[] parameter(32)
+  %power.55.clone.1 = f32[] power(f32[] %constant_54, f32[] %param_32.14), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.1_EMA_apply/Pow"}
+  %subtract.55.clone.1 = f32[] subtract(f32[] %param_1.109, f32[] %power.55.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.1_EMA_apply/sub_2"}
+  %divide.55.clone.1 = f32[] divide(f32[] %param_31.8, f32[] %subtract.55.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/recall_th0.1_EMA_apply/truediv"}
+  ROOT %tuple.71 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %divide.54, f32[] %divide.52.clone.1, f32[] %divide.58.clone.1, f32[] %divide.43.clone.1.clone.1, f32[] %divide.44.clone.1.clone.1, f32[] %divide.45.clone.1.clone.1, f32[] %divide.46.clone.1.clone.1, f32[] %divide.47.clone.1.clone.1, f32[] %divide.48.clone.1.clone.1, f32[] %divide.49.clone.1.clone.1, f32[] %divide.50.clone.1.clone.1, f32[] %divide.51.clone.1.clone.1, f32[] %divide.53.clone.1.clone.1, f32[] %divide.57.clone.1, f32[] %divide.56.clone.1, f32[] %divide.55.clone.1)
+}
+
+%fused_computation.72 (param_0.72: f32[], param_1.145: f32[], param_2.218: f32[], param_3.77: f32[], param_4.7: f32[], param_5.3: f32[], param_6.7: f32[], param_7.3: f32[], param_8.7: f32[], param_9.3: f32[], param_10.7: f32[], param_11.3: f32[], param_12.7: f32[], param_13.3: f32[], param_14.7: f32[], param_15.3: f32[], param_16.7: f32[], param_17.3: f32[], param_18.7: f32[], param_19.3: f32[], param_20.7: f32[], param_21.3: f32[], param_22.7: f32[], param_23.3: f32[], param_24.7: f32[], param_25.3: f32[], param_26.7: f32[], param_27.3: f32[], param_28.7: f32[], param_29.3: f32[], param_30.7: f32[], param_31.3: f32[], param_32.7: f32[], param_33.3: f32[], param_34.7: f32[], param_35.3: f32[], param_36.7: f32[], param_37.3: f32[], param_38.7: f32[], param_39.3: f32[], param_40.7: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %param_0.72 = f32[] parameter(0)
+  %param_1.145 = f32[] parameter(1)
+  %constant_72 = f32[] constant(0.95), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/Pow"}
+  %param_2.218 = f32[] parameter(2)
+  %power.72 = f32[] power(f32[] %constant_72, f32[] %param_2.218), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/num_pos_anchor_EMA_apply/Pow"}
+  %subtract.72 = f32[] subtract(f32[] %param_1.145, f32[] %power.72), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/num_pos_anchor_EMA_apply/sub_2"}
+  %divide.72 = f32[] divide(f32[] %param_0.72, f32[] %subtract.72), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/num_pos_anchor_EMA_apply/truediv"}
+  %param_3.77 = f32[] parameter(3)
+  %param_4.7 = f32[] parameter(4)
+  %power.71.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_4.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/num_valid_anchor_EMA_apply/Pow"}
+  %subtract.71.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.71.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/num_valid_anchor_EMA_apply/sub_2"}
+  %divide.71.clone.1 = f32[] divide(f32[] %param_3.77, f32[] %subtract.71.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/num_valid_anchor_EMA_apply/truediv"}
+  %param_5.3 = f32[] parameter(5)
+  %param_6.7 = f32[] parameter(6)
+  %power.64.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_6.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.5_EMA_apply/Pow"}
+  %subtract.64.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.64.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.5_EMA_apply/sub_2"}
+  %divide.64.clone.1 = f32[] divide(f32[] %param_5.3, f32[] %subtract.64.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/label_metrics/precision_th0.5_EMA_apply/truediv"}
+  %param_7.3 = f32[] parameter(7)
+  %param_8.7 = f32[] parameter(8)
+  %power.17.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_8.7), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/Pow"}
+  %subtract.17.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.17.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/sub_2"}
+  %divide.17.clone.1 = f32[] divide(f32[] %param_7.3, f32[] %subtract.17.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/truediv"}
+  %param_9.3 = f32[] parameter(9)
+  %param_10.7 = f32[] parameter(10)
+  %power.18.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_10.7), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/num_fg_label_EMA_apply/Pow"}
+  %subtract.18.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.18.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/num_fg_label_EMA_apply/sub_2"}
+  %divide.18.clone.1 = f32[] divide(f32[] %param_9.3, f32[] %subtract.18.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/num_fg_label_EMA_apply/truediv"}
+  %param_11.3 = f32[] parameter(11)
+  %param_12.7 = f32[] parameter(12)
+  %power.19.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_12.7), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/num_bg_EMA_apply/Pow"}
+  %subtract.19.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.19.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/num_bg_EMA_apply/sub_2"}
+  %divide.19.clone.1 = f32[] divide(f32[] %param_11.3, f32[] %subtract.19.clone.1), metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/num_bg_EMA_apply/truediv"}
+  %param_13.3 = f32[] parameter(13)
+  %param_14.7 = f32[] parameter(14)
+  %power.20.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_14.7), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/Pow"}
+  %subtract.20.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.20.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/sub_2"}
+  %divide.20.clone.1 = f32[] divide(f32[] %param_13.3, f32[] %subtract.20.clone.1), metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/truediv"}
+  %param_15.3 = f32[] parameter(15)
+  %param_16.7 = f32[] parameter(16)
+  %power.21.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_16.7), metadata={op_type="Pow" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/Pow"}
+  %subtract.21.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.21.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/sub_2"}
+  %divide.21.clone.1 = f32[] divide(f32[] %param_15.3, f32[] %subtract.21.clone.1), metadata={op_type="RealDiv" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/truediv"}
+  %param_17.3 = f32[] parameter(17)
+  %param_18.7 = f32[] parameter(18)
+  %power.22.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_18.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/box_loss_EMA_apply/Pow"}
+  %subtract.22.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.22.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/box_loss_EMA_apply/sub_2"}
+  %divide.22.clone.1 = f32[] divide(f32[] %param_17.3, f32[] %subtract.22.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/box_loss_EMA_apply/truediv"}
+  %param_19.3 = f32[] parameter(19)
+  %param_20.7 = f32[] parameter(20)
+  %power.23.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_20.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/box_loss_EMA_apply/Pow"}
+  %subtract.23.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.23.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/box_loss_EMA_apply/sub_2"}
+  %divide.23.clone.1 = f32[] divide(f32[] %param_19.3, f32[] %subtract.23.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/box_loss_EMA_apply/truediv"}
+  %param_21.3 = f32[] parameter(21)
+  %param_22.7 = f32[] parameter(22)
+  %power.24.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_22.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.1_EMA_apply/Pow"}
+  %subtract.24.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.24.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.1_EMA_apply/sub_2"}
+  %divide.24.clone.1 = f32[] divide(f32[] %param_21.3, f32[] %subtract.24.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  %param_23.3 = f32[] parameter(23)
+  %param_24.7 = f32[] parameter(24)
+  %power.25.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_24.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.1_EMA_apply/Pow"}
+  %subtract.25.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.25.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.1_EMA_apply/sub_2"}
+  %divide.25.clone.1 = f32[] divide(f32[] %param_23.3, f32[] %subtract.25.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.1_EMA_apply/truediv"}
+  %param_25.3 = f32[] parameter(25)
+  %param_26.7 = f32[] parameter(26)
+  %power.26.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_26.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.2_EMA_apply/Pow"}
+  %subtract.26.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.26.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.2_EMA_apply/sub_2"}
+  %divide.26.clone.1 = f32[] divide(f32[] %param_25.3, f32[] %subtract.26.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.2_EMA_apply/truediv"}
+  %param_27.3 = f32[] parameter(27)
+  %param_28.7 = f32[] parameter(28)
+  %power.27.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_28.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.2_EMA_apply/Pow"}
+  %subtract.27.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.27.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.2_EMA_apply/sub_2"}
+  %divide.27.clone.1 = f32[] divide(f32[] %param_27.3, f32[] %subtract.27.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.2_EMA_apply/truediv"}
+  %param_29.3 = f32[] parameter(29)
+  %param_30.7 = f32[] parameter(30)
+  %power.28.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_30.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.5_EMA_apply/Pow"}
+  %subtract.28.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.28.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.5_EMA_apply/sub_2"}
+  %divide.28.clone.1 = f32[] divide(f32[] %param_29.3, f32[] %subtract.28.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/precision_th0.5_EMA_apply/truediv"}
+  %param_31.3 = f32[] parameter(31)
+  %param_32.7 = f32[] parameter(32)
+  %power.29.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_32.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.5_EMA_apply/Pow"}
+  %subtract.29.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.29.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.5_EMA_apply/sub_2"}
+  %divide.29.clone.1 = f32[] divide(f32[] %param_31.3, f32[] %subtract.29.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_metrics/recall_th0.5_EMA_apply/truediv"}
+  %param_33.3 = f32[] parameter(33)
+  %param_34.7 = f32[] parameter(34)
+  %power.31.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_34.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level2/label_loss_EMA_apply/Pow"}
+  %subtract.31.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.31.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level2/label_loss_EMA_apply/sub_2"}
+  %divide.31.clone.1 = f32[] divide(f32[] %param_33.3, f32[] %subtract.31.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level2/label_loss_EMA_apply/truediv"}
+  %param_35.3 = f32[] parameter(35)
+  %param_36.7 = f32[] parameter(36)
+  %power.32.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_36.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/box_loss_EMA_apply/Pow"}
+  %subtract.32.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.32.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/box_loss_EMA_apply/sub_2"}
+  %divide.32.clone.1 = f32[] divide(f32[] %param_35.3, f32[] %subtract.32.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/box_loss_EMA_apply/truediv"}
+  %param_37.3 = f32[] parameter(37)
+  %param_38.7 = f32[] parameter(38)
+  %power.33.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_38.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.1_EMA_apply/Pow"}
+  %subtract.33.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.33.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.1_EMA_apply/sub_2"}
+  %divide.33.clone.1 = f32[] divide(f32[] %param_37.3, f32[] %subtract.33.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  %param_39.3 = f32[] parameter(39)
+  %param_40.7 = f32[] parameter(40)
+  %power.34.clone.1 = f32[] power(f32[] %constant_72, f32[] %param_40.7), metadata={op_type="Pow" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.1_EMA_apply/Pow"}
+  %subtract.34.clone.1 = f32[] subtract(f32[] %param_1.145, f32[] %power.34.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.1_EMA_apply/sub_2"}
+  %divide.34.clone.1 = f32[] divide(f32[] %param_39.3, f32[] %subtract.34.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level3/label_metrics/recall_th0.1_EMA_apply/truediv"}
+  ROOT %tuple.42 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %divide.72, f32[] %divide.71.clone.1, f32[] %divide.64.clone.1, f32[] %divide.17.clone.1, f32[] %divide.18.clone.1, f32[] %divide.19.clone.1, f32[] %divide.20.clone.1, f32[] %divide.21.clone.1, f32[] %divide.22.clone.1, f32[] %divide.23.clone.1, f32[] %divide.24.clone.1, f32[] %divide.25.clone.1, f32[] %divide.26.clone.1, f32[] %divide.27.clone.1, f32[] %divide.28.clone.1, f32[] %divide.29.clone.1, f32[] %divide.31.clone.1, f32[] %divide.32.clone.1, f32[] %divide.33.clone.1, f32[] %divide.34.clone.1)
+}
+
+%fused_computation.75 (param_0.75: f32[], param_1.151: f32[], param_2.227: f32[], param_3.76: f32[], param_4.3: f32[], param_5.1: f32[], param_6.3: f32[], param_7.1: f32[], param_8.3: f32[], param_9.1: f32[], param_10.3: f32[], param_11.1: f32[], param_12.3: f32[], param_13.1: f32[], param_14.3: f32[], param_15.1: f32[], param_16.3: f32[], param_17.1: f32[], param_18.3: f32[], param_19.1: f32[], param_20.3: f32[], param_21.1: f32[], param_22.3: f32[], param_23.1: f32[], param_24.3: f32[], param_25.1: f32[], param_26.3: f32[], param_27.1: f32[], param_28.3: f32[], param_29.1: f32[], param_30.3: f32[], param_31.1: f32[], param_32.3: f32[], param_33.1: f32[], param_34.3: f32[], param_35.1: f32[], param_36.3: f32[], param_37.1: f32[], param_38.3: f32[], param_39.1: f32[], param_40.3: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %param_0.75 = f32[] parameter(0)
+  %param_1.151 = f32[] parameter(1)
+  %constant_75 = f32[] constant(0.95), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/Pow"}
+  %param_2.227 = f32[] parameter(2)
+  %power.75 = f32[] power(f32[] %constant_75, f32[] %param_2.227), metadata={op_type="Pow" op_name="EMA/mean_gt_box_area_EMA_apply/Pow"}
+  %subtract.75 = f32[] subtract(f32[] %param_1.151, f32[] %power.75), metadata={op_type="Sub" op_name="EMA/mean_gt_box_area_EMA_apply/sub_2"}
+  %divide.75 = f32[] divide(f32[] %param_0.75, f32[] %subtract.75), metadata={op_type="RealDiv" op_name="EMA/mean_gt_box_area_EMA_apply/truediv"}
+  %param_3.76 = f32[] parameter(3)
+  %param_4.3 = f32[] parameter(4)
+  %power.74.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_4.3), metadata={op_type="Pow" op_name="EMA/wd_cost_EMA_apply/Pow"}
+  %subtract.74.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.74.clone.1), metadata={op_type="Sub" op_name="EMA/wd_cost_EMA_apply/sub_2"}
+  %divide.74.clone.1 = f32[] divide(f32[] %param_3.76, f32[] %subtract.74.clone.1), metadata={op_type="RealDiv" op_name="EMA/wd_cost_EMA_apply/truediv"}
+  %param_5.1 = f32[] parameter(5)
+  %param_6.3 = f32[] parameter(6)
+  %power.73.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_6.3), metadata={op_type="Pow" op_name="EMA/rpn_losses/level5/num_valid_anchor_EMA_apply/Pow"}
+  %subtract.73.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.73.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level5/num_valid_anchor_EMA_apply/sub_2"}
+  %divide.73.clone.1 = f32[] divide(f32[] %param_5.1, f32[] %subtract.73.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/num_valid_anchor_EMA_apply/truediv"}
+  %param_7.1 = f32[] parameter(7)
+  %param_8.3 = f32[] parameter(8)
+  %power.70.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_8.3), metadata={op_type="Pow" op_name="EMA/rpn_losses/level6/num_pos_anchor_EMA_apply/Pow"}
+  %subtract.70.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.70.clone.1), metadata={op_type="Sub" op_name="EMA/rpn_losses/level6/num_pos_anchor_EMA_apply/sub_2"}
+  %divide.70.clone.1 = f32[] divide(f32[] %param_7.1, f32[] %subtract.70.clone.1), metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/num_pos_anchor_EMA_apply/truediv"}
+  %param_9.1 = f32[] parameter(9)
+  %param_10.3 = f32[] parameter(10)
+  %power.0.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_10.3), metadata={op_type="Pow" op_name="EMA/total_cost_EMA_apply/Pow"}
+  %subtract.0.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.0.clone.1), metadata={op_type="Sub" op_name="EMA/total_cost_EMA_apply/sub_2"}
+  %divide.0.clone.1 = f32[] divide(f32[] %param_9.1, f32[] %subtract.0.clone.1), metadata={op_type="RealDiv" op_name="EMA/total_cost_EMA_apply/truediv"}
+  %param_11.1 = f32[] parameter(11)
+  %param_12.3 = f32[] parameter(12)
+  %power.1.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_12.3), metadata={op_type="Pow" op_name="EMA/maskrcnn_loss/maskrcnn_loss_EMA_apply/Pow"}
+  %subtract.1.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.1.clone.1), metadata={op_type="Sub" op_name="EMA/maskrcnn_loss/maskrcnn_loss_EMA_apply/sub_2"}
+  %divide.1.clone.1 = f32[] divide(f32[] %param_11.1, f32[] %subtract.1.clone.1), metadata={op_type="RealDiv" op_name="EMA/maskrcnn_loss/maskrcnn_loss_EMA_apply/truediv"}
+  %param_13.1 = f32[] parameter(13)
+  %param_14.3 = f32[] parameter(14)
+  %power.2.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_14.3), metadata={op_type="Pow" op_name="EMA/maskrcnn_loss/pos_accuracy_EMA_apply/Pow"}
+  %subtract.2.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.2.clone.1), metadata={op_type="Sub" op_name="EMA/maskrcnn_loss/pos_accuracy_EMA_apply/sub_2"}
+  %divide.2.clone.1 = f32[] divide(f32[] %param_13.1, f32[] %subtract.2.clone.1), metadata={op_type="RealDiv" op_name="EMA/maskrcnn_loss/pos_accuracy_EMA_apply/truediv"}
+  %param_15.1 = f32[] parameter(15)
+  %param_16.3 = f32[] parameter(16)
+  %power.3.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_16.3), metadata={op_type="Pow" op_name="EMA/maskrcnn_loss/accuracy_EMA_apply/Pow"}
+  %subtract.3.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.3.clone.1), metadata={op_type="Sub" op_name="EMA/maskrcnn_loss/accuracy_EMA_apply/sub_2"}
+  %divide.3.clone.1 = f32[] divide(f32[] %param_15.1, f32[] %subtract.3.clone.1), metadata={op_type="RealDiv" op_name="EMA/maskrcnn_loss/accuracy_EMA_apply/truediv"}
+  %param_17.1 = f32[] parameter(17)
+  %param_18.3 = f32[] parameter(18)
+  %power.4.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_18.3), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/Pow"}
+  %subtract.4.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.4.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/sub_2"}
+  %divide.4.clone.1 = f32[] divide(f32[] %param_17.1, f32[] %subtract.4.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/box_loss_EMA_apply/truediv"}
+  %param_19.1 = f32[] parameter(19)
+  %param_20.3 = f32[] parameter(20)
+  %power.5.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_20.3), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/label_metrics/false_negative_EMA_apply/Pow"}
+  %subtract.5.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.5.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/label_metrics/false_negative_EMA_apply/sub_2"}
+  %divide.5.clone.1 = f32[] divide(f32[] %param_19.1, f32[] %subtract.5.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/label_metrics/false_negative_EMA_apply/truediv"}
+  %param_21.1 = f32[] parameter(21)
+  %param_22.3 = f32[] parameter(22)
+  %power.6.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_22.3), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/label_metrics/fg_accuracy_EMA_apply/Pow"}
+  %subtract.6.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.6.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/label_metrics/fg_accuracy_EMA_apply/sub_2"}
+  %divide.6.clone.1 = f32[] divide(f32[] %param_21.1, f32[] %subtract.6.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/label_metrics/fg_accuracy_EMA_apply/truediv"}
+  %param_23.1 = f32[] parameter(23)
+  %param_24.3 = f32[] parameter(24)
+  %power.7.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_24.3), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/label_metrics/accuracy_EMA_apply/Pow"}
+  %subtract.7.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.7.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/label_metrics/accuracy_EMA_apply/sub_2"}
+  %divide.7.clone.1 = f32[] divide(f32[] %param_23.1, f32[] %subtract.7.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/label_metrics/accuracy_EMA_apply/truediv"}
+  %param_25.1 = f32[] parameter(25)
+  %param_26.3 = f32[] parameter(26)
+  %power.8.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_26.3), metadata={op_type="Pow" op_name="EMA/fastrcnn_losses/label_loss_EMA_apply/Pow"}
+  %subtract.8.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.8.clone.1), metadata={op_type="Sub" op_name="EMA/fastrcnn_losses/label_loss_EMA_apply/sub_2"}
+  %divide.8.clone.1 = f32[] divide(f32[] %param_25.1, f32[] %subtract.8.clone.1), metadata={op_type="RealDiv" op_name="EMA/fastrcnn_losses/label_loss_EMA_apply/truediv"}
+  %param_27.1 = f32[] parameter(27)
+  %param_28.3 = f32[] parameter(28)
+  %power.9.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_28.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/Pow"}
+  %subtract.9.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.9.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/sub_2"}
+  %divide.9.clone.1 = f32[] divide(f32[] %param_27.1, f32[] %subtract.9.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/truediv"}
+  %param_29.1 = f32[] parameter(29)
+  %param_30.3 = f32[] parameter(30)
+  %power.10.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_30.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/Pow"}
+  %subtract.10.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.10.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/sub_2"}
+  %divide.10.clone.1 = f32[] divide(f32[] %param_29.1, f32[] %subtract.10.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/truediv"}
+  %param_31.1 = f32[] parameter(31)
+  %param_32.3 = f32[] parameter(32)
+  %power.12.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_32.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/Pow"}
+  %subtract.12.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.12.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/sub_2"}
+  %divide.12.clone.1 = f32[] divide(f32[] %param_31.1, f32[] %subtract.12.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/truediv"}
+  %param_33.1 = f32[] parameter(33)
+  %param_34.3 = f32[] parameter(34)
+  %power.13.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_34.3), metadata={op_type="Pow" op_name="EMA/maskrcnn_loss/fg_pixel_ratio_EMA_apply/Pow"}
+  %subtract.13.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.13.clone.1), metadata={op_type="Sub" op_name="EMA/maskrcnn_loss/fg_pixel_ratio_EMA_apply/sub_2"}
+  %divide.13.clone.1 = f32[] divide(f32[] %param_33.1, f32[] %subtract.13.clone.1), metadata={op_type="RealDiv" op_name="EMA/maskrcnn_loss/fg_pixel_ratio_EMA_apply/truediv"}
+  %param_35.1 = f32[] parameter(35)
+  %param_36.3 = f32[] parameter(36)
+  %power.14.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_36.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/Pow"}
+  %subtract.14.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.14.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/sub_2"}
+  %divide.14.clone.1 = f32[] divide(f32[] %param_35.1, f32[] %subtract.14.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/truediv"}
+  %param_37.1 = f32[] parameter(37)
+  %param_38.3 = f32[] parameter(38)
+  %power.15.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_38.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/Pow"}
+  %subtract.15.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.15.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/sub_2"}
+  %divide.15.clone.1 = f32[] divide(f32[] %param_37.1, f32[] %subtract.15.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/truediv"}
+  %param_39.1 = f32[] parameter(39)
+  %param_40.3 = f32[] parameter(40)
+  %power.16.clone.1 = f32[] power(f32[] %constant_75, f32[] %param_40.3), metadata={op_type="Pow" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/Pow"}
+  %subtract.16.clone.1 = f32[] subtract(f32[] %param_1.151, f32[] %power.16.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/sub_2"}
+  %divide.16.clone.1 = f32[] divide(f32[] %param_39.1, f32[] %subtract.16.clone.1), metadata={op_type="RealDiv" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/truediv"}
+  ROOT %tuple.25 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %divide.75, f32[] %divide.74.clone.1, f32[] %divide.73.clone.1, f32[] %divide.70.clone.1, f32[] %divide.0.clone.1, f32[] %divide.1.clone.1, f32[] %divide.2.clone.1, f32[] %divide.3.clone.1, f32[] %divide.4.clone.1, f32[] %divide.5.clone.1, f32[] %divide.6.clone.1, f32[] %divide.7.clone.1, f32[] %divide.8.clone.1, f32[] %divide.9.clone.1, f32[] %divide.10.clone.1, f32[] %divide.12.clone.1, f32[] %divide.13.clone.1, f32[] %divide.14.clone.1, f32[] %divide.15.clone.1, f32[] %divide.16.clone.1)
+}
+
+ENTRY %cluster_25__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.688 (arg0.1: f32[], arg1.2: f32[], arg2.3: f32[], arg3.4: f32[], arg4.5: f32[], arg5.6: f32[], arg6.7: f32[], arg7.8: f32[], arg8.9: f32[], arg9.10: f32[], arg10.11: f32[], arg11.12: f32[], arg12.13: f32[], arg13.14: f32[], arg14.15: f32[], arg15.16: f32[], arg16.17: f32[], arg17.18: f32[], arg18.19: f32[], arg19.20: f32[], arg20.21: f32[], arg21.22: f32[], arg22.23: f32[], arg23.24: f32[], arg24.25: f32[], arg25.26: f32[], arg26.27: f32[], arg27.28: f32[], arg28.29: f32[], arg29.30: f32[], arg30.31: f32[], arg31.32: f32[], arg32.33: f32[], arg33.34: f32[], arg34.35: f32[], arg35.36: f32[], arg36.37: f32[], arg37.38: f32[], arg38.39: f32[], arg39.40: f32[], arg40.41: f32[], arg41.42: f32[], arg42.43: f32[], arg43.44: f32[], arg44.45: f32[], arg45.46: f32[], arg46.47: f32[], arg47.48: f32[], arg48.49: f32[], arg49.50: f32[], arg50.51: f32[], arg51.52: f32[], arg52.53: f32[], arg53.54: f32[], arg54.55: f32[], arg55.56: f32[], arg56.57: f32[], arg57.58: f32[], arg58.59: f32[], arg59.60: f32[], arg60.61: f32[], arg61.62: f32[], arg62.63: f32[], arg63.64: f32[], arg64.65: f32[], arg65.66: f32[], arg66.67: f32[], arg67.68: f32[], arg68.69: f32[], arg69.70: f32[], arg70.71: f32[], arg71.72: f32[], arg72.73: f32[], arg73.74: f32[], arg74.75: f32[], arg75.76: f32[], arg76.77: f32[], arg77.78: f32[], arg78.79: f32[], arg79.80: f32[], arg80.81: f32[], arg81.82: f32[], arg82.83: f32[], arg83.84: f32[], arg84.85: f32[], arg85.86: f32[], arg86.87: f32[], arg87.88: f32[], arg88.89: f32[], arg89.90: f32[], arg90.91: f32[], arg91.92: f32[], arg92.93: f32[], arg93.94: f32[], arg94.95: f32[], arg95.96: f32[], arg96.97: f32[], arg97.98: f32[], arg98.99: f32[], arg99.100: f32[], arg100.101: f32[], arg101.102: f32[], arg102.103: f32[], arg103.104: f32[], arg104.105: f32[], arg105.106: f32[], arg106.107: f32[], arg107.108: f32[], arg108.109: f32[], arg109.110: f32[], arg110.111: f32[], arg111.112: f32[], arg112.113: f32[], arg113.114: f32[], arg114.115: f32[], arg115.116: f32[], arg116.117: f32[], arg117.118: f32[], arg118.119: f32[], arg119.120: f32[], arg120.121: f32[], arg121.122: f32[], arg122.123: f32[], arg123.124: f32[], arg124.125: f32[], arg125.126: f32[], arg126.127: f32[], arg127.128: f32[], arg128.129: f32[], arg129.130: f32[], arg130.131: f32[], arg131.132: f32[], arg132.133: f32[], arg133.134: f32[], arg134.135: f32[], arg135.136: f32[], arg136.137: f32[], arg137.138: f32[], arg138.139: f32[], arg139.140: f32[], arg140.141: f32[], arg141.142: f32[], arg142.143: f32[], arg143.144: f32[], arg144.145: f32[], arg145.146: f32[], arg146.147: f32[], arg147.148: f32[], arg148.149: f32[], arg149.150: f32[], arg150.151: f32[], arg151.152: f32[], arg152.153: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %arg77.78 = f32[] parameter(77), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg76.77 = f32[] parameter(76), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg65.66 = f32[] parameter(65), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg78.79 = f32[] parameter(78), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = f32[] parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg79.80 = f32[] parameter(79), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg15.16 = f32[] parameter(15), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg82.83 = f32[] parameter(82), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg6.7 = f32[] parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg152.153 = f32[] parameter(152), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f32[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg151.152 = f32[] parameter(151), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg67.68 = f32[] parameter(67), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg150.151 = f32[] parameter(150), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg66.67 = f32[] parameter(66), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg149.150 = f32[] parameter(149), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg69.70 = f32[] parameter(69), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg148.149 = f32[] parameter(148), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg75.76 = f32[] parameter(75), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg147.148 = f32[] parameter(147), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg72.73 = f32[] parameter(72), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg146.147 = f32[] parameter(146), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg71.72 = f32[] parameter(71), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg145.146 = f32[] parameter(145), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg73.74 = f32[] parameter(73), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg144.145 = f32[] parameter(144), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg74.75 = f32[] parameter(74), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg143.144 = f32[] parameter(143), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg59.60 = f32[] parameter(59), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg142.143 = f32[] parameter(142), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg58.59 = f32[] parameter(58), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg140.141 = f32[] parameter(140), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg60.61 = f32[] parameter(60), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg139.140 = f32[] parameter(139), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg68.69 = f32[] parameter(68), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg138.139 = f32[] parameter(138), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg63.64 = f32[] parameter(63), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg137.138 = f32[] parameter(137), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg62.63 = f32[] parameter(62), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg136.137 = f32[] parameter(136), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg61.62 = f32[] parameter(61), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.75 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) fusion(f32[] %arg77.78, f32[] %arg76.77, f32[] %arg65.66, f32[] %arg78.79, f32[] %arg0.1, f32[] %arg79.80, f32[] %arg15.16, f32[] %arg82.83, f32[] %arg6.7, f32[] %arg152.153, f32[] %arg1.2, f32[] %arg151.152, f32[] %arg67.68, f32[] %arg150.151, f32[] %arg66.67, f32[] %arg149.150, f32[] %arg69.70, f32[] %arg148.149, f32[] %arg75.76, f32[] %arg147.148, f32[] %arg72.73, f32[] %arg146.147, f32[] %arg71.72, f32[] %arg145.146, f32[] %arg73.74, f32[] %arg144.145, f32[] %arg74.75, f32[] %arg143.144, f32[] %arg59.60, f32[] %arg142.143, f32[] %arg58.59, f32[] %arg140.141, f32[] %arg60.61, f32[] %arg139.140, f32[] %arg68.69, f32[] %arg138.139, f32[] %arg63.64, f32[] %arg137.138, f32[] %arg62.63, f32[] %arg136.137, f32[] %arg61.62), kind=kLoop, calls=%fused_computation.75, metadata={op_type="RealDiv" op_name="EMA/mean_gt_box_area_EMA_apply/truediv"}
+  %get-tuple-element = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=0
+  %get-tuple-element.1 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=1
+  %get-tuple-element.2 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=2
+  %arg80.81 = f32[] parameter(80), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg16.17 = f32[] parameter(16), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg81.82 = f32[] parameter(81), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = f32[] parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg88.89 = f32[] parameter(88), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg20.21 = f32[] parameter(20), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg135.136 = f32[] parameter(135), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg64.65 = f32[] parameter(64), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg134.135 = f32[] parameter(134), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg70.71 = f32[] parameter(70), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg133.134 = f32[] parameter(133), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg4.5 = f32[] parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg132.133 = f32[] parameter(132), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = f32[] parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg131.132 = f32[] parameter(131), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f32[] parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg130.131 = f32[] parameter(130), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg56.57 = f32[] parameter(56), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg129.130 = f32[] parameter(129), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg54.55 = f32[] parameter(54), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg128.129 = f32[] parameter(128), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg52.53 = f32[] parameter(52), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg127.128 = f32[] parameter(127), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg49.50 = f32[] parameter(49), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg126.127 = f32[] parameter(126), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg51.52 = f32[] parameter(51), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg125.126 = f32[] parameter(125), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg48.49 = f32[] parameter(48), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg124.125 = f32[] parameter(124), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg50.51 = f32[] parameter(50), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg123.124 = f32[] parameter(123), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg47.48 = f32[] parameter(47), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg121.122 = f32[] parameter(121), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg53.54 = f32[] parameter(53), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg120.121 = f32[] parameter(120), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg44.45 = f32[] parameter(44), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg119.120 = f32[] parameter(119), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg42.43 = f32[] parameter(42), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg118.119 = f32[] parameter(118), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg39.40 = f32[] parameter(39), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.72 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) fusion(f32[] %arg80.81, f32[] %arg76.77, f32[] %arg16.17, f32[] %arg81.82, f32[] %arg5.6, f32[] %arg88.89, f32[] %arg20.21, f32[] %arg135.136, f32[] %arg64.65, f32[] %arg134.135, f32[] %arg70.71, f32[] %arg133.134, f32[] %arg4.5, f32[] %arg132.133, f32[] %arg3.4, f32[] %arg131.132, f32[] %arg2.3, f32[] %arg130.131, f32[] %arg56.57, f32[] %arg129.130, f32[] %arg54.55, f32[] %arg128.129, f32[] %arg52.53, f32[] %arg127.128, f32[] %arg49.50, f32[] %arg126.127, f32[] %arg51.52, f32[] %arg125.126, f32[] %arg48.49, f32[] %arg124.125, f32[] %arg50.51, f32[] %arg123.124, f32[] %arg47.48, f32[] %arg121.122, f32[] %arg53.54, f32[] %arg120.121, f32[] %arg44.45, f32[] %arg119.120, f32[] %arg42.43, f32[] %arg118.119, f32[] %arg39.40), kind=kLoop, calls=%fused_computation.72, metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level5/num_pos_anchor_EMA_apply/truediv"}
+  %get-tuple-element.3 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=0
+  %get-tuple-element.4 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=1
+  %get-tuple-element.5 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=3
+  %arg110.111 = f32[] parameter(110), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg34.35 = f32[] parameter(34), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg141.142 = f32[] parameter(141), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg57.58 = f32[] parameter(57), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg111.112 = f32[] parameter(111), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg45.46 = f32[] parameter(45), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg112.113 = f32[] parameter(112), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg46.47 = f32[] parameter(46), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg113.114 = f32[] parameter(113), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg43.44 = f32[] parameter(43), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg114.115 = f32[] parameter(114), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg37.38 = f32[] parameter(37), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg115.116 = f32[] parameter(115), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg40.41 = f32[] parameter(40), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg116.117 = f32[] parameter(116), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg38.39 = f32[] parameter(38), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg117.118 = f32[] parameter(117), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg41.42 = f32[] parameter(41), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg83.84 = f32[] parameter(83), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg25.26 = f32[] parameter(25), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg84.85 = f32[] parameter(84), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg26.27 = f32[] parameter(26), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg85.86 = f32[] parameter(85), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg23.24 = f32[] parameter(23), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg93.94 = f32[] parameter(93), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = f32[] parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg86.87 = f32[] parameter(86), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg13.14 = f32[] parameter(13), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg87.88 = f32[] parameter(87), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg17.18 = f32[] parameter(17), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg122.123 = f32[] parameter(122), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg55.56 = f32[] parameter(55), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg89.90 = f32[] parameter(89), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg18.19 = f32[] parameter(18), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg90.91 = f32[] parameter(90), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg21.22 = f32[] parameter(21), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg91.92 = f32[] parameter(91), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg19.20 = f32[] parameter(19), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg92.93 = f32[] parameter(92), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg22.23 = f32[] parameter(22), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.42 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) fusion(f32[] %arg110.111, f32[] %arg76.77, f32[] %arg34.35, f32[] %arg141.142, f32[] %arg57.58, f32[] %arg111.112, f32[] %arg45.46, f32[] %arg112.113, f32[] %arg46.47, f32[] %arg113.114, f32[] %arg43.44, f32[] %arg114.115, f32[] %arg37.38, f32[] %arg115.116, f32[] %arg40.41, f32[] %arg116.117, f32[] %arg38.39, f32[] %arg117.118, f32[] %arg41.42, f32[] %arg83.84, f32[] %arg25.26, f32[] %arg84.85, f32[] %arg26.27, f32[] %arg85.86, f32[] %arg23.24, f32[] %arg93.94, f32[] %arg7.8, f32[] %arg86.87, f32[] %arg13.14, f32[] %arg87.88, f32[] %arg17.18, f32[] %arg122.123, f32[] %arg55.56, f32[] %arg89.90, f32[] %arg18.19, f32[] %arg90.91, f32[] %arg21.22, f32[] %arg91.92, f32[] %arg19.20, f32[] %arg92.93, f32[] %arg22.23), kind=kLoop, calls=%fused_computation.42, metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level4/box_loss_EMA_apply/truediv"}
+  %get-tuple-element.58 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=2
+  %get-tuple-element.66 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=10
+  %get-tuple-element.67 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=11
+  %get-tuple-element.68 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=12
+  %get-tuple-element.70 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=14
+  %get-tuple-element.6 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=2
+  %get-tuple-element.71 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=15
+  %get-tuple-element.73 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=17
+  %get-tuple-element.74 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=18
+  %get-tuple-element.75 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=19
+  %get-tuple-element.69 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=13
+  %arg98.99 = f32[] parameter(98), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg12.13 = f32[] parameter(12), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg100.101 = f32[] parameter(100), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg14.15 = f32[] parameter(14), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg99.100 = f32[] parameter(99), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg24.25 = f32[] parameter(24), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg101.102 = f32[] parameter(101), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg35.36 = f32[] parameter(35), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg102.103 = f32[] parameter(102), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg36.37 = f32[] parameter(36), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg103.104 = f32[] parameter(103), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg33.34 = f32[] parameter(33), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg104.105 = f32[] parameter(104), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg27.28 = f32[] parameter(27), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg105.106 = f32[] parameter(105), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg30.31 = f32[] parameter(30), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg106.107 = f32[] parameter(106), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg28.29 = f32[] parameter(28), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg107.108 = f32[] parameter(107), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg31.32 = f32[] parameter(31), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg108.109 = f32[] parameter(108), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg29.30 = f32[] parameter(29), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg109.110 = f32[] parameter(109), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg32.33 = f32[] parameter(32), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg94.95 = f32[] parameter(94), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg10.11 = f32[] parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg95.96 = f32[] parameter(95), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg8.9 = f32[] parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg96.97 = f32[] parameter(96), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg11.12 = f32[] parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg97.98 = f32[] parameter(97), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg9.10 = f32[] parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.54 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) fusion(f32[] %arg98.99, f32[] %arg76.77, f32[] %arg12.13, f32[] %arg100.101, f32[] %arg14.15, f32[] %arg99.100, f32[] %arg24.25, f32[] %arg101.102, f32[] %arg35.36, f32[] %arg102.103, f32[] %arg36.37, f32[] %arg103.104, f32[] %arg33.34, f32[] %arg104.105, f32[] %arg27.28, f32[] %arg105.106, f32[] %arg30.31, f32[] %arg106.107, f32[] %arg28.29, f32[] %arg107.108, f32[] %arg31.32, f32[] %arg108.109, f32[] %arg29.30, f32[] %arg109.110, f32[] %arg32.33, f32[] %arg94.95, f32[] %arg10.11, f32[] %arg95.96, f32[] %arg8.9, f32[] %arg96.97, f32[] %arg11.12, f32[] %arg97.98, f32[] %arg9.10), kind=kLoop, calls=%fused_computation.54, metadata={op_type="RealDiv" op_name="EMA/rpn_losses/level6/label_metrics/precision_th0.1_EMA_apply/truediv"}
+  %get-tuple-element.85 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=2
+  %get-tuple-element.96 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=13
+  %get-tuple-element.97 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=14
+  %get-tuple-element.98 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=15
+  %get-tuple-element.9 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=0
+  %get-tuple-element.95 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=12
+  %get-tuple-element.10 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=1
+  %get-tuple-element.94 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=11
+  %get-tuple-element.93 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=10
+  %get-tuple-element.92 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=9
+  %get-tuple-element.91 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=8
+  %get-tuple-element.90 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=7
+  %get-tuple-element.89 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=6
+  %get-tuple-element.88 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=5
+  %get-tuple-element.87 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=4
+  %get-tuple-element.86 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.54), index=3
+  %get-tuple-element.15 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=0
+  %get-tuple-element.65 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=9
+  %get-tuple-element.64 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=8
+  %get-tuple-element.63 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=7
+  %get-tuple-element.62 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=6
+  %get-tuple-element.61 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=5
+  %get-tuple-element.60 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=4
+  %get-tuple-element.59 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=3
+  %get-tuple-element.49 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=19
+  %get-tuple-element.48 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=18
+  %get-tuple-element.47 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=17
+  %get-tuple-element.46 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=16
+  %get-tuple-element.72 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=16
+  %get-tuple-element.45 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=15
+  %get-tuple-element.44 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=14
+  %get-tuple-element.43 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=13
+  %get-tuple-element.42 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=12
+  %get-tuple-element.41 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=11
+  %get-tuple-element.40 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=10
+  %get-tuple-element.39 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=9
+  %get-tuple-element.38 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=8
+  %get-tuple-element.37 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=7
+  %get-tuple-element.36 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=6
+  %get-tuple-element.35 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=5
+  %get-tuple-element.34 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=4
+  %get-tuple-element.33 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.72), index=3
+  %get-tuple-element.32 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=19
+  %get-tuple-element.31 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=18
+  %get-tuple-element.30 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=17
+  %get-tuple-element.29 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=16
+  %get-tuple-element.28 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=15
+  %get-tuple-element.16 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.42), index=1
+  %get-tuple-element.27 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=14
+  %get-tuple-element.26 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=13
+  %get-tuple-element.25 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=12
+  %get-tuple-element.24 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=11
+  %get-tuple-element.23 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=10
+  %get-tuple-element.22 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=9
+  %get-tuple-element.21 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=8
+  %get-tuple-element.20 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=7
+  %get-tuple-element.19 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=6
+  %get-tuple-element.18 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=5
+  %get-tuple-element.17 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.75), index=4
+  ROOT %tuple.687 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %get-tuple-element, f32[] %get-tuple-element.1, f32[] %get-tuple-element.2, f32[] %get-tuple-element.3, f32[] %get-tuple-element.4, f32[] %get-tuple-element.5, f32[] %get-tuple-element.58, f32[] %get-tuple-element.66, f32[] %get-tuple-element.67, f32[] %get-tuple-element.68, f32[] %get-tuple-element.70, f32[] %get-tuple-element.6, f32[] %get-tuple-element.71, f32[] %get-tuple-element.73, f32[] %get-tuple-element.74, f32[] %get-tuple-element.75, f32[] %get-tuple-element.69, f32[] %get-tuple-element.85, f32[] %get-tuple-element.96, f32[] %get-tuple-element.97, f32[] %get-tuple-element.98, f32[] %get-tuple-element.9, f32[] %get-tuple-element.95, f32[] %get-tuple-element.10, f32[] %get-tuple-element.94, f32[] %get-tuple-element.93, f32[] %get-tuple-element.92, f32[] %get-tuple-element.91, f32[] %get-tuple-element.90, f32[] %get-tuple-element.89, f32[] %get-tuple-element.88, f32[] %get-tuple-element.87, f32[] %get-tuple-element.86, f32[] %get-tuple-element.15, f32[] %get-tuple-element.65, f32[] %get-tuple-element.64, f32[] %get-tuple-element.63, f32[] %get-tuple-element.62, f32[] %get-tuple-element.61, f32[] %get-tuple-element.60, f32[] %get-tuple-element.59, f32[] %get-tuple-element.49, f32[] %get-tuple-element.48, f32[] %get-tuple-element.47, f32[] %get-tuple-element.46, f32[] %get-tuple-element.72, f32[] %get-tuple-element.45, f32[] %get-tuple-element.44, f32[] %get-tuple-element.43, f32[] %get-tuple-element.42, f32[] %get-tuple-element.41, f32[] %get-tuple-element.40, f32[] %get-tuple-element.39, f32[] %get-tuple-element.38, f32[] %get-tuple-element.37, f32[] %get-tuple-element.36, f32[] %get-tuple-element.35, f32[] %get-tuple-element.34, f32[] %get-tuple-element.33, f32[] %get-tuple-element.32, f32[] %get-tuple-element.31, f32[] %get-tuple-element.30, f32[] %get-tuple-element.29, f32[] %get-tuple-element.28, f32[] %get-tuple-element.16, f32[] %get-tuple-element.27, f32[] %get-tuple-element.26, f32[] %get-tuple-element.25, f32[] %get-tuple-element.24, f32[] %get-tuple-element.23, f32[] %get-tuple-element.22, f32[] %get-tuple-element.21, f32[] %get-tuple-element.20, f32[] %get-tuple-element.19, f32[] %get-tuple-element.18, f32[] %get-tuple-element.17), metadata={op_name="XLA_Retvals"}
+}
+

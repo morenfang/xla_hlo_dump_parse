@@ -1,0 +1,152 @@
+HloModule cluster_30__XlaCompiledKernel_true__XlaNumConstantArgs_3__XlaNumResourceArgs_0_.126
+
+%fused_computation (param_0.2: s32[], param_1.3: s32[], param_2.6: f32[], param_3.10: f32[]) -> pred[] {
+  %param_3.10 = f32[] parameter(3)
+  %bitcast-convert.11 = s32[] bitcast-convert(f32[] %param_3.10)
+  %constant_1 = s32[] constant(0)
+  %compare.14 = pred[] compare(s32[] %bitcast-convert.11, s32[] %constant_1), direction=LT
+  %constant_0 = u32[] constant(2147483647)
+  %bitcast-convert.10 = u32[] bitcast-convert(f32[] %param_3.10)
+  %subtract.3 = u32[] subtract(u32[] %constant_0, u32[] %bitcast-convert.10)
+  %bitcast-convert.9 = s32[] bitcast-convert(u32[] %subtract.3)
+  %select.5 = s32[] select(pred[] %compare.14, s32[] %bitcast-convert.9, s32[] %bitcast-convert.11)
+  %param_2.6 = f32[] parameter(2)
+  %bitcast-convert.8 = s32[] bitcast-convert(f32[] %param_2.6)
+  %compare.13 = pred[] compare(s32[] %bitcast-convert.8, s32[] %constant_1), direction=LT
+  %bitcast-convert.7 = u32[] bitcast-convert(f32[] %param_2.6)
+  %subtract.2 = u32[] subtract(u32[] %constant_0, u32[] %bitcast-convert.7)
+  %bitcast-convert.6 = s32[] bitcast-convert(u32[] %subtract.2)
+  %select.4 = s32[] select(pred[] %compare.13, s32[] %bitcast-convert.6, s32[] %bitcast-convert.8)
+  %compare.12 = pred[] compare(s32[] %select.5, s32[] %select.4), direction=GT
+  %compare.11 = pred[] compare(s32[] %select.4, s32[] %select.5), direction=GT
+  %compare.10 = pred[] compare(pred[] %compare.12, pred[] %compare.11), direction=EQ
+  %param_0.2 = s32[] parameter(0)
+  %param_1.3 = s32[] parameter(1)
+  %compare.9 = pred[] compare(s32[] %param_0.2, s32[] %param_1.3), direction=LT
+  ROOT %select.3 = pred[] select(pred[] %compare.10, pred[] %compare.9, pred[] %compare.12)
+}
+
+%compare-greater-than.55 (p.0.lhs.56: f32[], p.0.rhs.57: f32[], p.1.lhs.58: s32[], p.1.rhs.59: s32[]) -> pred[] {
+  %p.1.lhs.58 = s32[] parameter(2)
+  %p.1.rhs.59 = s32[] parameter(3)
+  %p.0.rhs.57 = f32[] parameter(1)
+  %p.0.lhs.56 = f32[] parameter(0)
+  ROOT %fusion = pred[] fusion(s32[] %p.1.lhs.58, s32[] %p.1.rhs.59, f32[] %p.0.rhs.57, f32[] %p.0.lhs.56), kind=kLoop, calls=%fused_computation
+}
+
+%fused_computation.4 (param_0.10: s32[1000,1], param_1.29: s32[], param_2.22: s32[]) -> (pred[1000], pred[1000], pred[1000], pred[1000]) {
+  %param_0.10 = s32[1000,1]{1,0} parameter(0)
+  %constant_3 = s32[] constant(5), metadata={op_type="GreaterEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/GreaterEqual"}
+  %broadcast.11 = s32[1000,1]{1,0} broadcast(s32[] %constant_3), dimensions={}, metadata={op_type="GreaterEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/GreaterEqual"}
+  %compare.18 = pred[1000,1]{1,0} compare(s32[1000,1]{1,0} %param_0.10, s32[1000,1]{1,0} %broadcast.11), direction=GE, metadata={op_type="GreaterEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/GreaterEqual"}
+  %bitcast.7 = pred[1000]{0} bitcast(pred[1000,1]{1,0} %compare.18), metadata={op_type="GreaterEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/GreaterEqual"}
+  %constant_2_clone_1 = s32[] constant(4), metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal_1"}
+  %broadcast.10.clone.1 = s32[1000,1]{1,0} broadcast(s32[] %constant_2_clone_1), dimensions={}, metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal_1"}
+  %compare.17.clone.1 = pred[1000,1]{1,0} compare(s32[1000,1]{1,0} %param_0.10, s32[1000,1]{1,0} %broadcast.10.clone.1), direction=EQ, metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal_1"}
+  %bitcast.6.clone.1 = pred[1000]{0} bitcast(pred[1000,1]{1,0} %compare.17.clone.1), metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal_1"}
+  %param_1.29 = s32[] parameter(1)
+  %broadcast.9.clone.1 = s32[1000,1]{1,0} broadcast(s32[] %param_1.29), dimensions={}, metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal"}
+  %compare.16.clone.1 = pred[1000,1]{1,0} compare(s32[1000,1]{1,0} %param_0.10, s32[1000,1]{1,0} %broadcast.9.clone.1), direction=EQ, metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal"}
+  %bitcast.5.clone.1 = pred[1000]{0} bitcast(pred[1000,1]{1,0} %compare.16.clone.1), metadata={op_type="Equal" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Equal"}
+  %param_2.22 = s32[] parameter(2)
+  %broadcast.8.clone.1 = s32[1000,1]{1,0} broadcast(s32[] %param_2.22), dimensions={}, metadata={op_type="LessEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/LessEqual"}
+  %compare.15.clone.1 = pred[1000,1]{1,0} compare(s32[1000,1]{1,0} %param_0.10, s32[1000,1]{1,0} %broadcast.8.clone.1), direction=LE, metadata={op_type="LessEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/LessEqual"}
+  %bitcast.4.clone.1 = pred[1000]{0} bitcast(pred[1000,1]{1,0} %compare.15.clone.1), metadata={op_type="LessEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/LessEqual"}
+  ROOT %tuple.2 = (pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) tuple(pred[1000]{0} %bitcast.7, pred[1000]{0} %bitcast.6.clone.1, pred[1000]{0} %bitcast.5.clone.1, pred[1000]{0} %bitcast.4.clone.1)
+}
+
+%fused_computation.5 (param_0.14: f32[1000,4]) -> s32[1000,1] {
+  %constant_7 = f32[] constant(4), metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add_1"}
+  %broadcast.15 = f32[1000,1]{1,0} broadcast(f32[] %constant_7), dimensions={}, metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add_1"}
+  %constant_6 = f32[] constant(1e-06), metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add"}
+  %broadcast.14 = f32[1000,1]{1,0} broadcast(f32[] %constant_6), dimensions={}, metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add"}
+  %param_0.14 = f32[1000,4]{1,0} parameter(0)
+  %slice.3 = f32[1000,1]{1,0} slice(f32[1000,4]{1,0} %param_0.14), slice={[0:1000], [3:4]}, metadata={op_type="Split" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/split"}
+  %slice.2 = f32[1000,1]{1,0} slice(f32[1000,4]{1,0} %param_0.14), slice={[0:1000], [1:2]}, metadata={op_type="Split" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/split"}
+  %subtract.5 = f32[1000,1]{1,0} subtract(f32[1000,1]{1,0} %slice.3, f32[1000,1]{1,0} %slice.2), metadata={op_type="Sub" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/sub"}
+  %slice.1 = f32[1000,1]{1,0} slice(f32[1000,4]{1,0} %param_0.14), slice={[0:1000], [2:3]}, metadata={op_type="Split" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/split"}
+  %slice.0 = f32[1000,1]{1,0} slice(f32[1000,4]{1,0} %param_0.14), slice={[0:1000], [0:1]}, metadata={op_type="Split" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/split"}
+  %subtract.4 = f32[1000,1]{1,0} subtract(f32[1000,1]{1,0} %slice.1, f32[1000,1]{1,0} %slice.0), metadata={op_type="Sub" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/sub_1"}
+  %multiply.4 = f32[1000,1]{1,0} multiply(f32[1000,1]{1,0} %subtract.5, f32[1000,1]{1,0} %subtract.4), metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/area/mul"}
+  %sqrt.1 = f32[1000,1]{1,0} sqrt(f32[1000,1]{1,0} %multiply.4), metadata={op_type="Sqrt" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Sqrt"}
+  %constant_5 = f32[] constant(0.00446429), metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul"}
+  %broadcast.13 = f32[1000,1]{1,0} broadcast(f32[] %constant_5), dimensions={}, metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul"}
+  %multiply.3 = f32[1000,1]{1,0} multiply(f32[1000,1]{1,0} %sqrt.1, f32[1000,1]{1,0} %broadcast.13), metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul"}
+  %add.3 = f32[1000,1]{1,0} add(f32[1000,1]{1,0} %broadcast.14, f32[1000,1]{1,0} %multiply.3), metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add"}
+  %log.1 = f32[1000,1]{1,0} log(f32[1000,1]{1,0} %add.3), metadata={op_type="Log" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Log"}
+  %constant_4 = f32[] constant(1.4427), metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul_1"}
+  %broadcast.12 = f32[1000,1]{1,0} broadcast(f32[] %constant_4), dimensions={}, metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul_1"}
+  %multiply.2 = f32[1000,1]{1,0} multiply(f32[1000,1]{1,0} %log.1, f32[1000,1]{1,0} %broadcast.12), metadata={op_type="Mul" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/mul_1"}
+  %add.2 = f32[1000,1]{1,0} add(f32[1000,1]{1,0} %broadcast.15, f32[1000,1]{1,0} %multiply.2), metadata={op_type="Add" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/add_1"}
+  %floor.1 = f32[1000,1]{1,0} floor(f32[1000,1]{1,0} %add.2), metadata={op_type="Floor" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Floor"}
+  ROOT %convert.1 = s32[1000,1]{1,0} convert(f32[1000,1]{1,0} %floor.1), metadata={op_type="Cast" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Cast"}
+}
+
+%fused_computation.6 (param_0.16: s32[2333], param_1.20: f32[597,4], param_2.15: f32[589,4], param_3.17: f32[555,4], param_4.12: f32[436,4], param_5.8: f32[156,4]) -> f32[1000,4] {
+  %param_1.20 = f32[597,4]{1,0} parameter(1)
+  %param_2.15 = f32[589,4]{1,0} parameter(2)
+  %param_3.17 = f32[555,4]{1,0} parameter(3)
+  %param_4.12 = f32[436,4]{1,0} parameter(4)
+  %param_5.8 = f32[156,4]{1,0} parameter(5)
+  %concatenate.0 = f32[2333,4]{1,0} concatenate(f32[597,4]{1,0} %param_1.20, f32[589,4]{1,0} %param_2.15, f32[555,4]{1,0} %param_3.17, f32[436,4]{1,0} %param_4.12, f32[156,4]{1,0} %param_5.8), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower-pred-0/generate_fpn_proposals/concat"}
+  %param_0.16 = s32[2333]{0} parameter(0)
+  %slice.4 = s32[1000]{0} slice(s32[2333]{0} %param_0.16), slice={[0:1000]}, metadata={op_type="TopKV2" op_name="tower-pred-0/generate_fpn_proposals/TopKV2"}
+  ROOT %gather.0 = f32[1000,4]{1,0} gather(f32[2333,4]{1,0} %concatenate.0, s32[1000]{0} %slice.4), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/all_proposals"}
+}
+
+%fused_computation.7 (param_0.18: f32[624], param_1.23: s32[156], param_2.19: f32[1000], param_3.22: s32[436], param_4.18: f32[1000], param_5.13: s32[555], param_6.9: f32[1000], param_7.6: s32[589], param_8.1: f32[1000], param_9: s32[597]) -> f32[2333] {
+  %param_8.1 = f32[1000]{0} parameter(8)
+  %param_9 = s32[597]{0} parameter(9)
+  %gather.5 = f32[597]{0} gather(f32[1000]{0} %param_8.1, s32[597]{0} %param_9), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl2/generate_rpn_proposals/GatherV2_2"}
+  %param_6.9 = f32[1000]{0} parameter(6)
+  %param_7.6 = s32[589]{0} parameter(7)
+  %gather.4 = f32[589]{0} gather(f32[1000]{0} %param_6.9, s32[589]{0} %param_7.6), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl3/generate_rpn_proposals/GatherV2_2"}
+  %param_4.18 = f32[1000]{0} parameter(4)
+  %param_5.13 = s32[555]{0} parameter(5)
+  %gather.3 = f32[555]{0} gather(f32[1000]{0} %param_4.18, s32[555]{0} %param_5.13), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl4/generate_rpn_proposals/GatherV2_2"}
+  %param_2.19 = f32[1000]{0} parameter(2)
+  %param_3.22 = s32[436]{0} parameter(3)
+  %gather.2 = f32[436]{0} gather(f32[1000]{0} %param_2.19, s32[436]{0} %param_3.22), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl5/generate_rpn_proposals/GatherV2_2"}
+  %param_0.18 = f32[624]{0} parameter(0)
+  %param_1.23 = s32[156]{0} parameter(1)
+  %gather.1 = f32[156]{0} gather(f32[624]{0} %param_0.18, s32[156]{0} %param_1.23), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl6/generate_rpn_proposals/GatherV2_2"}
+  ROOT %concatenate.1 = f32[2333]{0} concatenate(f32[597]{0} %gather.5, f32[589]{0} %gather.4, f32[555]{0} %gather.3, f32[436]{0} %gather.2, f32[156]{0} %gather.1), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower-pred-0/generate_fpn_proposals/concat_1"}
+}
+
+ENTRY %cluster_30__XlaCompiledKernel_true__XlaNumConstantArgs_3__XlaNumResourceArgs_0_.126 (arg0.1: f32[1000], arg1.2: s32[436], arg2.3: f32[1000,4], arg3.4: f32[624], arg4.5: s32[156], arg5.6: f32[624,4], arg6.7: f32[1000], arg7.8: s32[555], arg8.9: f32[1000,4], arg9.10: f32[1000], arg10.11: s32[589], arg11.12: f32[1000,4], arg12.13: f32[1000], arg13.14: s32[597], arg14.15: f32[1000,4], arg15.16: s32[], arg16.17: s32[]) -> (f32[1000,4], pred[1000], pred[1000], pred[1000], pred[1000]) {
+  %arg3.4 = f32[624]{0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg4.5 = s32[156]{0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = f32[1000]{0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = s32[436]{0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg6.7 = f32[1000]{0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = s32[555]{0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg9.10 = f32[1000]{0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg10.11 = s32[589]{0} parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg12.13 = f32[1000]{0} parameter(12), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg13.14 = s32[597]{0} parameter(13), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[2333]{0} fusion(f32[624]{0} %arg3.4, s32[156]{0} %arg4.5, f32[1000]{0} %arg0.1, s32[436]{0} %arg1.2, f32[1000]{0} %arg6.7, s32[555]{0} %arg7.8, f32[1000]{0} %arg9.10, s32[589]{0} %arg10.11, f32[1000]{0} %arg12.13, s32[597]{0} %arg13.14), kind=kLoop, calls=%fused_computation.7, metadata={op_type="ConcatV2" op_name="tower-pred-0/generate_fpn_proposals/concat_1"}
+  %iota.54 = s32[2333]{0} iota(), iota_dimension=0, metadata={op_type="TopKV2" op_name="tower-pred-0/generate_fpn_proposals/TopKV2"}
+  %sort.77 = (f32[2333]{0}, s32[2333]{0}) sort(f32[2333]{0} %fusion.7, s32[2333]{0} %iota.54), dimensions={0}, is_stable=true, to_apply=%compare-greater-than.55, metadata={op_type="TopKV2" op_name="tower-pred-0/generate_fpn_proposals/TopKV2"}
+  %get-tuple-element.80 = s32[2333]{0} get-tuple-element((f32[2333]{0}, s32[2333]{0}) %sort.77), index=1, metadata={op_type="TopKV2" op_name="tower-pred-0/generate_fpn_proposals/TopKV2"}
+  %arg14.15 = f32[1000,4]{1,0} parameter(14), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.35 = f32[597,4]{1,0} gather(f32[1000,4]{1,0} %arg14.15, s32[597]{0} %arg13.14), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl2/generate_rpn_proposals/GatherV2_1"}
+  %arg11.12 = f32[1000,4]{1,0} parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.37 = f32[589,4]{1,0} gather(f32[1000,4]{1,0} %arg11.12, s32[589]{0} %arg10.11), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl3/generate_rpn_proposals/GatherV2_1"}
+  %arg8.9 = f32[1000,4]{1,0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.39 = f32[555,4]{1,0} gather(f32[1000,4]{1,0} %arg8.9, s32[555]{0} %arg7.8), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl4/generate_rpn_proposals/GatherV2_1"}
+  %arg2.3 = f32[1000,4]{1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.41 = f32[436,4]{1,0} gather(f32[1000,4]{1,0} %arg2.3, s32[436]{0} %arg1.2), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl5/generate_rpn_proposals/GatherV2_1"}
+  %arg5.6 = f32[624,4]{1,0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.43 = f32[156,4]{1,0} gather(f32[624,4]{1,0} %arg5.6, s32[156]{0} %arg4.5), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/Lvl6/generate_rpn_proposals/GatherV2_1"}
+  %fusion.6 = f32[1000,4]{1,0} fusion(s32[2333]{0} %get-tuple-element.80, f32[597,4]{1,0} %gather.35, f32[589,4]{1,0} %gather.37, f32[555,4]{1,0} %gather.39, f32[436,4]{1,0} %gather.41, f32[156,4]{1,0} %gather.43), kind=kLoop, calls=%fused_computation.6, metadata={op_type="GatherV2" op_name="tower-pred-0/generate_fpn_proposals/all_proposals"}
+  %fusion.5 = s32[1000,1]{1,0} fusion(f32[1000,4]{1,0} %fusion.6), kind=kLoop, calls=%fused_computation.5, metadata={op_type="Cast" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/Cast"}
+  %arg15.16 = s32[] parameter(15), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg16.17 = s32[] parameter(16), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.4 = (pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) fusion(s32[1000,1]{1,0} %fusion.5, s32[] %arg15.16, s32[] %arg16.17), kind=kLoop, calls=%fused_computation.4, metadata={op_type="GreaterEqual" op_name="tower-pred-0/multilevel_roi_align/fpn_map_rois_to_levels/GreaterEqual"}
+  %get-tuple-element = pred[1000]{0} get-tuple-element((pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) %fusion.4), index=0
+  %get-tuple-element.1 = pred[1000]{0} get-tuple-element((pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) %fusion.4), index=1
+  %get-tuple-element.2 = pred[1000]{0} get-tuple-element((pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) %fusion.4), index=2
+  %get-tuple-element.3 = pred[1000]{0} get-tuple-element((pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) %fusion.4), index=3
+  ROOT %tuple.125 = (f32[1000,4]{1,0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}, pred[1000]{0}) tuple(f32[1000,4]{1,0} %fusion.6, pred[1000]{0} %get-tuple-element, pred[1000]{0} %get-tuple-element.1, pred[1000]{0} %get-tuple-element.2, pred[1000]{0} %get-tuple-element.3), metadata={op_name="XLA_Retvals"}
+}
+

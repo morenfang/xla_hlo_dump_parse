@@ -1,0 +1,19 @@
+HloModule cluster_35__XlaCompiledKernel_true__XlaNumConstantArgs_2__XlaNumResourceArgs_0_.55
+
+ENTRY %cluster_35__XlaCompiledKernel_true__XlaNumConstantArgs_2__XlaNumResourceArgs_0_.55 (arg0.1: f32[], arg1.2: f32[], arg2.3: f32[], arg3.4: f32[], arg4.5: s32[], arg5.6: s32[], arg6.7: s32[], arg7.8: s32[]) -> (pred[0], pred[0], pred[0], pred[0]) {
+  %arg0.1 = f32[] parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f32[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f32[] parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = f32[] parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg4.5 = s32[] parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = s32[] parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg6.7 = s32[] parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = s32[] parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_26 = pred[0]{0} constant({}), metadata={op_name="XLA_Retvals"}
+  %copy = pred[0]{0} copy(pred[0]{0} %constant_26)
+  %copy.1 = pred[0]{0} copy(pred[0]{0} %constant_26)
+  %copy.2 = pred[0]{0} copy(pred[0]{0} %constant_26)
+  %copy.3 = pred[0]{0} copy(pred[0]{0} %constant_26)
+  ROOT %tuple = (pred[0]{0}, pred[0]{0}, pred[0]{0}, pred[0]{0}) tuple(pred[0]{0} %copy, pred[0]{0} %copy.1, pred[0]{0} %copy.2, pred[0]{0} %copy.3)
+}
+

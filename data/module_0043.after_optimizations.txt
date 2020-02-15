@@ -1,0 +1,54 @@
+HloModule cluster_10__XlaCompiledKernel_true__XlaNumConstantArgs_5__XlaNumResourceArgs_0_.47
+
+%fused_computation (param_0: s64[512]) -> pred[512] {
+  %param_0 = s64[512]{0} parameter(0)
+  %constant_0 = s64[] constant(0), metadata={op_type="ZerosLike" op_name="tower0/sample_fast_rcnn_targets/zeros_like"}
+  %broadcast.0 = s64[512]{0} broadcast(s64[] %constant_0), dimensions={}, metadata={op_type="Greater" op_name="tower0/Greater_1"}
+  ROOT %compare.0 = pred[512]{0} compare(s64[512]{0} %param_0, s64[512]{0} %broadcast.0), direction=GT, metadata={op_type="Greater" op_name="tower0/Greater_1"}
+}
+
+%fused_computation.1 (param_0.3: s64[2], param_1.4: s64[3]) -> s64[512] {
+  %param_0.3 = s64[2]{0} parameter(0)
+  %param_1.4 = s64[3]{0} parameter(1)
+  %gather.0 = s64[3]{0} gather(s64[2]{0} %param_0.3, s64[3]{0} %param_1.4), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/sample_fast_rcnn_targets/GatherV2_2"}
+  %constant_1 = s64[] constant(0), metadata={op_type="ZerosLike" op_name="tower0/sample_fast_rcnn_targets/zeros_like"}
+  ROOT %pad.1 = s64[512]{0} pad(s64[3]{0} %gather.0, s64[] %constant_1), padding=0_509, metadata={op_type="ConcatV2" op_name="tower0/sample_fast_rcnn_targets/concat_3"}
+}
+
+%fused_computation.3 (param_0.7: f32[], param_1.8: f32[], param_2.4: s32[], param_3.1: f32[], param_4.1: s32[]) -> (f32[], f32[]) {
+  %param_1.8 = f32[] parameter(1)
+  %param_2.4 = s32[] parameter(2)
+  %convert.1 = f32[] convert(s32[] %param_2.4), metadata={op_type="Cast" op_name="Cast_10"}
+  %subtract.1 = f32[] subtract(f32[] %param_1.8, f32[] %convert.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/sub"}
+  %param_0.7 = f32[] parameter(0)
+  %multiply.1 = f32[] multiply(f32[] %subtract.1, f32[] %param_0.7), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/mul"}
+  %param_3.1 = f32[] parameter(3)
+  %param_4.1 = s32[] parameter(4)
+  %convert.0.clone.1 = f32[] convert(s32[] %param_4.1), metadata={op_type="Cast" op_name="Cast_11"}
+  %subtract.0.clone.1 = f32[] subtract(f32[] %param_3.1, f32[] %convert.0.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/num_bg_EMA_apply/sub"}
+  %multiply.0.clone.1 = f32[] multiply(f32[] %subtract.0.clone.1, f32[] %param_0.7), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/num_bg_EMA_apply/mul"}
+  ROOT %tuple = (f32[], f32[]) tuple(f32[] %multiply.1, f32[] %multiply.0.clone.1)
+}
+
+ENTRY %cluster_10__XlaCompiledKernel_true__XlaNumConstantArgs_5__XlaNumResourceArgs_0_.47 (arg0.1: s32[], arg1.2: f32[], arg2.3: s32[], arg3.4: s64[3], arg4.5: f32[], arg5.6: f32[], arg6.7: s64[2002], arg7.8: s64[1999], arg8.9: s64[2]) -> (f32[], s64[3], s64[3], s64[509], f32[], pred[512], s64[512], s32[3]) {
+  %arg4.5 = f32[] parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f32[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = s32[] parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = f32[] parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = s32[] parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.3 = (f32[], f32[]) fusion(f32[] %arg4.5, f32[] %arg1.2, s32[] %arg0.1, f32[] %arg5.6, s32[] %arg2.3), kind=kLoop, calls=%fused_computation.3, metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/num_fg_EMA_apply/mul"}
+  %get-tuple-element = f32[] get-tuple-element((f32[], f32[]) %fusion.3), index=0
+  %arg6.7 = s64[2002]{0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = s64[3]{0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.27 = s64[3]{0} gather(s64[2002]{0} %arg6.7, s64[3]{0} %arg3.4), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/sample_fast_rcnn_targets/GatherV2"}
+  %copy = s64[3]{0} copy(s64[3]{0} %arg3.4)
+  %arg7.8 = s64[1999]{0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %slice.30 = s64[509]{0} slice(s64[1999]{0} %arg7.8), slice={[0:509]}, metadata={op_type="StridedSlice" op_name="tower0/sample_fast_rcnn_targets/strided_slice_3"}
+  %get-tuple-element.1 = f32[] get-tuple-element((f32[], f32[]) %fusion.3), index=1
+  %arg8.9 = s64[2]{0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.1 = s64[512]{0} fusion(s64[2]{0} %arg8.9, s64[3]{0} %gather.27), kind=kLoop, calls=%fused_computation.1, metadata={op_type="ConcatV2" op_name="tower0/sample_fast_rcnn_targets/concat_3"}
+  %fusion = pred[512]{0} fusion(s64[512]{0} %fusion.1), kind=kLoop, calls=%fused_computation, metadata={op_type="Greater" op_name="tower0/Greater_1"}
+  %convert.28 = s32[3]{0} convert(s64[3]{0} %gather.27), metadata={op_type="Cast" op_name="tower0/crop_and_resize/Cast"}
+  ROOT %tuple.1 = (f32[], s64[3]{0}, s64[3]{0}, s64[509]{0}, f32[], pred[512]{0}, s64[512]{0}, s32[3]{0}) tuple(f32[] %get-tuple-element, s64[3]{0} %gather.27, s64[3]{0} %copy, s64[509]{0} %slice.30, f32[] %get-tuple-element.1, pred[512]{0} %fusion, s64[512]{0} %fusion.1, s32[3]{0} %convert.28)
+}
+

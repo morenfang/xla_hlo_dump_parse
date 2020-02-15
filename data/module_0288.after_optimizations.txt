@@ -1,0 +1,18 @@
+HloModule cluster_33__XlaCompiledKernel_true__XlaNumConstantArgs_13__XlaNumResourceArgs_0_.216
+
+ENTRY %cluster_33__XlaCompiledKernel_true__XlaNumConstantArgs_13__XlaNumResourceArgs_0_.216 (arg0.1: f32[3,3,256,256], arg1.2: f32[256], arg2.3: f32[3,3,256,256], arg3.4: f32[256], arg4.5: f32[3,3,256,256], arg5.6: f32[256], arg6.7: f32[3,3,256,256], arg7.8: f32[256], arg8.9: f32[2,2,256,256], arg9.10: f32[256], arg10.11: f32[1,1,256,80], arg11.12: f32[80]) -> () {
+  %arg0.1 = f32[3,3,256,256]{3,2,1,0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f32[256]{0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f32[3,3,256,256]{3,2,1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = f32[256]{0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg4.5 = f32[3,3,256,256]{3,2,1,0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = f32[256]{0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg6.7 = f32[3,3,256,256]{3,2,1,0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = f32[256]{0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg8.9 = f32[2,2,256,256]{3,2,1,0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg9.10 = f32[256]{0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg10.11 = f32[1,1,256,80]{3,2,1,0} parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg11.12 = f32[80]{0} parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  ROOT %tuple.215 = () tuple(), metadata={op_name="XLA_Retvals"}
+}
+

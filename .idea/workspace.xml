@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3fffd835-d163-4939-8192-deb3ef981a50" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../XlaOps/cluster_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0000.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0001.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0002.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0003.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0039.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0041.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0042.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0043.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0045.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0062.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0064.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0066.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0121.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0122.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0123.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0126.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0162.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0164.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0165.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0166.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0168.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0185.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0187.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0188.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0224.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0225.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0226.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0248.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0250.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0267.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0268.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0271.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0273.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0283.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0288.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0289.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0311.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0312.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0321.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0324.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0325.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0347.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0348.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0357.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0366.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0367.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0376.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0377.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0386.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0389.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0390.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0412.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0434.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0435.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0436.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0458.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0459.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0468.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0471.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0493.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0502.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0503.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0525.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0534.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0535.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0536.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0539.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0540.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0541.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0544.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0566.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0575.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0576.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0579.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0588.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0589.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0590.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0593.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0596.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0618.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0619.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0622.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0644.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0645.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0648.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0649.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0666.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0667.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0668.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0669.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0670.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0671.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0688.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0689.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0706.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0707.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0708.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0709.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0726.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0743.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0760.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0777.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0794.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0811.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0828.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0845.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0862.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0879.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/data/module_0896.after_optimizations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XlaOps/xlsx_access.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="zhiyi.fang" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../XlaOps" />
+  </component>
+  <component name="ProjectId" id="1XkbjW1CGMESMYYApe4rjSY5ZVf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../XlaOps" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.cluster_analysis">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cluster_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../XlaOps" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../XlaOps/cluster_analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="util" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../XlaOps" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../XlaOps/util.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="xlsx_access" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../XlaOps" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../XlaOps/xlsx_access.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="XlaOpAnalysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.cluster_analysis" />
+        <item itemvalue="Python.xlsx_access" />
+        <item itemvalue="Python.util" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fffd835-d163-4939-8192-deb3ef981a50" name="Default Changelist" comment="" />
+      <created>1581593174611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581593174611</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+</project>

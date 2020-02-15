@@ -1,0 +1,507 @@
+HloModule cluster_21__XlaCompiledKernel_true__XlaNumConstantArgs_8__XlaNumResourceArgs_0_.677
+
+%fused_computation (param_0.4: f32[], param_1.8: f32[], param_2.12: f32[], param_3.15: f32[], param_4.17: f32[10,4]) -> f32[10,4] {
+  %constant_165 = f32[] constant(0.125), metadata={op_type="Mul" op_name="tower0/truediv_1"}
+  %broadcast.29 = f32[10,4]{1,0} broadcast(f32[] %constant_165), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/mul"}
+  %param_4.17 = f32[10,4]{1,0} parameter(4)
+  %multiply.38 = f32[10,4]{1,0} multiply(f32[10,4]{1,0} %broadcast.29, f32[10,4]{1,0} %param_4.17), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/mul"}
+  %param_3.15 = f32[] parameter(3)
+  %broadcast.28 = f32[10,4]{1,0} broadcast(f32[] %param_3.15), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/add"}
+  %add.19 = f32[10,4]{1,0} add(f32[10,4]{1,0} %multiply.38, f32[10,4]{1,0} %broadcast.28), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/add"}
+  %slice.11 = f32[10,1]{1,0} slice(f32[10,4]{1,0} %add.19), slice={[0:10], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_2.12 = f32[] parameter(2)
+  %broadcast.27 = f32[10,1]{1,0} broadcast(f32[] %param_2.12), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %param_1.8 = f32[] parameter(1)
+  %broadcast.26 = f32[10,1]{1,0} broadcast(f32[] %param_1.8), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.10 = f32[10,1]{1,0} slice(f32[10,4]{1,0} %add.19), slice={[0:10], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.3 = f32[10,1]{1,0} subtract(f32[10,1]{1,0} %slice.10, f32[10,1]{1,0} %slice.11), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.37 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.26, f32[10,1]{1,0} %subtract.3), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.36 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.27, f32[10,1]{1,0} %multiply.37), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.18 = f32[10,1]{1,0} add(f32[10,1]{1,0} %slice.11, f32[10,1]{1,0} %multiply.36), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.2 = f32[10,1]{1,0} subtract(f32[10,1]{1,0} %add.18, f32[10,1]{1,0} %broadcast.27), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_164 = f32[] constant(0.00990099)
+  %broadcast.25 = f32[10,1]{1,0} broadcast(f32[] %constant_164), dimensions={}
+  %multiply.35 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %subtract.2, f32[10,1]{1,0} %broadcast.25), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.9 = f32[10,1]{1,0} slice(f32[10,4]{1,0} %add.19), slice={[0:10], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.8 = f32[10,1]{1,0} slice(f32[10,4]{1,0} %add.19), slice={[0:10], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.1 = f32[10,1]{1,0} subtract(f32[10,1]{1,0} %slice.8, f32[10,1]{1,0} %slice.9), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.34 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.26, f32[10,1]{1,0} %subtract.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.33 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.27, f32[10,1]{1,0} %multiply.34), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.17 = f32[10,1]{1,0} add(f32[10,1]{1,0} %slice.9, f32[10,1]{1,0} %multiply.33), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.0 = f32[10,1]{1,0} subtract(f32[10,1]{1,0} %add.17, f32[10,1]{1,0} %broadcast.27), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.32 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %subtract.0, f32[10,1]{1,0} %broadcast.25), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %param_0.4 = f32[] parameter(0)
+  %broadcast.24 = f32[10,1]{1,0} broadcast(f32[] %param_0.4), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.31 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.24, f32[10,1]{1,0} %multiply.37), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.16 = f32[10,1]{1,0} add(f32[10,1]{1,0} %multiply.31, f32[10,1]{1,0} %subtract.2), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.30 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %add.16, f32[10,1]{1,0} %broadcast.25), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.29 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %broadcast.24, f32[10,1]{1,0} %multiply.34), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.15 = f32[10,1]{1,0} add(f32[10,1]{1,0} %multiply.29, f32[10,1]{1,0} %subtract.0), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.28 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %add.15, f32[10,1]{1,0} %broadcast.25), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  ROOT %concatenate.1 = f32[10,4]{1,0} concatenate(f32[10,1]{1,0} %multiply.35, f32[10,1]{1,0} %multiply.32, f32[10,1]{1,0} %multiply.30, f32[10,1]{1,0} %multiply.28), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+}
+
+%fused_computation.2 (param_0.76: f32[16,4], param_1.100: f32[], param_2.121: f32[], param_3.110: f32[], param_4.116: f32[], param_5.104: f32[16,4]) -> (f32[16,4], f32[16,4]) {
+  %param_0.76 = f32[16,4]{1,0} parameter(0)
+  %constant_169 = f32[] constant(0.25), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/mul"}
+  %broadcast.33 = f32[16,4]{1,0} broadcast(f32[] %constant_169), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/mul"}
+  %multiply.61 = f32[16,4]{1,0} multiply(f32[16,4]{1,0} %param_0.76, f32[16,4]{1,0} %broadcast.33), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/mul"}
+  %param_1.100 = f32[] parameter(1)
+  %broadcast.58 = f32[16,4]{1,0} broadcast(f32[] %param_1.100), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/add"}
+  %add.29 = f32[16,4]{1,0} add(f32[16,4]{1,0} %multiply.61, f32[16,4]{1,0} %broadcast.58), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/add"}
+  %slice.19 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.29), slice={[0:16], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_3.110 = f32[] parameter(3)
+  %broadcast.60 = f32[16,1]{1,0} broadcast(f32[] %param_3.110), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %param_2.121 = f32[] parameter(2)
+  %broadcast.59 = f32[16,1]{1,0} broadcast(f32[] %param_2.121), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.18 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.29), slice={[0:16], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.11 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %slice.18, f32[16,1]{1,0} %slice.19), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.60 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.59, f32[16,1]{1,0} %subtract.11), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.59 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.60, f32[16,1]{1,0} %multiply.60), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.28 = f32[16,1]{1,0} add(f32[16,1]{1,0} %slice.19, f32[16,1]{1,0} %multiply.59), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.10 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %add.28, f32[16,1]{1,0} %broadcast.60), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_168 = f32[] constant(0.00497512)
+  %broadcast.32 = f32[16,1]{1,0} broadcast(f32[] %constant_168), dimensions={}
+  %multiply.57 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %subtract.10, f32[16,1]{1,0} %broadcast.32), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.17 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.29), slice={[0:16], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.16 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.29), slice={[0:16], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.9 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %slice.16, f32[16,1]{1,0} %slice.17), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.56 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.59, f32[16,1]{1,0} %subtract.9), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.55 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.60, f32[16,1]{1,0} %multiply.56), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.27 = f32[16,1]{1,0} add(f32[16,1]{1,0} %slice.17, f32[16,1]{1,0} %multiply.55), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.8 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %add.27, f32[16,1]{1,0} %broadcast.60), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.54 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %subtract.8, f32[16,1]{1,0} %broadcast.32), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %param_4.116 = f32[] parameter(4)
+  %broadcast.61 = f32[16,1]{1,0} broadcast(f32[] %param_4.116), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.53 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.61, f32[16,1]{1,0} %multiply.60), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.26 = f32[16,1]{1,0} add(f32[16,1]{1,0} %multiply.53, f32[16,1]{1,0} %subtract.10), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.52 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %add.26, f32[16,1]{1,0} %broadcast.32), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.51 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.61, f32[16,1]{1,0} %multiply.56), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.25 = f32[16,1]{1,0} add(f32[16,1]{1,0} %multiply.51, f32[16,1]{1,0} %subtract.8), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.50 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %add.25, f32[16,1]{1,0} %broadcast.32), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  %concatenate.3 = f32[16,4]{1,0} concatenate(f32[16,1]{1,0} %multiply.57, f32[16,1]{1,0} %multiply.54, f32[16,1]{1,0} %multiply.52, f32[16,1]{1,0} %multiply.50), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %param_5.104 = f32[16,4]{1,0} parameter(5)
+  %constant_167_clone_1 = f32[] constant(0.0625), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/mul"}
+  %broadcast.31.clone.1 = f32[16,4]{1,0} broadcast(f32[] %constant_167_clone_1), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/mul"}
+  %multiply.49.clone.1 = f32[16,4]{1,0} multiply(f32[16,4]{1,0} %param_5.104, f32[16,4]{1,0} %broadcast.31.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/mul"}
+  %add.24.clone.1 = f32[16,4]{1,0} add(f32[16,4]{1,0} %multiply.49.clone.1, f32[16,4]{1,0} %broadcast.58), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/add"}
+  %slice.15.clone.1 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.24.clone.1), slice={[0:16], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.14.clone.1 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.24.clone.1), slice={[0:16], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.7.clone.1 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %slice.14.clone.1, f32[16,1]{1,0} %slice.15.clone.1), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.48.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.59, f32[16,1]{1,0} %subtract.7.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.47.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.60, f32[16,1]{1,0} %multiply.48.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.23.clone.1 = f32[16,1]{1,0} add(f32[16,1]{1,0} %slice.15.clone.1, f32[16,1]{1,0} %multiply.47.clone.1), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.6.clone.1 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %add.23.clone.1, f32[16,1]{1,0} %broadcast.60), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_166_clone_1 = f32[] constant(0.0196078)
+  %broadcast.30.clone.1 = f32[16,1]{1,0} broadcast(f32[] %constant_166_clone_1), dimensions={}
+  %multiply.46.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %subtract.6.clone.1, f32[16,1]{1,0} %broadcast.30.clone.1), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.13.clone.1 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.24.clone.1), slice={[0:16], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.12.clone.1 = f32[16,1]{1,0} slice(f32[16,4]{1,0} %add.24.clone.1), slice={[0:16], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.5.clone.1 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %slice.12.clone.1, f32[16,1]{1,0} %slice.13.clone.1), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.45.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.59, f32[16,1]{1,0} %subtract.5.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.44.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.60, f32[16,1]{1,0} %multiply.45.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.22.clone.1 = f32[16,1]{1,0} add(f32[16,1]{1,0} %slice.13.clone.1, f32[16,1]{1,0} %multiply.44.clone.1), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.4.clone.1 = f32[16,1]{1,0} subtract(f32[16,1]{1,0} %add.22.clone.1, f32[16,1]{1,0} %broadcast.60), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.43.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %subtract.4.clone.1, f32[16,1]{1,0} %broadcast.30.clone.1), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %multiply.42.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.61, f32[16,1]{1,0} %multiply.48.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.21.clone.1 = f32[16,1]{1,0} add(f32[16,1]{1,0} %multiply.42.clone.1, f32[16,1]{1,0} %subtract.6.clone.1), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.41.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %add.21.clone.1, f32[16,1]{1,0} %broadcast.30.clone.1), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.40.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %broadcast.61, f32[16,1]{1,0} %multiply.45.clone.1), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.20.clone.1 = f32[16,1]{1,0} add(f32[16,1]{1,0} %multiply.40.clone.1, f32[16,1]{1,0} %subtract.4.clone.1), metadata={op_type="Add" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.39.clone.1 = f32[16,1]{1,0} multiply(f32[16,1]{1,0} %add.20.clone.1, f32[16,1]{1,0} %broadcast.30.clone.1), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  %concatenate.2.clone.1 = f32[16,4]{1,0} concatenate(f32[16,1]{1,0} %multiply.46.clone.1, f32[16,1]{1,0} %multiply.43.clone.1, f32[16,1]{1,0} %multiply.41.clone.1, f32[16,1]{1,0} %multiply.39.clone.1), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  ROOT %tuple.1 = (f32[16,4]{1,0}, f32[16,4]{1,0}) tuple(f32[16,4]{1,0} %concatenate.3, f32[16,4]{1,0} %concatenate.2.clone.1)
+}
+
+%fused_computation.3 (param_0.17: f32[], param_1.30: f32[], param_2.43: f32[51,4]) -> f32[51,4] {
+  %constant_172 = f32[] constant(0.125), metadata={op_type="Mul" op_name="tower0/truediv_1"}
+  %broadcast.39 = f32[51,4]{1,0} broadcast(f32[] %constant_172), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/mul"}
+  %param_2.43 = f32[51,4]{1,0} parameter(2)
+  %multiply.72 = f32[51,4]{1,0} multiply(f32[51,4]{1,0} %broadcast.39, f32[51,4]{1,0} %param_2.43), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/mul"}
+  %param_1.30 = f32[] parameter(1)
+  %broadcast.38 = f32[51,4]{1,0} broadcast(f32[] %param_1.30), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/add"}
+  %add.34 = f32[51,4]{1,0} add(f32[51,4]{1,0} %multiply.72, f32[51,4]{1,0} %broadcast.38), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/add"}
+  %slice.23 = f32[51,1]{1,0} slice(f32[51,4]{1,0} %add.34), slice={[0:51], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_0.17 = f32[] parameter(0)
+  %broadcast.37 = f32[51,1]{1,0} broadcast(f32[] %param_0.17), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %constant_175 = f32[] constant(0.0714286), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %broadcast.36 = f32[51,1]{1,0} broadcast(f32[] %constant_175), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.22 = f32[51,1]{1,0} slice(f32[51,4]{1,0} %add.34), slice={[0:51], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.15 = f32[51,1]{1,0} subtract(f32[51,1]{1,0} %slice.22, f32[51,1]{1,0} %slice.23), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.71 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.36, f32[51,1]{1,0} %subtract.15), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.70 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.37, f32[51,1]{1,0} %multiply.71), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.33 = f32[51,1]{1,0} add(f32[51,1]{1,0} %slice.23, f32[51,1]{1,0} %multiply.70), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.14 = f32[51,1]{1,0} subtract(f32[51,1]{1,0} %add.33, f32[51,1]{1,0} %broadcast.37), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_171 = f32[] constant(0.00990099)
+  %broadcast.35 = f32[51,1]{1,0} broadcast(f32[] %constant_171), dimensions={}
+  %multiply.69 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %subtract.14, f32[51,1]{1,0} %broadcast.35), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.21 = f32[51,1]{1,0} slice(f32[51,4]{1,0} %add.34), slice={[0:51], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.20 = f32[51,1]{1,0} slice(f32[51,4]{1,0} %add.34), slice={[0:51], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.13 = f32[51,1]{1,0} subtract(f32[51,1]{1,0} %slice.20, f32[51,1]{1,0} %slice.21), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.68 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.36, f32[51,1]{1,0} %subtract.13), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.67 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.37, f32[51,1]{1,0} %multiply.68), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.32 = f32[51,1]{1,0} add(f32[51,1]{1,0} %slice.21, f32[51,1]{1,0} %multiply.67), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.12 = f32[51,1]{1,0} subtract(f32[51,1]{1,0} %add.32, f32[51,1]{1,0} %broadcast.37), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.66 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %subtract.12, f32[51,1]{1,0} %broadcast.35), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %constant_174 = f32[] constant(13), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %broadcast.34 = f32[51,1]{1,0} broadcast(f32[] %constant_174), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.65 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.34, f32[51,1]{1,0} %multiply.71), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.31 = f32[51,1]{1,0} add(f32[51,1]{1,0} %multiply.65, f32[51,1]{1,0} %subtract.14), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.64 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %add.31, f32[51,1]{1,0} %broadcast.35), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.63 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %broadcast.34, f32[51,1]{1,0} %multiply.68), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.30 = f32[51,1]{1,0} add(f32[51,1]{1,0} %multiply.63, f32[51,1]{1,0} %subtract.12), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.62 = f32[51,1]{1,0} multiply(f32[51,1]{1,0} %add.30, f32[51,1]{1,0} %broadcast.35), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  ROOT %concatenate.4 = f32[51,4]{1,0} concatenate(f32[51,1]{1,0} %multiply.69, f32[51,1]{1,0} %multiply.66, f32[51,1]{1,0} %multiply.64, f32[51,1]{1,0} %multiply.62), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+}
+
+%fused_computation.4 (param_0.22: f32[1,256,100,100]) -> f32[1,102,102,256] {
+  %param_0.22 = f32[1,256,100,100]{1,3,2,0} parameter(0)
+  %reverse.1 = f32[1,256,100,100]{1,3,2,0} reverse(f32[1,256,100,100]{1,3,2,0} %param_0.22), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %slice.27 = f32[1,256,100,1]{1,3,2,0} slice(f32[1,256,100,100]{1,3,2,0} %reverse.1), slice={[0:1], [0:256], [0:100], [99:100]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %slice.26 = f32[1,256,100,1]{1,3,2,0} slice(f32[1,256,100,100]{1,3,2,0} %reverse.1), slice={[0:1], [0:256], [0:100], [0:1]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.6 = f32[1,256,100,102]{1,3,2,0} concatenate(f32[1,256,100,1]{1,3,2,0} %slice.27, f32[1,256,100,100]{1,3,2,0} %param_0.22, f32[1,256,100,1]{1,3,2,0} %slice.26), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %reverse.0 = f32[1,256,100,102]{1,3,2,0} reverse(f32[1,256,100,102]{1,3,2,0} %concatenate.6), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %slice.25 = f32[1,256,1,102]{1,3,2,0} slice(f32[1,256,100,102]{1,3,2,0} %reverse.0), slice={[0:1], [0:256], [99:100], [0:102]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %slice.24 = f32[1,256,1,102]{1,3,2,0} slice(f32[1,256,100,102]{1,3,2,0} %reverse.0), slice={[0:1], [0:256], [0:1], [0:102]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.5 = f32[1,256,102,102]{1,3,2,0} concatenate(f32[1,256,1,102]{1,3,2,0} %slice.25, f32[1,256,100,102]{1,3,2,0} %concatenate.6, f32[1,256,1,102]{1,3,2,0} %slice.24), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/MirrorPad"}
+  ROOT %bitcast.12 = f32[1,102,102,256]{3,2,1,0} bitcast(f32[1,256,102,102]{1,3,2,0} %concatenate.5), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transpose"}
+}
+
+%fused_computation.5 (param_0.29: f32[], param_1.44: f32[], param_2.62: f32[20,4]) -> f32[20,4] {
+  %param_2.62 = f32[20,4]{1,0} parameter(2)
+  %constant_177 = f32[] constant(0.0625), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level4/mul"}
+  %broadcast.45 = f32[20,4]{1,0} broadcast(f32[] %constant_177), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/mul"}
+  %multiply.83 = f32[20,4]{1,0} multiply(f32[20,4]{1,0} %param_2.62, f32[20,4]{1,0} %broadcast.45), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/mul"}
+  %param_1.44 = f32[] parameter(1)
+  %broadcast.44 = f32[20,4]{1,0} broadcast(f32[] %param_1.44), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/add"}
+  %add.39 = f32[20,4]{1,0} add(f32[20,4]{1,0} %multiply.83, f32[20,4]{1,0} %broadcast.44), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/add"}
+  %slice.31 = f32[20,1]{1,0} slice(f32[20,4]{1,0} %add.39), slice={[0:20], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_0.29 = f32[] parameter(0)
+  %broadcast.43 = f32[20,1]{1,0} broadcast(f32[] %param_0.29), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %constant_179 = f32[] constant(0.0714286), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %broadcast.42 = f32[20,1]{1,0} broadcast(f32[] %constant_179), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.30 = f32[20,1]{1,0} slice(f32[20,4]{1,0} %add.39), slice={[0:20], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.19 = f32[20,1]{1,0} subtract(f32[20,1]{1,0} %slice.30, f32[20,1]{1,0} %slice.31), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.82 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.42, f32[20,1]{1,0} %subtract.19), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.81 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.43, f32[20,1]{1,0} %multiply.82), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.38 = f32[20,1]{1,0} add(f32[20,1]{1,0} %slice.31, f32[20,1]{1,0} %multiply.81), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.18 = f32[20,1]{1,0} subtract(f32[20,1]{1,0} %add.38, f32[20,1]{1,0} %broadcast.43), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_176 = f32[] constant(0.0196078)
+  %broadcast.41 = f32[20,1]{1,0} broadcast(f32[] %constant_176), dimensions={}
+  %multiply.80 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %subtract.18, f32[20,1]{1,0} %broadcast.41), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.29 = f32[20,1]{1,0} slice(f32[20,4]{1,0} %add.39), slice={[0:20], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.28 = f32[20,1]{1,0} slice(f32[20,4]{1,0} %add.39), slice={[0:20], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.17 = f32[20,1]{1,0} subtract(f32[20,1]{1,0} %slice.28, f32[20,1]{1,0} %slice.29), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.79 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.42, f32[20,1]{1,0} %subtract.17), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.78 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.43, f32[20,1]{1,0} %multiply.79), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.37 = f32[20,1]{1,0} add(f32[20,1]{1,0} %slice.29, f32[20,1]{1,0} %multiply.78), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.16 = f32[20,1]{1,0} subtract(f32[20,1]{1,0} %add.37, f32[20,1]{1,0} %broadcast.43), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.77 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %subtract.16, f32[20,1]{1,0} %broadcast.41), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %constant_178 = f32[] constant(13), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %broadcast.40 = f32[20,1]{1,0} broadcast(f32[] %constant_178), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.76 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.40, f32[20,1]{1,0} %multiply.82), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.36 = f32[20,1]{1,0} add(f32[20,1]{1,0} %multiply.76, f32[20,1]{1,0} %subtract.18), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.75 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %add.36, f32[20,1]{1,0} %broadcast.41), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.74 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %broadcast.40, f32[20,1]{1,0} %multiply.79), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.35 = f32[20,1]{1,0} add(f32[20,1]{1,0} %multiply.74, f32[20,1]{1,0} %subtract.16), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.73 = f32[20,1]{1,0} multiply(f32[20,1]{1,0} %add.35, f32[20,1]{1,0} %broadcast.41), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  ROOT %concatenate.7 = f32[20,4]{1,0} concatenate(f32[20,1]{1,0} %multiply.80, f32[20,1]{1,0} %multiply.77, f32[20,1]{1,0} %multiply.75, f32[20,1]{1,0} %multiply.73), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+}
+
+%fused_computation.6 (param_0.34: f32[1,256,50,50]) -> f32[1,52,52,256] {
+  %param_0.34 = f32[1,256,50,50]{1,3,2,0} parameter(0)
+  %reverse.3 = f32[1,256,50,50]{1,3,2,0} reverse(f32[1,256,50,50]{1,3,2,0} %param_0.34), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %slice.35 = f32[1,256,50,1]{1,3,2,0} slice(f32[1,256,50,50]{1,3,2,0} %reverse.3), slice={[0:1], [0:256], [0:50], [49:50]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %slice.34 = f32[1,256,50,1]{1,3,2,0} slice(f32[1,256,50,50]{1,3,2,0} %reverse.3), slice={[0:1], [0:256], [0:50], [0:1]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.9 = f32[1,256,50,52]{1,3,2,0} concatenate(f32[1,256,50,1]{1,3,2,0} %slice.35, f32[1,256,50,50]{1,3,2,0} %param_0.34, f32[1,256,50,1]{1,3,2,0} %slice.34), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %reverse.2 = f32[1,256,50,52]{1,3,2,0} reverse(f32[1,256,50,52]{1,3,2,0} %concatenate.9), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %slice.33 = f32[1,256,1,52]{1,3,2,0} slice(f32[1,256,50,52]{1,3,2,0} %reverse.2), slice={[0:1], [0:256], [49:50], [0:52]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %slice.32 = f32[1,256,1,52]{1,3,2,0} slice(f32[1,256,50,52]{1,3,2,0} %reverse.2), slice={[0:1], [0:256], [0:1], [0:52]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.8 = f32[1,256,52,52]{1,3,2,0} concatenate(f32[1,256,1,52]{1,3,2,0} %slice.33, f32[1,256,50,52]{1,3,2,0} %concatenate.9, f32[1,256,1,52]{1,3,2,0} %slice.32), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/MirrorPad"}
+  ROOT %bitcast.13 = f32[1,52,52,256]{3,2,1,0} bitcast(f32[1,256,52,52]{1,3,2,0} %concatenate.8), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transpose"}
+}
+
+%fused_computation.7 (param_0.41: f32[], param_1.59: f32[], param_2.81: f32[1,4], param_3.88: f32[]) -> f32[1,4] {
+  %param_3.88 = f32[] parameter(3)
+  %broadcast.47 = f32[1,4]{1,0} broadcast(f32[] %param_3.88), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/mul"}
+  %param_2.81 = f32[1,4]{1,0} parameter(2)
+  %multiply.94 = f32[1,4]{1,0} multiply(f32[1,4]{1,0} %broadcast.47, f32[1,4]{1,0} %param_2.81), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/mul"}
+  %param_1.59 = f32[] parameter(1)
+  %broadcast.46 = f32[1,4]{1,0} broadcast(f32[] %param_1.59), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/add"}
+  %add.44 = f32[1,4]{1,0} add(f32[1,4]{1,0} %multiply.94, f32[1,4]{1,0} %broadcast.46), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/add"}
+  %slice.39 = f32[1,1]{1,0} slice(f32[1,4]{1,0} %add.44), slice={[0:1], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_0.41 = f32[] parameter(0)
+  %bitcast.14 = f32[1,1]{1,0} bitcast(f32[] %param_0.41), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %constant_183 = f32[1,1]{1,0} constant({ {0.0714286} }), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.38 = f32[1,1]{1,0} slice(f32[1,4]{1,0} %add.44), slice={[0:1], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.23 = f32[1,1]{1,0} subtract(f32[1,1]{1,0} %slice.38, f32[1,1]{1,0} %slice.39), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.93 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %constant_183, f32[1,1]{1,0} %subtract.23), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.92 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %bitcast.14, f32[1,1]{1,0} %multiply.93), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.43 = f32[1,1]{1,0} add(f32[1,1]{1,0} %slice.39, f32[1,1]{1,0} %multiply.92), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.22 = f32[1,1]{1,0} subtract(f32[1,1]{1,0} %add.43, f32[1,1]{1,0} %bitcast.14), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_181 = f32[1,1]{1,0} constant({ {0.0384615} })
+  %multiply.91 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %subtract.22, f32[1,1]{1,0} %constant_181), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.37 = f32[1,1]{1,0} slice(f32[1,4]{1,0} %add.44), slice={[0:1], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.36 = f32[1,1]{1,0} slice(f32[1,4]{1,0} %add.44), slice={[0:1], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.21 = f32[1,1]{1,0} subtract(f32[1,1]{1,0} %slice.36, f32[1,1]{1,0} %slice.37), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.90 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %constant_183, f32[1,1]{1,0} %subtract.21), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.89 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %bitcast.14, f32[1,1]{1,0} %multiply.90), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.42 = f32[1,1]{1,0} add(f32[1,1]{1,0} %slice.37, f32[1,1]{1,0} %multiply.89), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.20 = f32[1,1]{1,0} subtract(f32[1,1]{1,0} %add.42, f32[1,1]{1,0} %bitcast.14), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.88 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %subtract.20, f32[1,1]{1,0} %constant_181), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %constant_180 = f32[1,1]{1,0} constant({ {13} }), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.87 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %constant_180, f32[1,1]{1,0} %multiply.93), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.41 = f32[1,1]{1,0} add(f32[1,1]{1,0} %multiply.87, f32[1,1]{1,0} %subtract.22), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.86 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %add.41, f32[1,1]{1,0} %constant_181), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.85 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %constant_180, f32[1,1]{1,0} %multiply.90), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.40 = f32[1,1]{1,0} add(f32[1,1]{1,0} %multiply.85, f32[1,1]{1,0} %subtract.20), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.84 = f32[1,1]{1,0} multiply(f32[1,1]{1,0} %add.40, f32[1,1]{1,0} %constant_181), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  ROOT %concatenate.10 = f32[1,4]{1,0} concatenate(f32[1,1]{1,0} %multiply.91, f32[1,1]{1,0} %multiply.88, f32[1,1]{1,0} %multiply.86, f32[1,1]{1,0} %multiply.84), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+}
+
+%fused_computation.8 (param_0.46: f32[1,256,25,25]) -> f32[1,27,27,256] {
+  %param_0.46 = f32[1,256,25,25]{1,3,2,0} parameter(0)
+  %reverse.5 = f32[1,256,25,25]{1,3,2,0} reverse(f32[1,256,25,25]{1,3,2,0} %param_0.46), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %slice.43 = f32[1,256,25,1]{1,3,2,0} slice(f32[1,256,25,25]{1,3,2,0} %reverse.5), slice={[0:1], [0:256], [0:25], [24:25]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %slice.42 = f32[1,256,25,1]{1,3,2,0} slice(f32[1,256,25,25]{1,3,2,0} %reverse.5), slice={[0:1], [0:256], [0:25], [0:1]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.12 = f32[1,256,25,27]{1,3,2,0} concatenate(f32[1,256,25,1]{1,3,2,0} %slice.43, f32[1,256,25,25]{1,3,2,0} %param_0.46, f32[1,256,25,1]{1,3,2,0} %slice.42), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %reverse.4 = f32[1,256,25,27]{1,3,2,0} reverse(f32[1,256,25,27]{1,3,2,0} %concatenate.12), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %slice.41 = f32[1,256,1,27]{1,3,2,0} slice(f32[1,256,25,27]{1,3,2,0} %reverse.4), slice={[0:1], [0:256], [24:25], [0:27]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %slice.40 = f32[1,256,1,27]{1,3,2,0} slice(f32[1,256,25,27]{1,3,2,0} %reverse.4), slice={[0:1], [0:256], [0:1], [0:27]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.11 = f32[1,256,27,27]{1,3,2,0} concatenate(f32[1,256,1,27]{1,3,2,0} %slice.41, f32[1,256,25,27]{1,3,2,0} %concatenate.12, f32[1,256,1,27]{1,3,2,0} %slice.40), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/MirrorPad"}
+  ROOT %bitcast.15 = f32[1,27,27,256]{3,2,1,0} bitcast(f32[1,256,27,27]{1,3,2,0} %concatenate.11), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/transpose"}
+}
+
+%fused_computation.9 (param_0.53: f32[], param_1.74: f32[], param_2.99: f32[440,4]) -> f32[440,4] {
+  %param_2.99 = f32[440,4]{1,0} parameter(2)
+  %constant_188 = f32[] constant(0.25), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align_mask/roi_level2/mul"}
+  %broadcast.53 = f32[440,4]{1,0} broadcast(f32[] %constant_188), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/mul"}
+  %multiply.105 = f32[440,4]{1,0} multiply(f32[440,4]{1,0} %param_2.99, f32[440,4]{1,0} %broadcast.53), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/mul"}
+  %param_1.74 = f32[] parameter(1)
+  %broadcast.52 = f32[440,4]{1,0} broadcast(f32[] %param_1.74), dimensions={}, metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/add"}
+  %add.49 = f32[440,4]{1,0} add(f32[440,4]{1,0} %multiply.105, f32[440,4]{1,0} %broadcast.52), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/add"}
+  %slice.47 = f32[440,1]{1,0} slice(f32[440,4]{1,0} %add.49), slice={[0:440], [1:2]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %param_0.53 = f32[] parameter(0)
+  %broadcast.51 = f32[440,1]{1,0} broadcast(f32[] %param_0.53), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %constant_187 = f32[] constant(0.0714286), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %broadcast.50 = f32[440,1]{1,0} broadcast(f32[] %constant_187), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %slice.46 = f32[440,1]{1,0} slice(f32[440,4]{1,0} %add.49), slice={[0:440], [3:4]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.27 = f32[440,1]{1,0} subtract(f32[440,1]{1,0} %slice.46, f32[440,1]{1,0} %slice.47), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_1"}
+  %multiply.104 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.50, f32[440,1]{1,0} %subtract.27), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_1"}
+  %multiply.103 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.51, f32[440,1]{1,0} %multiply.104), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_4"}
+  %add.48 = f32[440,1]{1,0} add(f32[440,1]{1,0} %slice.47, f32[440,1]{1,0} %multiply.103), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/add_1"}
+  %subtract.26 = f32[440,1]{1,0} subtract(f32[440,1]{1,0} %add.48, f32[440,1]{1,0} %broadcast.51), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_5"}
+  %constant_186 = f32[] constant(0.00497512)
+  %broadcast.49 = f32[440,1]{1,0} broadcast(f32[] %constant_186), dimensions={}
+  %multiply.102 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %subtract.26, f32[440,1]{1,0} %broadcast.49), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_5"}
+  %slice.45 = f32[440,1]{1,0} slice(f32[440,4]{1,0} %add.49), slice={[0:440], [0:1]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %slice.44 = f32[440,1]{1,0} slice(f32[440,4]{1,0} %add.49), slice={[0:440], [2:3]}, metadata={op_type="Split" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/split"}
+  %subtract.25 = f32[440,1]{1,0} subtract(f32[440,1]{1,0} %slice.44, f32[440,1]{1,0} %slice.45), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub"}
+  %multiply.101 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.50, f32[440,1]{1,0} %subtract.25), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv"}
+  %multiply.100 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.51, f32[440,1]{1,0} %multiply.101), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_2"}
+  %add.47 = f32[440,1]{1,0} add(f32[440,1]{1,0} %slice.45, f32[440,1]{1,0} %multiply.100), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/add"}
+  %subtract.24 = f32[440,1]{1,0} subtract(f32[440,1]{1,0} %add.47, f32[440,1]{1,0} %broadcast.51), metadata={op_type="Sub" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/sub_4"}
+  %multiply.99 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %subtract.24, f32[440,1]{1,0} %broadcast.49), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/truediv_3"}
+  %constant_184 = f32[] constant(13), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %broadcast.48 = f32[440,1]{1,0} broadcast(f32[] %constant_184), dimensions={}, metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %multiply.98 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.48, f32[440,1]{1,0} %multiply.104), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul_1"}
+  %add.46 = f32[440,1]{1,0} add(f32[440,1]{1,0} %multiply.98, f32[440,1]{1,0} %subtract.26), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_2"}
+  %multiply.97 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %add.46, f32[440,1]{1,0} %broadcast.49), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_2"}
+  %multiply.96 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %broadcast.48, f32[440,1]{1,0} %multiply.101), metadata={op_type="Mul" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/mul"}
+  %add.45 = f32[440,1]{1,0} add(f32[440,1]{1,0} %multiply.96, f32[440,1]{1,0} %subtract.24), metadata={op_type="Add" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Add_add_3"}
+  %multiply.95 = f32[440,1]{1,0} multiply(f32[440,1]{1,0} %add.45, f32[440,1]{1,0} %broadcast.49), metadata={op_type="RealDiv" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/ArithmeticOptimizer/HoistCommonFactor_Div_add_3"}
+  ROOT %concatenate.13 = f32[440,4]{1,0} concatenate(f32[440,1]{1,0} %multiply.102, f32[440,1]{1,0} %multiply.99, f32[440,1]{1,0} %multiply.97, f32[440,1]{1,0} %multiply.95), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+}
+
+%fused_computation.10 (param_0.58: f32[1,256,200,200]) -> f32[1,202,202,256] {
+  %param_0.58 = f32[1,256,200,200]{1,3,2,0} parameter(0)
+  %reverse.7 = f32[1,256,200,200]{1,3,2,0} reverse(f32[1,256,200,200]{1,3,2,0} %param_0.58), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %slice.51 = f32[1,256,200,1]{1,3,2,0} slice(f32[1,256,200,200]{1,3,2,0} %reverse.7), slice={[0:1], [0:256], [0:200], [199:200]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %slice.50 = f32[1,256,200,1]{1,3,2,0} slice(f32[1,256,200,200]{1,3,2,0} %reverse.7), slice={[0:1], [0:256], [0:200], [0:1]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.15 = f32[1,256,200,202]{1,3,2,0} concatenate(f32[1,256,200,1]{1,3,2,0} %slice.51, f32[1,256,200,200]{1,3,2,0} %param_0.58, f32[1,256,200,1]{1,3,2,0} %slice.50), dimensions={3}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %reverse.6 = f32[1,256,200,202]{1,3,2,0} reverse(f32[1,256,200,202]{1,3,2,0} %concatenate.15), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %slice.49 = f32[1,256,1,202]{1,3,2,0} slice(f32[1,256,200,202]{1,3,2,0} %reverse.6), slice={[0:1], [0:256], [199:200], [0:202]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %slice.48 = f32[1,256,1,202]{1,3,2,0} slice(f32[1,256,200,202]{1,3,2,0} %reverse.6), slice={[0:1], [0:256], [0:1], [0:202]}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  %concatenate.14 = f32[1,256,202,202]{1,3,2,0} concatenate(f32[1,256,1,202]{1,3,2,0} %slice.49, f32[1,256,200,202]{1,3,2,0} %concatenate.15, f32[1,256,1,202]{1,3,2,0} %slice.48), dimensions={2}, metadata={op_type="MirrorPad" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/MirrorPad"}
+  ROOT %bitcast.16 = f32[1,202,202,256]{3,2,1,0} bitcast(f32[1,256,202,202]{1,3,2,0} %concatenate.14), metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transpose"}
+}
+
+%fused_computation.17 (param_0.72: f32[], param_1.92: f32[], param_2.134: f32[], param_3.117: f32[], param_4.120: f32[], param_5.108: f32[], param_6.110: f32[], param_7.62: f32[], param_8.34: f32[]) -> (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) {
+  %param_1.92 = f32[] parameter(1)
+  %constant_194 = f32[] constant(440), metadata={op_type="Cast" op_name="Cast_12"}
+  %negate.19 = f32[] negate(f32[] %constant_194)
+  %add.56 = f32[] add(f32[] %param_1.92, f32[] %negate.19), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/sub"}
+  %param_0.72 = f32[] parameter(0)
+  %multiply.112 = f32[] multiply(f32[] %add.56, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/mul"}
+  %param_2.134 = f32[] parameter(2)
+  %multiply.113 = f32[] multiply(f32[] %param_2.134, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/mul"}
+  %param_3.117 = f32[] parameter(3)
+  %constant_193_clone_1 = f32[] constant(1), metadata={op_type="Cast" op_name="Cast_15"}
+  %negate.18.clone.1 = f32[] negate(f32[] %constant_193_clone_1)
+  %add.55.clone.1 = f32[] add(f32[] %param_3.117, f32[] %negate.18.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/sub"}
+  %multiply.111.clone.1 = f32[] multiply(f32[] %add.55.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level5_EMA_apply/mul"}
+  %param_4.120 = f32[] parameter(4)
+  %constant_197_clone_1 = f32[] constant(16), metadata={op_type="Cast" op_name="Cast_16"}
+  %negate.21.clone.1 = f32[] negate(f32[] %constant_197_clone_1)
+  %add.52.clone.1 = f32[] add(f32[] %param_4.120, f32[] %negate.21.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/sub"}
+  %multiply.108.clone.1 = f32[] multiply(f32[] %add.52.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/mul"}
+  %param_5.108 = f32[] parameter(5)
+  %constant_189_clone_1 = f32[] constant(10), metadata={op_type="Cast" op_name="Cast_17"}
+  %negate.15.clone.1 = f32[] negate(f32[] %constant_189_clone_1)
+  %add.50.clone.1 = f32[] add(f32[] %param_5.108, f32[] %negate.15.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/sub"}
+  %multiply.106.clone.1 = f32[] multiply(f32[] %add.50.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/mul"}
+  %param_6.110 = f32[] parameter(6)
+  %add.51.clone.1 = f32[] add(f32[] %param_6.110, f32[] %negate.21.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/sub"}
+  %multiply.107.clone.1 = f32[] multiply(f32[] %add.51.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align_mask/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/mul"}
+  %param_7.62 = f32[] parameter(7)
+  %constant_190_clone_1 = f32[] constant(51), metadata={op_type="Cast" op_name="Cast_13"}
+  %negate.16.clone.1 = f32[] negate(f32[] %constant_190_clone_1)
+  %add.53.clone.1 = f32[] add(f32[] %param_7.62, f32[] %negate.16.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/sub"}
+  %multiply.109.clone.1 = f32[] multiply(f32[] %add.53.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level3_EMA_apply/mul"}
+  %param_8.34 = f32[] parameter(8)
+  %constant_191_clone_1 = f32[] constant(20), metadata={op_type="Cast" op_name="Cast_14"}
+  %negate.17.clone.1 = f32[] negate(f32[] %constant_191_clone_1)
+  %add.54.clone.1 = f32[] add(f32[] %param_8.34, f32[] %negate.17.clone.1), metadata={op_type="Sub" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/sub"}
+  %multiply.110.clone.1 = f32[] multiply(f32[] %add.54.clone.1, f32[] %param_0.72), metadata={op_type="Mul" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level4_EMA_apply/mul"}
+  ROOT %tuple.8 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) tuple(f32[] %multiply.112, f32[] %multiply.113, f32[] %multiply.111.clone.1, f32[] %multiply.108.clone.1, f32[] %multiply.106.clone.1, f32[] %multiply.107.clone.1, f32[] %multiply.109.clone.1, f32[] %multiply.110.clone.1)
+}
+
+%fused_computation.18 (param_0.73: f32[42,4], param_1.94: s64[10,1]) -> f32[10,4] {
+  %param_0.73 = f32[42,4]{1,0} parameter(0)
+  %param_1.94 = s64[10,1]{1,0} parameter(1)
+  %bitcast.17 = s64[10]{0} bitcast(s64[10,1]{1,0} %param_1.94), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level3_id"}
+  ROOT %gather.0 = f32[10,4]{1,0} gather(f32[42,4]{1,0} %param_0.73, s64[10]{0} %bitcast.17), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/GatherV2_1"}
+}
+
+%fused_computation.20 (param_0.77: f32[42,4], param_1.102: s64[16,1], param_2.133: s64[16,1]) -> (f32[16,4], f32[16,4]) {
+  %param_0.77 = f32[42,4]{1,0} parameter(0)
+  %param_1.102 = s64[16,1]{1,0} parameter(1)
+  %bitcast.19 = s64[16]{0} bitcast(s64[16,1]{1,0} %param_1.102), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level2_id"}
+  %gather.2 = f32[16,4]{1,0} gather(f32[42,4]{1,0} %param_0.77, s64[16]{0} %bitcast.19), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/GatherV2"}
+  %param_2.133 = s64[16,1]{1,0} parameter(2)
+  %bitcast.18.clone.1 = s64[16]{0} bitcast(s64[16,1]{1,0} %param_2.133), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level4_id"}
+  %gather.1.clone.1 = f32[16,4]{1,0} gather(f32[42,4]{1,0} %param_0.77, s64[16]{0} %bitcast.18.clone.1), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/GatherV2_2"}
+  ROOT %tuple = (f32[16,4]{1,0}, f32[16,4]{1,0}) tuple(f32[16,4]{1,0} %gather.2, f32[16,4]{1,0} %gather.1.clone.1)
+}
+
+%fused_computation.21 (param_0.78: f32[512,4], param_1.104: s64[51,1]) -> f32[51,4] {
+  %param_0.78 = f32[512,4]{1,0} parameter(0)
+  %param_1.104 = s64[51,1]{1,0} parameter(1)
+  %bitcast.20 = s64[51]{0} bitcast(s64[51,1]{1,0} %param_1.104), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level3_id"}
+  ROOT %gather.3 = f32[51,4]{1,0} gather(f32[512,4]{1,0} %param_0.78, s64[51]{0} %bitcast.20), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_1"}
+}
+
+%fused_computation.22 (param_0.79: f32[512,4], param_1.106: s64[20,1]) -> f32[20,4] {
+  %param_0.79 = f32[512,4]{1,0} parameter(0)
+  %param_1.106 = s64[20,1]{1,0} parameter(1)
+  %bitcast.21 = s64[20]{0} bitcast(s64[20,1]{1,0} %param_1.106), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level4_id"}
+  ROOT %gather.4 = f32[20,4]{1,0} gather(f32[512,4]{1,0} %param_0.79, s64[20]{0} %bitcast.21), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_2"}
+}
+
+%fused_computation.23 (param_0.80: f32[512,4], param_1.108: s64[1,1]) -> f32[1,4] {
+  %param_0.80 = f32[512,4]{1,0} parameter(0)
+  %param_1.108 = s64[1,1]{1,0} parameter(1)
+  %bitcast.22 = s64[1]{0} bitcast(s64[1,1]{1,0} %param_1.108), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level5_id"}
+  ROOT %gather.5 = f32[1,4]{1,0} gather(f32[512,4]{1,0} %param_0.80, s64[1]{0} %bitcast.22), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_3"}
+}
+
+%fused_computation.24 (param_0.81: f32[512,4], param_1.110: s64[440,1]) -> f32[440,4] {
+  %param_0.81 = f32[512,4]{1,0} parameter(0)
+  %param_1.110 = s64[440,1]{1,0} parameter(1)
+  %bitcast.23 = s64[440]{0} bitcast(s64[440,1]{1,0} %param_1.110), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level2_id"}
+  ROOT %gather.6 = f32[440,4]{1,0} gather(f32[512,4]{1,0} %param_0.81, s64[440]{0} %bitcast.23), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2"}
+}
+
+%fused_computation.25 (param_0.83: s64[16,1], param_1.113: s64[10,1], param_2.127: s64[16,1]) -> s64[42] {
+  %param_2.127 = s64[16,1]{1,0} parameter(2)
+  %bitcast.26 = s64[16]{0} bitcast(s64[16,1]{1,0} %param_2.127), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level2_id"}
+  %param_1.113 = s64[10,1]{1,0} parameter(1)
+  %bitcast.25 = s64[10]{0} bitcast(s64[10,1]{1,0} %param_1.113), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level3_id"}
+  %param_0.83 = s64[16,1]{1,0} parameter(0)
+  %bitcast.24 = s64[16]{0} bitcast(s64[16,1]{1,0} %param_0.83), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/roi_level4_id"}
+  ROOT %concatenate.16 = s64[42]{0} concatenate(s64[16]{0} %bitcast.26, s64[10]{0} %bitcast.25, s64[16]{0} %bitcast.24), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/concat_1"}
+}
+
+%fused_computation.26 (param_0.85: s64[1,1], param_1.116: s64[20,1], param_2.131: s64[51,1], param_3.115: s64[440,1]) -> s64[512] {
+  %param_3.115 = s64[440,1]{1,0} parameter(3)
+  %bitcast.30 = s64[440]{0} bitcast(s64[440,1]{1,0} %param_3.115), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level2_id"}
+  %param_2.131 = s64[51,1]{1,0} parameter(2)
+  %bitcast.29 = s64[51]{0} bitcast(s64[51,1]{1,0} %param_2.131), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level3_id"}
+  %param_1.116 = s64[20,1]{1,0} parameter(1)
+  %bitcast.28 = s64[20]{0} bitcast(s64[20,1]{1,0} %param_1.116), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level4_id"}
+  %param_0.85 = s64[1,1]{1,0} parameter(0)
+  %bitcast.27 = s64[1]{0} bitcast(s64[1,1]{1,0} %param_0.85), metadata={op_type="Reshape" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/roi_level5_id"}
+  ROOT %concatenate.17 = s64[512]{0} concatenate(s64[440]{0} %bitcast.30, s64[51]{0} %bitcast.29, s64[20]{0} %bitcast.28, s64[1]{0} %bitcast.27), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/concat_1"}
+}
+
+ENTRY %cluster_21__XlaCompiledKernel_true__XlaNumConstantArgs_8__XlaNumResourceArgs_0_.677 (arg0.1: f32[], arg1.2: f32[1,256,25,25], arg2.3: f32[1,256,50,50], arg3.4: f32[1,256,100,100], arg4.5: f32[1,256,200,200], arg5.6: s64[440,1], arg6.7: s64[1,1], arg7.8: s64[20,1], arg8.9: s64[51,1], arg9.10: f32[512,4], arg10.11: f32[], arg11.12: f32[], arg12.13: f32[], arg13.14: f32[], arg14.15: f32[], arg15.16: f32[], arg16.17: s64[16,1], arg17.18: s64[16,1], arg18.19: s64[10,1], arg19.20: f32[], arg20.21: f32[42,4], arg21.22: f32[], arg22.23: f32[], arg23.24: f32[], arg24.25: f32[], arg25.26: f32[], arg26.27: f32[], arg27.28: f32[]) -> (s64[512], f32[], f32[], f32[], f32[], s64[42], f32[], f32[], f32[], f32[], f32[1,202,202,256], f32[440,4], f32[1,27,27,256], f32[1,4], f32[1,52,52,256], f32[20,4], f32[1,102,102,256], f32[51,4], f32[16,4], f32[0,4], f32[16,4], f32[10,4], f32[]) {
+  %arg6.7 = s64[1,1]{1,0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = s64[20,1]{1,0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg8.9 = s64[51,1]{1,0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = s64[440,1]{1,0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.26 = s64[512]{0} fusion(s64[1,1]{1,0} %arg6.7, s64[20,1]{1,0} %arg7.8, s64[51,1]{1,0} %arg8.9, s64[440,1]{1,0} %arg5.6), kind=kLoop, calls=%fused_computation.26, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/concat_1"}
+  %arg19.20 = f32[] parameter(19), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg12.13 = f32[] parameter(12), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg22.23 = f32[] parameter(22), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg13.14 = f32[] parameter(13), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg21.22 = f32[] parameter(21), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg24.25 = f32[] parameter(24), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg23.24 = f32[] parameter(23), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg15.16 = f32[] parameter(15), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg14.15 = f32[] parameter(14), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.17 = (f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) fusion(f32[] %arg19.20, f32[] %arg12.13, f32[] %arg22.23, f32[] %arg13.14, f32[] %arg21.22, f32[] %arg24.25, f32[] %arg23.24, f32[] %arg15.16, f32[] %arg14.15), kind=kLoop, calls=%fused_computation.17, metadata={op_type="Mul" op_name="EMA/multilevel_roi_align/fpn_map_rois_to_levels/num_roi_level2_EMA_apply/mul"}
+  %get-tuple-element.4 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=0
+  %get-tuple-element.6 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=2
+  %get-tuple-element.11 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=7
+  %get-tuple-element.10 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=6
+  %arg17.18 = s64[16,1]{1,0} parameter(17), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg18.19 = s64[10,1]{1,0} parameter(18), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg16.17 = s64[16,1]{1,0} parameter(16), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.25 = s64[42]{0} fusion(s64[16,1]{1,0} %arg17.18, s64[10,1]{1,0} %arg18.19, s64[16,1]{1,0} %arg16.17), kind=kLoop, calls=%fused_computation.25, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/concat_1"}
+  %get-tuple-element.7 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=3
+  %get-tuple-element.5 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=1
+  %get-tuple-element.9 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=5
+  %get-tuple-element.8 = f32[] get-tuple-element((f32[], f32[], f32[], f32[], f32[], f32[], f32[], f32[]) %fusion.17), index=4
+  %arg4.5 = f32[1,256,200,200]{3,2,1,0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %copy.8 = f32[1,256,200,200]{1,3,2,0} copy(f32[1,256,200,200]{3,2,1,0} %arg4.5), metadata={op_name="XLA_Args"}
+  %fusion.10 = f32[1,202,202,256]{3,2,1,0} fusion(f32[1,256,200,200]{1,3,2,0} %copy.8), kind=kLoop, calls=%fused_computation.10, metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transpose"}
+  %arg25.26 = f32[] parameter(25), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg11.12 = f32[] parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg9.10 = f32[512,4]{1,0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.24 = f32[440,4]{1,0} fusion(f32[512,4]{1,0} %arg9.10, s64[440,1]{1,0} %arg5.6), kind=kLoop, calls=%fused_computation.24, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2"}
+  %fusion.9 = f32[440,4]{1,0} fusion(f32[] %arg25.26, f32[] %arg11.12, f32[440,4]{1,0} %fusion.24), kind=kLoop, calls=%fused_computation.9, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %arg1.2 = f32[1,256,25,25]{3,2,1,0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %copy.10 = f32[1,256,25,25]{1,3,2,0} copy(f32[1,256,25,25]{3,2,1,0} %arg1.2), metadata={op_name="XLA_Args"}
+  %fusion.8 = f32[1,27,27,256]{3,2,1,0} fusion(f32[1,256,25,25]{1,3,2,0} %copy.10), kind=kLoop, calls=%fused_computation.8, metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level5/roi_align/crop_and_resize/transpose"}
+  %fusion.23 = f32[1,4]{1,0} fusion(f32[512,4]{1,0} %arg9.10, s64[1,1]{1,0} %arg6.7), kind=kLoop, calls=%fused_computation.23, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_3"}
+  %arg10.11 = f32[] parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[1,4]{1,0} fusion(f32[] %arg25.26, f32[] %arg11.12, f32[1,4]{1,0} %fusion.23, f32[] %arg10.11), kind=kLoop, calls=%fused_computation.7, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level5/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %arg2.3 = f32[1,256,50,50]{3,2,1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %copy.12 = f32[1,256,50,50]{1,3,2,0} copy(f32[1,256,50,50]{3,2,1,0} %arg2.3), metadata={op_name="XLA_Args"}
+  %fusion.6 = f32[1,52,52,256]{3,2,1,0} fusion(f32[1,256,50,50]{1,3,2,0} %copy.12), kind=kLoop, calls=%fused_computation.6, metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level4/roi_align/crop_and_resize/transpose"}
+  %fusion.22 = f32[20,4]{1,0} fusion(f32[512,4]{1,0} %arg9.10, s64[20,1]{1,0} %arg7.8), kind=kLoop, calls=%fused_computation.22, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_2"}
+  %fusion.5 = f32[20,4]{1,0} fusion(f32[] %arg25.26, f32[] %arg11.12, f32[20,4]{1,0} %fusion.22), kind=kLoop, calls=%fused_computation.5, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level4/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %arg3.4 = f32[1,256,100,100]{3,2,1,0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %copy.14 = f32[1,256,100,100]{1,3,2,0} copy(f32[1,256,100,100]{3,2,1,0} %arg3.4), metadata={op_name="XLA_Args"}
+  %fusion.4 = f32[1,102,102,256]{3,2,1,0} fusion(f32[1,256,100,100]{1,3,2,0} %copy.14), kind=kLoop, calls=%fused_computation.4, metadata={op_type="Transpose" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transpose"}
+  %fusion.21 = f32[51,4]{1,0} fusion(f32[512,4]{1,0} %arg9.10, s64[51,1]{1,0} %arg8.9), kind=kLoop, calls=%fused_computation.21, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align/fpn_map_rois_to_levels/GatherV2_1"}
+  %fusion.3 = f32[51,4]{1,0} fusion(f32[] %arg25.26, f32[] %arg11.12, f32[51,4]{1,0} %fusion.21), kind=kLoop, calls=%fused_computation.3, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %arg20.21 = f32[42,4]{1,0} parameter(20), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.20 = (f32[16,4]{1,0}, f32[16,4]{1,0}) fusion(f32[42,4]{1,0} %arg20.21, s64[16,1]{1,0} %arg16.17, s64[16,1]{1,0} %arg17.18), kind=kLoop, calls=%fused_computation.20, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/GatherV2"}
+  %get-tuple-element = f32[16,4]{1,0} get-tuple-element((f32[16,4]{1,0}, f32[16,4]{1,0}) %fusion.20), index=0
+  %arg26.27 = f32[] parameter(26), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg27.28 = f32[] parameter(27), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %get-tuple-element.1 = f32[16,4]{1,0} get-tuple-element((f32[16,4]{1,0}, f32[16,4]{1,0}) %fusion.20), index=1
+  %fusion.2 = (f32[16,4]{1,0}, f32[16,4]{1,0}) fusion(f32[16,4]{1,0} %get-tuple-element, f32[] %arg11.12, f32[] %arg26.27, f32[] %arg25.26, f32[] %arg27.28, f32[16,4]{1,0} %get-tuple-element.1), kind=kLoop, calls=%fused_computation.2, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/roi_level2/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %get-tuple-element.2 = f32[16,4]{1,0} get-tuple-element((f32[16,4]{1,0}, f32[16,4]{1,0}) %fusion.2), index=0
+  %constant_59 = f32[0,4]{1,0} constant({ }), metadata={op_name="XLA_Retvals"}
+  %copy.16 = f32[0,4]{1,0} copy(f32[0,4]{1,0} %constant_59)
+  %get-tuple-element.3 = f32[16,4]{1,0} get-tuple-element((f32[16,4]{1,0}, f32[16,4]{1,0}) %fusion.2), index=1
+  %fusion.18 = f32[10,4]{1,0} fusion(f32[42,4]{1,0} %arg20.21, s64[10,1]{1,0} %arg18.19), kind=kLoop, calls=%fused_computation.18, metadata={op_type="GatherV2" op_name="tower0/multilevel_roi_align_mask/fpn_map_rois_to_levels/GatherV2_1"}
+  %fusion = f32[10,4]{1,0} fusion(f32[] %arg27.28, f32[] %arg26.27, f32[] %arg25.26, f32[] %arg11.12, f32[10,4]{1,0} %fusion.18), kind=kLoop, calls=%fused_computation, metadata={op_type="ConcatV2" op_name="tower0/multilevel_roi_align_mask/roi_level3/roi_align/crop_and_resize/transform_fpcoor_for_tf/concat"}
+  %constant_57 = f32[] constant(0.125), metadata={op_type="Mul" op_name="tower0/truediv_1"}
+  %arg0.1 = f32[] parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %multiply.58 = f32[] multiply(f32[] %constant_57, f32[] %arg0.1), metadata={op_type="Mul" op_name="tower0/truediv_1"}
+  ROOT %tuple.9 = (s64[512]{0}, f32[], f32[], f32[], f32[], s64[42]{0}, f32[], f32[], f32[], f32[], f32[1,202,202,256]{3,2,1,0}, f32[440,4]{1,0}, f32[1,27,27,256]{3,2,1,0}, f32[1,4]{1,0}, f32[1,52,52,256]{3,2,1,0}, f32[20,4]{1,0}, f32[1,102,102,256]{3,2,1,0}, f32[51,4]{1,0}, f32[16,4]{1,0}, f32[0,4]{1,0}, f32[16,4]{1,0}, f32[10,4]{1,0}, f32[]) tuple(s64[512]{0} %fusion.26, f32[] %get-tuple-element.4, f32[] %get-tuple-element.6, f32[] %get-tuple-element.11, f32[] %get-tuple-element.10, s64[42]{0} %fusion.25, f32[] %get-tuple-element.7, f32[] %get-tuple-element.5, f32[] %get-tuple-element.9, f32[] %get-tuple-element.8, f32[1,202,202,256]{3,2,1,0} %fusion.10, f32[440,4]{1,0} %fusion.9, f32[1,27,27,256]{3,2,1,0} %fusion.8, f32[1,4]{1,0} %fusion.7, f32[1,52,52,256]{3,2,1,0} %fusion.6, f32[20,4]{1,0} %fusion.5, f32[1,102,102,256]{3,2,1,0} %fusion.4, f32[51,4]{1,0} %fusion.3, f32[16,4]{1,0} %get-tuple-element.2, f32[0,4]{1,0} %copy.16, f32[16,4]{1,0} %get-tuple-element.3, f32[10,4]{1,0} %fusion, f32[] %multiply.58)
+}
+

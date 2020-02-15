@@ -1,0 +1,272 @@
+HloModule cluster_7__XlaCompiledKernel_true__XlaNumConstantArgs_8__XlaNumResourceArgs_0_.259
+
+%fused_computation (param_0.2: s32[], param_1.3: s32[], param_2.6: f32[], param_3.10: f32[]) -> pred[] {
+  %param_3.10 = f32[] parameter(3)
+  %bitcast-convert.11 = s32[] bitcast-convert(f32[] %param_3.10)
+  %constant_11 = s32[] constant(0)
+  %compare.10 = pred[] compare(s32[] %bitcast-convert.11, s32[] %constant_11), direction=LT
+  %constant_10 = u32[] constant(2147483647)
+  %bitcast-convert.10 = u32[] bitcast-convert(f32[] %param_3.10)
+  %subtract.3 = u32[] subtract(u32[] %constant_10, u32[] %bitcast-convert.10)
+  %bitcast-convert.9 = s32[] bitcast-convert(u32[] %subtract.3)
+  %select.5 = s32[] select(pred[] %compare.10, s32[] %bitcast-convert.9, s32[] %bitcast-convert.11)
+  %param_2.6 = f32[] parameter(2)
+  %bitcast-convert.8 = s32[] bitcast-convert(f32[] %param_2.6)
+  %compare.9 = pred[] compare(s32[] %bitcast-convert.8, s32[] %constant_11), direction=LT
+  %bitcast-convert.7 = u32[] bitcast-convert(f32[] %param_2.6)
+  %subtract.2 = u32[] subtract(u32[] %constant_10, u32[] %bitcast-convert.7)
+  %bitcast-convert.6 = s32[] bitcast-convert(u32[] %subtract.2)
+  %select.4 = s32[] select(pred[] %compare.9, s32[] %bitcast-convert.6, s32[] %bitcast-convert.8)
+  %compare.8 = pred[] compare(s32[] %select.5, s32[] %select.4), direction=GT
+  %compare.7 = pred[] compare(s32[] %select.4, s32[] %select.5), direction=GT
+  %compare.6 = pred[] compare(pred[] %compare.8, pred[] %compare.7), direction=EQ
+  %param_0.2 = s32[] parameter(0)
+  %param_1.3 = s32[] parameter(1)
+  %compare.5 = pred[] compare(s32[] %param_0.2, s32[] %param_1.3), direction=LT
+  ROOT %select.3 = pred[] select(pred[] %compare.6, pred[] %compare.5, pred[] %compare.8)
+}
+
+%compare-greater-than.63 (p.0.lhs.64: f32[], p.0.rhs.65: f32[], p.1.lhs.66: s32[], p.1.rhs.67: s32[]) -> pred[] {
+  %p.1.lhs.66 = s32[] parameter(2)
+  %p.1.rhs.67 = s32[] parameter(3)
+  %p.0.rhs.65 = f32[] parameter(1)
+  %p.0.lhs.64 = f32[] parameter(0)
+  ROOT %fusion = pred[] fusion(s32[] %p.1.lhs.66, s32[] %p.1.rhs.67, f32[] %p.0.rhs.65, f32[] %p.0.lhs.64), kind=kLoop, calls=%fused_computation
+}
+
+%tower0_sample_fast_rcnn_targets_proposal_metrics_Max-reduction.169 (x.170: f32[], y.171: f32[]) -> f32[] {
+  %x.170 = f32[] parameter(0)
+  %y.171 = f32[] parameter(1)
+  ROOT %maximum.172 = f32[] maximum(f32[] %x.170, f32[] %y.171)
+}
+
+%tower0_sample_fast_rcnn_targets_proposal_metrics_best_iou_per_gt-reduction.240 (x.241: f32[], y.242: f32[]) -> f32[] {
+  %x.241 = f32[] parameter(0)
+  %y.242 = f32[] parameter(1)
+  ROOT %add.243 = f32[] add(f32[] %x.241, f32[] %y.242)
+}
+
+%tower0_sample_fast_rcnn_targets_proposal_metrics_count_nonzero_1_Sum-reduction.202 (x.203: s64[], y.204: s64[]) -> s64[] {
+  %x.203 = s64[] parameter(0)
+  %y.204 = s64[] parameter(1)
+  ROOT %add.205 = s64[] add(s64[] %x.203, s64[] %y.204)
+}
+
+%tower0_sample_fast_rcnn_targets_proposal_metrics_count_nonzero_Sum-reduction.185 (x.186: s64[], y.187: s64[]) -> s64[] {
+  %x.186 = s64[] parameter(0)
+  %y.187 = s64[] parameter(1)
+  ROOT %add.188 = s64[] add(s64[] %x.186, s64[] %y.187)
+}
+
+%fused_computation.3 (param_0.10: f32[], param_1.13: f32[2], param_2.55: f64[], param_3.55: f64[]) -> (f32[], f64[], f64[]) {
+  %param_0.10 = f32[] parameter(0)
+  %param_1.13 = f32[2]{0} parameter(1)
+  %constant_22 = f32[] constant(0), metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %reduce.3 = f32[] reduce(f32[2]{0} %param_1.13, f32[] %constant_22), dimensions={0}, to_apply=%tower0_sample_fast_rcnn_targets_proposal_metrics_best_iou_per_gt-reduction.240, metadata={op_type="Mean" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt"}
+  %constant_21 = f32[] constant(0.5), metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual_1"}
+  %multiply.9 = f32[] multiply(f32[] %reduce.3, f32[] %constant_21), metadata={op_type="Mean" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt"}
+  %subtract.6 = f32[] subtract(f32[] %param_0.10, f32[] %multiply.9), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/sub"}
+  %constant_20 = f32[] constant(0.05), metadata={op_type="Mul" op_name="EMA/mean_gt_box_area_EMA_apply/mul"}
+  %multiply.8 = f32[] multiply(f32[] %subtract.6, f32[] %constant_20), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/mul"}
+  %constant_18_clone_1 = f64[] constant(0.05), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/mul"}
+  %param_2.55 = f64[] parameter(2)
+  %constant_30_clone_1 = pred[] constant(false), metadata={op_type="NotEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero/NotEqual"}
+  %broadcast.18.clone.1 = pred[2]{0} broadcast(pred[] %constant_30_clone_1), dimensions={}, metadata={op_type="NotEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero_1/NotEqual"}
+  %broadcast.2.clone.1 = f32[2]{0} broadcast(f32[] %constant_21), dimensions={}, metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual_1"}
+  %compare.14.clone.1 = pred[2]{0} compare(f32[2]{0} %param_1.13, f32[2]{0} %broadcast.2.clone.1), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual_1"}
+  %compare.13.clone.1 = pred[2]{0} compare(pred[2]{0} %broadcast.18.clone.1, pred[2]{0} %compare.14.clone.1), direction=NE, metadata={op_type="NotEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero_1/NotEqual"}
+  %convert.3.clone.1 = s64[2]{0} convert(pred[2]{0} %compare.13.clone.1), metadata={op_type="Cast" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero_1/Cast"}
+  %constant_17_clone_1 = s64[] constant(0), metadata={op_type="Sum" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero/Sum"}
+  %reduce.2.clone.1 = s64[] reduce(s64[2]{0} %convert.3.clone.1, s64[] %constant_17_clone_1), dimensions={0}, to_apply=%tower0_sample_fast_rcnn_targets_proposal_metrics_count_nonzero_1_Sum-reduction.202, metadata={op_type="Sum" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero_1/Sum"}
+  %convert.2.clone.1 = f64[] convert(s64[] %reduce.2.clone.1), metadata={op_type="Cast" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5/Cast"}
+  %constant_16_clone_1 = f64[] constant(0.5)
+  %multiply.7.clone.1 = f64[] multiply(f64[] %convert.2.clone.1, f64[] %constant_16_clone_1), metadata={op_type="RealDiv" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5"}
+  %subtract.5.clone.1 = f64[] subtract(f64[] %param_2.55, f64[] %multiply.7.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/sub"}
+  %multiply.6.clone.1 = f64[] multiply(f64[] %constant_18_clone_1, f64[] %subtract.5.clone.1), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.5_EMA_apply/mul"}
+  %param_3.55 = f64[] parameter(3)
+  %constant_12_clone_1 = f32[] constant(0.3), metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual"}
+  %broadcast.1.clone.1 = f32[2]{0} broadcast(f32[] %constant_12_clone_1), dimensions={}, metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual"}
+  %compare.12.clone.1 = pred[2]{0} compare(f32[2]{0} %param_1.13, f32[2]{0} %broadcast.1.clone.1), direction=GE, metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual"}
+  %compare.11.clone.1 = pred[2]{0} compare(pred[2]{0} %broadcast.18.clone.1, pred[2]{0} %compare.12.clone.1), direction=NE, metadata={op_type="NotEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero/NotEqual"}
+  %convert.1.clone.1 = s64[2]{0} convert(pred[2]{0} %compare.11.clone.1), metadata={op_type="Cast" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero/Cast"}
+  %reduce.1.clone.1 = s64[] reduce(s64[2]{0} %convert.1.clone.1, s64[] %constant_17_clone_1), dimensions={0}, to_apply=%tower0_sample_fast_rcnn_targets_proposal_metrics_count_nonzero_Sum-reduction.185, metadata={op_type="Sum" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/count_nonzero/Sum"}
+  %convert.0.clone.1 = f64[] convert(s64[] %reduce.1.clone.1), metadata={op_type="Cast" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3/Cast"}
+  %multiply.5.clone.1 = f64[] multiply(f64[] %convert.0.clone.1, f64[] %constant_16_clone_1), metadata={op_type="RealDiv" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3"}
+  %subtract.4.clone.1 = f64[] subtract(f64[] %param_3.55, f64[] %multiply.5.clone.1), metadata={op_type="Sub" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/sub"}
+  %multiply.4.clone.1 = f64[] multiply(f64[] %subtract.4.clone.1, f64[] %constant_18_clone_1), metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/recall_iou0.3_EMA_apply/mul"}
+  ROOT %tuple.1 = (f32[], f64[], f64[]) tuple(f32[] %multiply.8, f64[] %multiply.6.clone.1, f64[] %multiply.4.clone.1)
+}
+
+%fused_computation.4 (param_0.11: f32[2000,2]) -> f32[2002,2] {
+  %param_0.11 = f32[2000,2]{1,0} parameter(0)
+  %iota.3 = s32[2,2]{1,0} iota(), iota_dimension=1, metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %iota.2 = s32[2,2]{1,0} iota(), iota_dimension=0, metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %compare.15 = pred[2,2]{1,0} compare(s32[2,2]{1,0} %iota.3, s32[2,2]{1,0} %iota.2), direction=EQ, metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %constant_23 = f32[] constant(1), metadata={op_type="Fill" op_name="tower0/sample_fast_rcnn_targets/eye/ones"}
+  %broadcast.4 = f32[2,2]{1,0} broadcast(f32[] %constant_23), dimensions={}, metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %constant_24 = f32[] constant(0), metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %broadcast.3 = f32[2,2]{1,0} broadcast(f32[] %constant_24), dimensions={}, metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %select.6 = f32[2,2]{1,0} select(pred[2,2]{1,0} %compare.15, f32[2,2]{1,0} %broadcast.4, f32[2,2]{1,0} %broadcast.3), metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  ROOT %concatenate.0 = f32[2002,2]{1,0} concatenate(f32[2000,2]{1,0} %param_0.11, f32[2,2]{1,0} %select.6), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower0/sample_fast_rcnn_targets/concat_1"}
+}
+
+%fused_computation.5 (param_0.14: f32[2,1], param_1.40: f32[2000,4], param_2.52: f32[], param_3.50: f32[2,4]) -> f32[2000,2] {
+  %param_2.52 = f32[] parameter(2)
+  %broadcast.16 = f32[2000,2]{1,0} broadcast(f32[] %param_2.52), dimensions={}, metadata={op_type="Equal" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/Equal"}
+  %param_1.40 = f32[2000,4]{1,0} parameter(1)
+  %slice.3 = f32[2000,1]{1,0} slice(f32[2000,4]{1,0} %param_1.40), slice={[0:2000], [3:4]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split"}
+  %bitcast.19 = f32[2000]{0} bitcast(f32[2000,1]{1,0} %slice.3), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum"}
+  %broadcast.15 = f32[2000,2]{1,0} broadcast(f32[2000]{0} %bitcast.19), dimensions={0}, metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum"}
+  %param_3.50 = f32[2,4]{1,0} parameter(3)
+  %slice.6 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_3.50), slice={[0:2], [3:4]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %bitcast.18 = f32[2]{0} bitcast(f32[2,1]{1,0} %slice.6), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum"}
+  %broadcast.14 = f32[2000,2]{1,0} broadcast(f32[2]{0} %bitcast.18), dimensions={1}, metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum"}
+  %minimum.1 = f32[2000,2]{1,0} minimum(f32[2000,2]{1,0} %broadcast.15, f32[2000,2]{1,0} %broadcast.14), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum"}
+  %slice.2 = f32[2000,1]{1,0} slice(f32[2000,4]{1,0} %param_1.40), slice={[0:2000], [1:2]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split"}
+  %bitcast.17 = f32[2000]{0} bitcast(f32[2000,1]{1,0} %slice.2), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum"}
+  %broadcast.13 = f32[2000,2]{1,0} broadcast(f32[2000]{0} %bitcast.17), dimensions={0}, metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum"}
+  %slice.5 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_3.50), slice={[0:2], [1:2]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %bitcast.16 = f32[2]{0} bitcast(f32[2,1]{1,0} %slice.5), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum"}
+  %broadcast.12 = f32[2000,2]{1,0} broadcast(f32[2]{0} %bitcast.16), dimensions={1}, metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum"}
+  %maximum.3 = f32[2000,2]{1,0} maximum(f32[2000,2]{1,0} %broadcast.13, f32[2000,2]{1,0} %broadcast.12), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum"}
+  %subtract.11 = f32[2000,2]{1,0} subtract(f32[2000,2]{1,0} %minimum.1, f32[2000,2]{1,0} %maximum.3), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/sub"}
+  %maximum.2 = f32[2000,2]{1,0} maximum(f32[2000,2]{1,0} %broadcast.16, f32[2000,2]{1,0} %subtract.11), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_1"}
+  %slice.1 = f32[2000,1]{1,0} slice(f32[2000,4]{1,0} %param_1.40), slice={[0:2000], [2:3]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split"}
+  %bitcast.15 = f32[2000]{0} bitcast(f32[2000,1]{1,0} %slice.1), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum_1"}
+  %broadcast.11 = f32[2000,2]{1,0} broadcast(f32[2000]{0} %bitcast.15), dimensions={0}, metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum_1"}
+  %slice.8 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_3.50), slice={[0:2], [2:3]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %bitcast.14 = f32[2]{0} bitcast(f32[2,1]{1,0} %slice.8), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum_1"}
+  %broadcast.10 = f32[2000,2]{1,0} broadcast(f32[2]{0} %bitcast.14), dimensions={1}, metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum_1"}
+  %minimum.0 = f32[2000,2]{1,0} minimum(f32[2000,2]{1,0} %broadcast.11, f32[2000,2]{1,0} %broadcast.10), metadata={op_type="Minimum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Minimum_1"}
+  %slice.0 = f32[2000,1]{1,0} slice(f32[2000,4]{1,0} %param_1.40), slice={[0:2000], [0:1]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split"}
+  %bitcast.13 = f32[2000]{0} bitcast(f32[2000,1]{1,0} %slice.0), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_2"}
+  %broadcast.9 = f32[2000,2]{1,0} broadcast(f32[2000]{0} %bitcast.13), dimensions={0}, metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_2"}
+  %slice.7 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_3.50), slice={[0:2], [0:1]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %bitcast.12 = f32[2]{0} bitcast(f32[2,1]{1,0} %slice.7), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_2"}
+  %broadcast.8 = f32[2000,2]{1,0} broadcast(f32[2]{0} %bitcast.12), dimensions={1}, metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_2"}
+  %maximum.1 = f32[2000,2]{1,0} maximum(f32[2000,2]{1,0} %broadcast.9, f32[2000,2]{1,0} %broadcast.8), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_2"}
+  %subtract.10 = f32[2000,2]{1,0} subtract(f32[2000,2]{1,0} %minimum.0, f32[2000,2]{1,0} %maximum.1), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/sub_1"}
+  %maximum.0 = f32[2000,2]{1,0} maximum(f32[2000,2]{1,0} %broadcast.16, f32[2000,2]{1,0} %subtract.10), metadata={op_type="Maximum" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/Maximum_3"}
+  %multiply.11 = f32[2000,2]{1,0} multiply(f32[2000,2]{1,0} %maximum.2, f32[2000,2]{1,0} %maximum.0), metadata={op_type="Mul" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/mul"}
+  %compare.16 = pred[2000,2]{1,0} compare(f32[2000,2]{1,0} %broadcast.16, f32[2000,2]{1,0} %multiply.11), direction=EQ, metadata={op_type="Equal" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/Equal"}
+  %constant_25 = f32[] constant(0), metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %broadcast.7 = f32[2000,2]{1,0} broadcast(f32[] %constant_25), dimensions={}, metadata={op_type="ZerosLike" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/zeros_like"}
+  %subtract.9 = f32[2000,1]{1,0} subtract(f32[2000,1]{1,0} %slice.3, f32[2000,1]{1,0} %slice.2), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area/sub"}
+  %subtract.8 = f32[2000,1]{1,0} subtract(f32[2000,1]{1,0} %slice.1, f32[2000,1]{1,0} %slice.0), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area/sub_1"}
+  %multiply.10 = f32[2000,1]{1,0} multiply(f32[2000,1]{1,0} %subtract.9, f32[2000,1]{1,0} %subtract.8), metadata={op_type="Mul" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area/mul"}
+  %bitcast.11 = f32[2000]{0} bitcast(f32[2000,1]{1,0} %multiply.10), metadata={op_type="Add" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/add"}
+  %broadcast.6 = f32[2000,2]{1,0} broadcast(f32[2000]{0} %bitcast.11), dimensions={0}, metadata={op_type="Add" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/add"}
+  %param_0.14 = f32[2,1]{1,0} parameter(0)
+  %bitcast.10 = f32[2]{0} bitcast(f32[2,1]{1,0} %param_0.14), metadata={op_type="Add" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/add"}
+  %broadcast.5 = f32[2000,2]{1,0} broadcast(f32[2]{0} %bitcast.10), dimensions={1}, metadata={op_type="Add" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/add"}
+  %add.0 = f32[2000,2]{1,0} add(f32[2000,2]{1,0} %broadcast.6, f32[2000,2]{1,0} %broadcast.5), metadata={op_type="Add" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/add"}
+  %subtract.7 = f32[2000,2]{1,0} subtract(f32[2000,2]{1,0} %add.0, f32[2000,2]{1,0} %multiply.11), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/sub"}
+  %divide.0 = f32[2000,2]{1,0} divide(f32[2000,2]{1,0} %multiply.11, f32[2000,2]{1,0} %subtract.7), metadata={op_type="RealDiv" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/truediv"}
+  ROOT %select.7 = f32[2000,2]{1,0} select(pred[2000,2]{1,0} %compare.16, f32[2000,2]{1,0} %broadcast.7, f32[2000,2]{1,0} %divide.0), metadata={op_type="Select" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/Select"}
+}
+
+%fused_computation.6 (param_0.16: s32[4265], param_1.26: f32[1261,4], param_2.39: f32[1122,4], param_3.42: f32[986,4], param_4.32: f32[719,4], param_5.23: f32[177,4]) -> f32[2000,4] {
+  %param_1.26 = f32[1261,4]{1,0} parameter(1)
+  %param_2.39 = f32[1122,4]{1,0} parameter(2)
+  %param_3.42 = f32[986,4]{1,0} parameter(3)
+  %param_4.32 = f32[719,4]{1,0} parameter(4)
+  %param_5.23 = f32[177,4]{1,0} parameter(5)
+  %concatenate.1 = f32[4265,4]{1,0} concatenate(f32[1261,4]{1,0} %param_1.26, f32[1122,4]{1,0} %param_2.39, f32[986,4]{1,0} %param_3.42, f32[719,4]{1,0} %param_4.32, f32[177,4]{1,0} %param_5.23), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower0/generate_fpn_proposals/concat"}
+  %param_0.16 = s32[4265]{0} parameter(0)
+  %slice.4 = s32[2000]{0} slice(s32[4265]{0} %param_0.16), slice={[0:2000]}, metadata={op_type="TopKV2" op_name="tower0/generate_fpn_proposals/TopKV2"}
+  ROOT %gather.0 = f32[2000,4]{1,0} gather(f32[4265,4]{1,0} %concatenate.1, s32[2000]{0} %slice.4), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/all_proposals"}
+}
+
+%fused_computation.7 (param_0.18: f32[741], param_1.29: s32[177], param_2.43: f32[2000], param_3.47: s32[719], param_4.38: f32[2000], param_5.28: s32[986], param_6.23: f32[2000], param_7.18: s32[1122], param_8.12: f32[2000], param_9.13: s32[1261]) -> f32[4265] {
+  %param_8.12 = f32[2000]{0} parameter(8)
+  %param_9.13 = s32[1261]{0} parameter(9)
+  %gather.5 = f32[1261]{0} gather(f32[2000]{0} %param_8.12, s32[1261]{0} %param_9.13), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl2/generate_rpn_proposals/GatherV2_2"}
+  %param_6.23 = f32[2000]{0} parameter(6)
+  %param_7.18 = s32[1122]{0} parameter(7)
+  %gather.4 = f32[1122]{0} gather(f32[2000]{0} %param_6.23, s32[1122]{0} %param_7.18), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl3/generate_rpn_proposals/GatherV2_2"}
+  %param_4.38 = f32[2000]{0} parameter(4)
+  %param_5.28 = s32[986]{0} parameter(5)
+  %gather.3 = f32[986]{0} gather(f32[2000]{0} %param_4.38, s32[986]{0} %param_5.28), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl4/generate_rpn_proposals/GatherV2_2"}
+  %param_2.43 = f32[2000]{0} parameter(2)
+  %param_3.47 = s32[719]{0} parameter(3)
+  %gather.2 = f32[719]{0} gather(f32[2000]{0} %param_2.43, s32[719]{0} %param_3.47), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl5/generate_rpn_proposals/GatherV2_2"}
+  %param_0.18 = f32[741]{0} parameter(0)
+  %param_1.29 = s32[177]{0} parameter(1)
+  %gather.1 = f32[177]{0} gather(f32[741]{0} %param_0.18, s32[177]{0} %param_1.29), offset_dims={}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl6/generate_rpn_proposals/GatherV2_2"}
+  ROOT %concatenate.2 = f32[4265]{0} concatenate(f32[1261]{0} %gather.5, f32[1122]{0} %gather.4, f32[986]{0} %gather.3, f32[719]{0} %gather.2, f32[177]{0} %gather.1), dimensions={0}, metadata={op_type="ConcatV2" op_name="tower0/generate_fpn_proposals/concat_1"}
+}
+
+%tower0_mean_gt_box_area-reduction.225 (x.226: f32[], y.227: f32[]) -> f32[] {
+  %x.226 = f32[] parameter(0)
+  %y.227 = f32[] parameter(1)
+  ROOT %add.228 = f32[] add(f32[] %x.226, f32[] %y.227)
+}
+
+%fused_computation.8 (param_0.21: f32[], param_1.34: f32[2,1]) -> f32[] {
+  %param_0.21 = f32[] parameter(0)
+  %param_1.34 = f32[2,1]{1,0} parameter(1)
+  %constant_28 = f32[] constant(0), metadata={op_type="MatrixDiag" op_name="tower0/sample_fast_rcnn_targets/eye/MatrixDiag"}
+  %reduce.4 = f32[] reduce(f32[2,1]{1,0} %param_1.34, f32[] %constant_28), dimensions={0,1}, to_apply=%tower0_mean_gt_box_area-reduction.225, metadata={op_type="Mean" op_name="tower0/mean_gt_box_area"}
+  %constant_27 = f32[] constant(0.5), metadata={op_type="GreaterEqual" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/GreaterEqual_1"}
+  %multiply.13 = f32[] multiply(f32[] %reduce.4, f32[] %constant_27), metadata={op_type="Mean" op_name="tower0/mean_gt_box_area"}
+  %subtract.12 = f32[] subtract(f32[] %param_0.21, f32[] %multiply.13), metadata={op_type="Sub" op_name="EMA/mean_gt_box_area_EMA_apply/sub"}
+  %constant_26 = f32[] constant(0.05), metadata={op_type="Mul" op_name="EMA/mean_gt_box_area_EMA_apply/mul"}
+  ROOT %multiply.12 = f32[] multiply(f32[] %subtract.12, f32[] %constant_26), metadata={op_type="Mul" op_name="EMA/mean_gt_box_area_EMA_apply/mul"}
+}
+
+%fused_computation.9 (param_0.24: f32[2,4]) -> f32[2,1] {
+  %param_0.24 = f32[2,4]{1,0} parameter(0)
+  %slice.10 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_0.24), slice={[0:2], [3:4]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %slice.9 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_0.24), slice={[0:2], [1:2]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %subtract.14 = f32[2,1]{1,0} subtract(f32[2,1]{1,0} %slice.10, f32[2,1]{1,0} %slice.9), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area_1/sub"}
+  %slice.12 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_0.24), slice={[0:2], [2:3]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %slice.11 = f32[2,1]{1,0} slice(f32[2,4]{1,0} %param_0.24), slice={[0:2], [0:1]}, metadata={op_type="Split" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/pairwise_intersection/split_1"}
+  %subtract.13 = f32[2,1]{1,0} subtract(f32[2,1]{1,0} %slice.12, f32[2,1]{1,0} %slice.11), metadata={op_type="Sub" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area_1/sub_1"}
+  ROOT %multiply.14 = f32[2,1]{1,0} multiply(f32[2,1]{1,0} %subtract.14, f32[2,1]{1,0} %subtract.13), metadata={op_type="Mul" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area_1/mul"}
+}
+
+ENTRY %cluster_7__XlaCompiledKernel_true__XlaNumConstantArgs_8__XlaNumResourceArgs_0_.259 (arg0.1: f32[2,4], arg1.2: f32[], arg2.3: f32[2000], arg3.4: s32[719], arg4.5: f32[2000,4], arg5.6: f32[741], arg6.7: s32[177], arg7.8: f32[741,4], arg8.9: f32[2000], arg9.10: s32[986], arg10.11: f32[2000,4], arg11.12: f32[2000], arg12.13: s32[1122], arg13.14: f32[2000,4], arg14.15: f32[2000], arg15.16: s32[1261], arg16.17: f32[2000,4], arg17.18: f32[], arg18.19: f32[], arg19.20: f64[], arg20.21: f64[]) -> (f32[], f32[2000,4], f32[2002,2], f32[], f64[], f64[]) {
+  %arg1.2 = f32[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg0.1 = f32[2,4]{1,0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.9 = f32[2,1]{1,0} fusion(f32[2,4]{1,0} %arg0.1), kind=kLoop, calls=%fused_computation.9, metadata={op_type="Mul" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/area_1/mul"}
+  %fusion.8 = f32[] fusion(f32[] %arg1.2, f32[2,1]{1,0} %fusion.9), kind=kLoop, calls=%fused_computation.8, metadata={op_type="Mul" op_name="EMA/mean_gt_box_area_EMA_apply/mul"}
+  %arg5.6 = f32[741]{0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg6.7 = s32[177]{0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f32[2000]{0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = s32[719]{0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg8.9 = f32[2000]{0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg9.10 = s32[986]{0} parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg11.12 = f32[2000]{0} parameter(11), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg12.13 = s32[1122]{0} parameter(12), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg14.15 = f32[2000]{0} parameter(14), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg15.16 = s32[1261]{0} parameter(15), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.7 = f32[4265]{0} fusion(f32[741]{0} %arg5.6, s32[177]{0} %arg6.7, f32[2000]{0} %arg2.3, s32[719]{0} %arg3.4, f32[2000]{0} %arg8.9, s32[986]{0} %arg9.10, f32[2000]{0} %arg11.12, s32[1122]{0} %arg12.13, f32[2000]{0} %arg14.15, s32[1261]{0} %arg15.16), kind=kLoop, calls=%fused_computation.7, metadata={op_type="ConcatV2" op_name="tower0/generate_fpn_proposals/concat_1"}
+  %iota.62 = s32[4265]{0} iota(), iota_dimension=0, metadata={op_type="TopKV2" op_name="tower0/generate_fpn_proposals/TopKV2"}
+  %sort.85 = (f32[4265]{0}, s32[4265]{0}) sort(f32[4265]{0} %fusion.7, s32[4265]{0} %iota.62), dimensions={0}, is_stable=true, to_apply=%compare-greater-than.63, metadata={op_type="TopKV2" op_name="tower0/generate_fpn_proposals/TopKV2"}
+  %get-tuple-element.88 = s32[4265]{0} get-tuple-element((f32[4265]{0}, s32[4265]{0}) %sort.85), index=1, metadata={op_type="TopKV2" op_name="tower0/generate_fpn_proposals/TopKV2"}
+  %arg16.17 = f32[2000,4]{1,0} parameter(16), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.43 = f32[1261,4]{1,0} gather(f32[2000,4]{1,0} %arg16.17, s32[1261]{0} %arg15.16), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl2/generate_rpn_proposals/GatherV2_1"}
+  %arg13.14 = f32[2000,4]{1,0} parameter(13), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.45 = f32[1122,4]{1,0} gather(f32[2000,4]{1,0} %arg13.14, s32[1122]{0} %arg12.13), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl3/generate_rpn_proposals/GatherV2_1"}
+  %arg10.11 = f32[2000,4]{1,0} parameter(10), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.47 = f32[986,4]{1,0} gather(f32[2000,4]{1,0} %arg10.11, s32[986]{0} %arg9.10), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl4/generate_rpn_proposals/GatherV2_1"}
+  %arg4.5 = f32[2000,4]{1,0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.49 = f32[719,4]{1,0} gather(f32[2000,4]{1,0} %arg4.5, s32[719]{0} %arg3.4), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl5/generate_rpn_proposals/GatherV2_1"}
+  %arg7.8 = f32[741,4]{1,0} parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %gather.51 = f32[177,4]{1,0} gather(f32[741,4]{1,0} %arg7.8, s32[177]{0} %arg6.7), offset_dims={1}, collapsed_slice_dims={0}, start_index_map={0}, index_vector_dim=1, slice_sizes={1,4}, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/Lvl6/generate_rpn_proposals/GatherV2_1"}
+  %fusion.6 = f32[2000,4]{1,0} fusion(s32[4265]{0} %get-tuple-element.88, f32[1261,4]{1,0} %gather.43, f32[1122,4]{1,0} %gather.45, f32[986,4]{1,0} %gather.47, f32[719,4]{1,0} %gather.49, f32[177,4]{1,0} %gather.51), kind=kLoop, calls=%fused_computation.6, metadata={op_type="GatherV2" op_name="tower0/generate_fpn_proposals/all_proposals"}
+  %arg17.18 = f32[] parameter(17), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.5 = f32[2000,2]{1,0} fusion(f32[2,1]{1,0} %fusion.9, f32[2000,4]{1,0} %fusion.6, f32[] %arg17.18, f32[2,4]{1,0} %arg0.1), kind=kLoop, calls=%fused_computation.5, metadata={op_type="Select" op_name="tower0/sample_fast_rcnn_targets/pairwise_iou/Select"}
+  %fusion.4 = f32[2002,2]{1,0} fusion(f32[2000,2]{1,0} %fusion.5), kind=kLoop, calls=%fused_computation.4, metadata={op_type="ConcatV2" op_name="tower0/sample_fast_rcnn_targets/concat_1"}
+  %arg18.19 = f32[] parameter(18), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_167 = f32[] constant(-inf), metadata={op_type="Max" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/Max"}
+  %reduce.173 = f32[2]{0} reduce(f32[2000,2]{1,0} %fusion.5, f32[] %constant_167), dimensions={0}, to_apply=%tower0_sample_fast_rcnn_targets_proposal_metrics_Max-reduction.169, metadata={op_type="Max" op_name="tower0/sample_fast_rcnn_targets/proposal_metrics/Max"}
+  %arg19.20 = f64[] parameter(19), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg20.21 = f64[] parameter(20), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.3 = (f32[], f64[], f64[]) fusion(f32[] %arg18.19, f32[2]{0} %reduce.173, f64[] %arg19.20, f64[] %arg20.21), kind=kLoop, calls=%fused_computation.3, metadata={op_type="Mul" op_name="EMA/sample_fast_rcnn_targets/proposal_metrics/best_iou_per_gt_EMA_apply/mul"}
+  %get-tuple-element = f32[] get-tuple-element((f32[], f64[], f64[]) %fusion.3), index=0
+  %get-tuple-element.1 = f64[] get-tuple-element((f32[], f64[], f64[]) %fusion.3), index=1
+  %get-tuple-element.2 = f64[] get-tuple-element((f32[], f64[], f64[]) %fusion.3), index=2
+  ROOT %tuple.258 = (f32[], f32[2000,4]{1,0}, f32[2002,2]{1,0}, f32[], f64[], f64[]) tuple(f32[] %fusion.8, f32[2000,4]{1,0} %fusion.6, f32[2002,2]{1,0} %fusion.4, f32[] %get-tuple-element, f64[] %get-tuple-element.1, f64[] %get-tuple-element.2), metadata={op_name="XLA_Retvals"}
+}
+

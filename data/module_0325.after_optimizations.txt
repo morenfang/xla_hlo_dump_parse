@@ -1,0 +1,103 @@
+HloModule cluster_32__XlaCompiledKernel_true__XlaNumConstantArgs_12__XlaNumResourceArgs_0_.85
+
+%tower-pred-0_output_Max-reduction.69 (x.70: f32[], y.71: f32[]) -> f32[] {
+  %x.70 = f32[] parameter(0)
+  %y.71 = f32[] parameter(1)
+  ROOT %maximum.72 = f32[] maximum(f32[] %x.70, f32[] %y.71)
+}
+
+%fused_computation (param_0: f32[10,4], param_1.4: f32[], param_2.3: f32[], param_3.8: s64[10,2]) -> f32[10,4] {
+  %param_0 = f32[10,4]{1,0} parameter(0)
+  %param_3.8 = s64[10,2]{1,0} parameter(3)
+  %slice.5 = s64[10,1]{1,0} slice(s64[10,2]{1,0} %param_3.8), slice={[0:10], [0:1]}, metadata={op_type="Slice" op_name="tower-pred-0/output/Slice"}
+  %convert.0 = f32[10,1]{1,0} convert(s64[10,1]{1,0} %slice.5), metadata={op_type="Cast" op_name="tower-pred-0/output/Cast"}
+  %param_1.4 = f32[] parameter(1)
+  %param_2.3 = f32[] parameter(2)
+  %add.1 = f32[] add(f32[] %param_1.4, f32[] %param_2.3), metadata={op_type="Add" op_name="tower-pred-0/output/add"}
+  %broadcast.3 = f32[10,1]{1,0} broadcast(f32[] %add.1), dimensions={}, metadata={op_type="Mul" op_name="tower-pred-0/output/mul"}
+  %multiply.0 = f32[10,1]{1,0} multiply(f32[10,1]{1,0} %convert.0, f32[10,1]{1,0} %broadcast.3), metadata={op_type="Mul" op_name="tower-pred-0/output/mul"}
+  %bitcast.6 = f32[10]{0} bitcast(f32[10,1]{1,0} %multiply.0), metadata={op_type="Add" op_name="tower-pred-0/output/add_1"}
+  %broadcast.2 = f32[10,4]{1,0} broadcast(f32[10]{0} %bitcast.6), dimensions={0}, metadata={op_type="Add" op_name="tower-pred-0/output/add_1"}
+  ROOT %add.0 = f32[10,4]{1,0} add(f32[10,4]{1,0} %param_0, f32[10,4]{1,0} %broadcast.2), metadata={op_type="Add" op_name="tower-pred-0/output/add_1"}
+}
+
+%fused_computation.1 (param_0.4: f32[4], param_1.9: f32[], param_2.8: f32[81000,1,2], param_3.9: f32[1000,4], param_4.9: f32[], param_5.12: f32[1000,324], param_6.9: f32[324], param_7.5: f32[4]) -> f32[80,1000,4] {
+  %param_4.9 = f32[] parameter(4)
+  %broadcast.7 = f32[81000,1,2]{2,1,0} broadcast(f32[] %param_4.9), dimensions={}, metadata={op_type="Mul" op_name="tower-pred-0/decode_bbox_target_5/mul"}
+  %param_3.9 = f32[1000,4]{1,0} parameter(3)
+  %broadcast.6 = f32[1000,81,4]{2,1,0} broadcast(f32[1000,4]{1,0} %param_3.9), dimensions={0,2}, metadata={op_type="Tile" op_name="tower-pred-0/Tile"}
+  %bitcast.9 = f32[81000,2,2]{2,1,0} bitcast(f32[1000,81,4]{2,1,0} %broadcast.6), metadata={op_type="Reshape" op_name="tower-pred-0/decode_bbox_target_5/Reshape_1"}
+  %slice.3 = f32[81000,1,2]{2,1,0} slice(f32[81000,2,2]{2,1,0} %bitcast.9), slice={[0:81000], [0:1], [0:2]}, metadata={op_type="Split" op_name="tower-pred-0/decode_bbox_target_5/split_1"}
+  %slice.2 = f32[81000,1,2]{2,1,0} slice(f32[81000,2,2]{2,1,0} %bitcast.9), slice={[0:81000], [1:2], [0:2]}, metadata={op_type="Split" op_name="tower-pred-0/decode_bbox_target_5/split_1"}
+  %add.4 = f32[81000,1,2]{2,1,0} add(f32[81000,1,2]{2,1,0} %slice.3, f32[81000,1,2]{2,1,0} %slice.2), metadata={op_type="Add" op_name="tower-pred-0/decode_bbox_target_5/add"}
+  %multiply.4 = f32[81000,1,2]{2,1,0} multiply(f32[81000,1,2]{2,1,0} %broadcast.7, f32[81000,1,2]{2,1,0} %add.4), metadata={op_type="Mul" op_name="tower-pred-0/decode_bbox_target_5/mul"}
+  %param_7.5 = f32[4]{0} parameter(7)
+  %broadcast.14 = f32[1000,81,4]{2,1,0} broadcast(f32[4]{0} %param_7.5), dimensions={2}, metadata={op_type="Mul" op_name="tower-pred-0/truediv_1"}
+  %param_5.12 = f32[1000,324]{1,0} parameter(5)
+  %param_6.9 = f32[324]{0} parameter(6)
+  %broadcast.13 = f32[1000,324]{1,0} broadcast(f32[324]{0} %param_6.9), dimensions={1}, metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/box/BiasAdd"}
+  %add.7 = f32[1000,324]{1,0} add(f32[1000,324]{1,0} %param_5.12, f32[1000,324]{1,0} %broadcast.13), metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/box/BiasAdd"}
+  %bitcast.15 = f32[1000,81,4]{2,1,0} bitcast(f32[1000,324]{1,0} %add.7), metadata={op_type="Reshape" op_name="tower-pred-0/fastrcnn/outputs/output_box"}
+  %multiply.7 = f32[1000,81,4]{2,1,0} multiply(f32[1000,81,4]{2,1,0} %broadcast.14, f32[1000,81,4]{2,1,0} %bitcast.15), metadata={op_type="Mul" op_name="tower-pred-0/truediv_1"}
+  %bitcast.14 = f32[81000,2,2]{2,1,0} bitcast(f32[1000,81,4]{2,1,0} %multiply.7), metadata={op_type="Reshape" op_name="tower-pred-0/decode_bbox_target_5/Reshape"}
+  %slice.1 = f32[81000,1,2]{2,1,0} slice(f32[81000,2,2]{2,1,0} %bitcast.14), slice={[0:81000], [0:1], [0:2]}, metadata={op_type="Split" op_name="tower-pred-0/decode_bbox_target_5/split"}
+  %subtract.1 = f32[81000,1,2]{2,1,0} subtract(f32[81000,1,2]{2,1,0} %slice.2, f32[81000,1,2]{2,1,0} %slice.3), metadata={op_type="Sub" op_name="tower-pred-0/decode_bbox_target_5/sub"}
+  %multiply.3 = f32[81000,1,2]{2,1,0} multiply(f32[81000,1,2]{2,1,0} %slice.1, f32[81000,1,2]{2,1,0} %subtract.1), metadata={op_type="Mul" op_name="tower-pred-0/decode_bbox_target_5/mul_2"}
+  %add.3 = f32[81000,1,2]{2,1,0} add(f32[81000,1,2]{2,1,0} %multiply.4, f32[81000,1,2]{2,1,0} %multiply.3), metadata={op_type="Add" op_name="tower-pred-0/decode_bbox_target_5/add_1"}
+  %param_2.8 = f32[81000,1,2]{2,1,0} parameter(2)
+  %multiply.2 = f32[81000,1,2]{2,1,0} multiply(f32[81000,1,2]{2,1,0} %broadcast.7, f32[81000,1,2]{2,1,0} %subtract.1), metadata={op_type="Mul" op_name="tower-pred-0/decode_bbox_target_5/mul_1"}
+  %multiply.1 = f32[81000,1,2]{2,1,0} multiply(f32[81000,1,2]{2,1,0} %param_2.8, f32[81000,1,2]{2,1,0} %multiply.2), metadata={op_type="Mul" op_name="tower-pred-0/decode_bbox_target_5/mul_4"}
+  %subtract.0 = f32[81000,1,2]{2,1,0} subtract(f32[81000,1,2]{2,1,0} %add.3, f32[81000,1,2]{2,1,0} %multiply.1), metadata={op_type="Sub" op_name="tower-pred-0/decode_bbox_target_5/sub_1"}
+  %add.2 = f32[81000,1,2]{2,1,0} add(f32[81000,1,2]{2,1,0} %add.3, f32[81000,1,2]{2,1,0} %multiply.1), metadata={op_type="Add" op_name="tower-pred-0/decode_bbox_target_5/add_2"}
+  %concatenate.0 = f32[81000,2,2]{2,1,0} concatenate(f32[81000,1,2]{2,1,0} %subtract.0, f32[81000,1,2]{2,1,0} %add.2), dimensions={1}, metadata={op_type="ConcatV2" op_name="tower-pred-0/decode_bbox_target_5/concat"}
+  %param_1.9 = f32[] parameter(1)
+  %broadcast.5 = f32[81000,2,2]{2,1,0} broadcast(f32[] %param_1.9), dimensions={}, metadata={op_type="Maximum" op_name="tower-pred-0/clip_boxes/Maximum"}
+  %maximum.1 = f32[81000,2,2]{2,1,0} maximum(f32[81000,2,2]{2,1,0} %concatenate.0, f32[81000,2,2]{2,1,0} %broadcast.5), metadata={op_type="Maximum" op_name="tower-pred-0/clip_boxes/Maximum"}
+  %bitcast.8 = f32[1000,81,4]{2,1,0} bitcast(f32[81000,2,2]{2,1,0} %maximum.1), metadata={op_type="Maximum" op_name="tower-pred-0/clip_boxes/Maximum"}
+  %param_0.4 = f32[4]{0} parameter(0)
+  %broadcast.4 = f32[1000,81,4]{2,1,0} broadcast(f32[4]{0} %param_0.4), dimensions={2}, metadata={op_type="Minimum" op_name="tower-pred-0/clip_boxes/fastrcnn_all_boxes"}
+  %minimum.0 = f32[1000,81,4]{2,1,0} minimum(f32[1000,81,4]{2,1,0} %bitcast.8, f32[1000,81,4]{2,1,0} %broadcast.4), metadata={op_type="Minimum" op_name="tower-pred-0/clip_boxes/fastrcnn_all_boxes"}
+  %bitcast.7 = f32[81,1000,4]{2,0,1} bitcast(f32[1000,81,4]{2,1,0} %minimum.0), metadata={op_type="Transpose" op_name="tower-pred-0/output/transpose"}
+  ROOT %slice.0 = f32[80,1000,4]{2,0,1} slice(f32[81,1000,4]{2,0,1} %bitcast.7), slice={[1:81], [0:1000], [0:4]}, metadata={op_type="StridedSlice" op_name="tower-pred-0/output/strided_slice"}
+}
+
+%fused_computation.2 (param_0.7: f32[], param_1.21: f32[1000,324], param_2.17: f32[324], param_3.12: f32[4]) -> f32[81000,1,2] {
+  %param_3.12 = f32[4]{0} parameter(3)
+  %broadcast.18 = f32[1000,81,4]{2,1,0} broadcast(f32[4]{0} %param_3.12), dimensions={2}, metadata={op_type="Mul" op_name="tower-pred-0/truediv_1"}
+  %param_1.21 = f32[1000,324]{1,0} parameter(1)
+  %param_2.17 = f32[324]{0} parameter(2)
+  %broadcast.17 = f32[1000,324]{1,0} broadcast(f32[324]{0} %param_2.17), dimensions={1}, metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/box/BiasAdd"}
+  %add.9 = f32[1000,324]{1,0} add(f32[1000,324]{1,0} %param_1.21, f32[1000,324]{1,0} %broadcast.17), metadata={op_type="BiasAdd" op_name="tower-pred-0/fastrcnn/outputs/box/BiasAdd"}
+  %bitcast.19 = f32[1000,81,4]{2,1,0} bitcast(f32[1000,324]{1,0} %add.9), metadata={op_type="Reshape" op_name="tower-pred-0/fastrcnn/outputs/output_box"}
+  %multiply.9 = f32[1000,81,4]{2,1,0} multiply(f32[1000,81,4]{2,1,0} %broadcast.18, f32[1000,81,4]{2,1,0} %bitcast.19), metadata={op_type="Mul" op_name="tower-pred-0/truediv_1"}
+  %bitcast.18 = f32[81000,2,2]{2,1,0} bitcast(f32[1000,81,4]{2,1,0} %multiply.9), metadata={op_type="Reshape" op_name="tower-pred-0/decode_bbox_target_5/Reshape"}
+  %slice.4 = f32[81000,1,2]{2,1,0} slice(f32[81000,2,2]{2,1,0} %bitcast.18), slice={[0:81000], [1:2], [0:2]}, metadata={op_type="Split" op_name="tower-pred-0/decode_bbox_target_5/split"}
+  %param_0.7 = f32[] parameter(0)
+  %broadcast.8 = f32[81000,1,2]{2,1,0} broadcast(f32[] %param_0.7), dimensions={}, metadata={op_type="Minimum" op_name="tower-pred-0/decode_bbox_target_5/Minimum"}
+  %minimum.1 = f32[81000,1,2]{2,1,0} minimum(f32[81000,1,2]{2,1,0} %slice.4, f32[81000,1,2]{2,1,0} %broadcast.8), metadata={op_type="Minimum" op_name="tower-pred-0/decode_bbox_target_5/Minimum"}
+  ROOT %exponential.0 = f32[81000,1,2]{2,1,0} exponential(f32[81000,1,2]{2,1,0} %minimum.1), metadata={op_type="Exp" op_name="tower-pred-0/decode_bbox_target_5/Exp"}
+}
+
+ENTRY %cluster_32__XlaCompiledKernel_true__XlaNumConstantArgs_12__XlaNumResourceArgs_0_.85 (arg0.1: f32[1000,4], arg1.2: f32[], arg2.3: f32[1000,1024], arg3.4: f32[1024,324], arg4.5: f32[324], arg5.6: f32[], arg6.7: s64[10,2], arg7.8: f32[], arg8.9: f32[4], arg9.10: f32[]) -> (s64[10,1], f32[10,4], f32[10,4]) {
+  %arg6.7 = s64[10,2]{1,0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %slice.35 = s64[10,1]{1,0} slice(s64[10,2]{1,0} %arg6.7), slice={[0:10], [0:1]}, metadata={op_type="Slice" op_name="tower-pred-0/output/Slice"}
+  %arg8.9 = f32[4]{0} parameter(8), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg7.8 = f32[] parameter(7), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg5.6 = f32[] parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg2.3 = f32[1000,1024]{1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg3.4 = f32[1024,324]{1,0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %dot.21 = f32[1000,324]{1,0} dot(f32[1000,1024]{1,0} %arg2.3, f32[1024,324]{1,0} %arg3.4), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="tower-pred-0/fastrcnn/outputs/box/MatMul"}
+  %arg4.5 = f32[324]{0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_25 = f32[4]{0} constant({0.1, 0.1, 0.2, 0.2}), metadata={op_type="Mul" op_name="tower-pred-0/truediv_1"}
+  %fusion.2 = f32[81000,1,2]{2,1,0} fusion(f32[] %arg5.6, f32[1000,324]{1,0} %dot.21, f32[324]{0} %arg4.5, f32[4]{0} %constant_25), kind=kLoop, calls=%fused_computation.2, metadata={op_type="Exp" op_name="tower-pred-0/decode_bbox_target_5/Exp"}
+  %arg0.1 = f32[1000,4]{1,0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %arg1.2 = f32[] parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %fusion.1 = f32[80,1000,4]{2,0,1} fusion(f32[4]{0} %arg8.9, f32[] %arg7.8, f32[81000,1,2]{2,1,0} %fusion.2, f32[1000,4]{1,0} %arg0.1, f32[] %arg1.2, f32[1000,324]{1,0} %dot.21, f32[324]{0} %arg4.5, f32[4]{0} %constant_25), kind=kLoop, calls=%fused_computation.1, metadata={op_type="StridedSlice" op_name="tower-pred-0/output/strided_slice"}
+  %gather.65 = f32[10,4]{1,0} gather(f32[80,1000,4]{2,0,1} %fusion.1, s64[10,2]{1,0} %arg6.7), offset_dims={1}, collapsed_slice_dims={0,1}, start_index_map={0,1}, index_vector_dim=1, slice_sizes={1,1,4}, metadata={op_type="GatherNd" op_name="tower-pred-0/output/GatherNd"}
+  %arg9.10 = f32[] parameter(9), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %constant_67 = f32[] constant(-inf), metadata={op_type="Max" op_name="tower-pred-0/output/Max"}
+  %reduce.73 = f32[] reduce(f32[80,1000,4]{2,0,1} %fusion.1, f32[] %constant_67), dimensions={0,1,2}, to_apply=%tower-pred-0_output_Max-reduction.69, metadata={op_type="Max" op_name="tower-pred-0/output/Max"}
+  %fusion = f32[10,4]{1,0} fusion(f32[10,4]{1,0} %gather.65, f32[] %arg9.10, f32[] %reduce.73, s64[10,2]{1,0} %arg6.7), kind=kLoop, calls=%fused_computation, metadata={op_type="Add" op_name="tower-pred-0/output/add_1"}
+  ROOT %tuple.84 = (s64[10,1]{1,0}, f32[10,4]{1,0}, f32[10,4]{1,0}) tuple(s64[10,1]{1,0} %slice.35, f32[10,4]{1,0} %fusion, f32[10,4]{1,0} %gather.65), metadata={op_name="XLA_Retvals"}
+}
+
