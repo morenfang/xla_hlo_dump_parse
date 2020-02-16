@@ -24,7 +24,7 @@ class ClusterAnalysis:
     def collect_info(self):
         cluster_line = self.file.readline()
         self.cluster_name = cluster_line.split(' ', 1)[1].strip()
-        # print(self.cluster_name)  # cluster name -> sheet name
+        print('cluster name:\t' + find_between_brackets(self.filename, '/module', 'after') + self.cluster_name)  # cluster name -> sheet name
         line = self.file.readline()
         while line != '':
             if not_empty_line(line):
@@ -77,12 +77,12 @@ class ClusterAnalysis:
                     if not_empty_line(line):
                         # op analysis
                         op = self.op_analysis(line.strip())
-                        print('ID: ' + op.ID)
-                        print('input: ' + op.inputs)
-                        print('output: ' + op.outputs)
-                        print('window: ' + op.window)
-                        print('metadata: ' + op.metadata)
-                        print('others: ' + op.other)
+                        # print('ID: ' + op.ID)
+                        # print('input: ' + op.inputs)
+                        # print('output: ' + op.outputs)
+                        # print('window: ' + op.window)
+                        # print('metadata: ' + op.metadata)
+                        # print('others: ' + op.other)
                         record = [op.ID, op.outputs, op.inputs, op.window, op.metadata, op.FLOPs]
                         records.append(record)
                     else:
@@ -93,7 +93,8 @@ class ClusterAnalysis:
                 pass
             line = self.file.readline()
         dataframe = pd.DataFrame(records, columns=header)
-        dataframe.to_excel(excel_writer=writer, sheet_name=self.cluster_name)
+        sheet = find_between_brackets(self.filename, '/module', 'after') + self.cluster_name
+        dataframe.to_excel(excel_writer=writer, sheet_name=sheet)
 
     def op_analysis(self, string):
         """
@@ -165,7 +166,10 @@ class Op:
 
 if __name__ == '__main__':
     flist = list_all_files('./data')
+    # print('file num:\t%d', len(flist))
     for f in flist:
         cluster = ClusterAnalysis('./data/' + f)
+    print("Start Saving...")
     writer.save()
     writer.close()
+    print("Mission Complete!")
