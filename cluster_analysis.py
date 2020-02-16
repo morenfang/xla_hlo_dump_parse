@@ -1,5 +1,18 @@
 from util import *
+import pandas as pd
 
+header = [
+    'ID',
+    'output',
+    'input',
+    'window',
+    'metadata',
+    'FLOPs'
+]
+empty_line = ['-', '-', '-', '-', '-', '-']
+
+records = []
+writer = pd.ExcelWriter('xla_hlo_dump.xlsx')
 
 class ClusterAnalysis:
     def __init__(self, filename):
@@ -11,47 +24,76 @@ class ClusterAnalysis:
     def collect_info(self):
         cluster_line = self.file.readline()
         self.cluster_name = cluster_line.split(' ', 1)[1].strip()
-        print(self.cluster_name)  # cluster name -> sheet name
+        # print(self.cluster_name)  # cluster name -> sheet name
         line = self.file.readline()
         while line != '':
             if not_empty_line(line):
                 if line.startswith('%'):  # sub module
                     substr = line.strip().split(' ', 1)
-                    print('fuse name:\t' + substr[0])  # sub module name
+                    submodule = substr[0]
                     substr = substr[1].strip('{').split(' -> ')
-                    print(substr)  # input & output
-                    line = self.file.readline()  # {}
-                    while not line.startswith('}'):
-                        if not_empty_line(line):
+                    record = [submodule, substr[1], substr[0], '', '', '']
+                    records.append(record)
+                    # print(substr)  # input & output
+                    # line = self.file.readline()  # {}
+                    # while not line.startswith('}'):
+                        # if not_empty_line(line):
                             # op analysis
-                            op = self.op_analysis(line.strip())
-                            print('ID: ' + op.ID)
-                            print('input: ' + op.inputs)
-                            print('output: ' + op.outputs)
-                            print('others: ' + op.other)
-
-                        else:
-                            pass
-                        line = self.file.readline()
+                            # op = self.op_analysis(line.strip())
+                            # print('ID: ' + op.ID)
+                            # print('input: ' + op.inputs)
+                            # print('output: ' + op.outputs)
+                            # print('window: ' + op.window)
+                            # print('metadata: ' + op.metadata)
+                            # print('others: ' + op.other)
+                        # else:
+                            # pass
+                        # line = self.file.readline()
                 elif line.startswith('ENTRY'):  # main module
                     substr = line.strip().split(' ', 2)
-                    print(len(substr))
-                    line = self.file.readline()  # {}
-                    while not line.startswith('}'):
-                        if not_empty_line(line):
-                            op = self.op_analysis(line.strip())
-                            print('ID: ' + op.ID)
-                            print('input: ' + op.inputs)
-                            print('output: ' + op.outputs)
-                            print('others: ' + op.other)
-                        else:
-                            pass
-                        line = self.file.readline()
+                    module = substr[1]
+                    substr = substr[2].strip('{').split(' -> ')
+                    record = [module, substr[1], substr[0], '', '', '']
+                    records.append(record)
+                    # print('ENTRY name: \t' + substr[1]) # ENTRY (main module) name
+                    # line = self.file.readline()  # {}
+                    # while not line.startswith('}'):
+                        # if not_empty_line(line):
+                            # op = self.op_analysis(line.strip())
+                            # print('ID: ' + op.ID)
+                            # print('input: ' + op.inputs)
+                            # print('output: ' + op.outputs)
+                            # print('window: ' + op.window)
+                            # print('metadata: ' + op.metadata)
+                            # print('others: ' + op.other)
+                        # else:
+                            # pass
+                        # line = self.file.readline()
                 else:
                     pass
+
+                line = self.file.readline()  # {}
+                while not line.startswith('}'):
+                    if not_empty_line(line):
+                        # op analysis
+                        op = self.op_analysis(line.strip())
+                        print('ID: ' + op.ID)
+                        print('input: ' + op.inputs)
+                        print('output: ' + op.outputs)
+                        print('window: ' + op.window)
+                        print('metadata: ' + op.metadata)
+                        print('others: ' + op.other)
+                        record = [op.ID, op.outputs, op.inputs, op.window, op.metadata, op.FLOPs]
+                        records.append(record)
+                    else:
+                        pass
+                    line = self.file.readline()
+                records.append(empty_line)
             else:
                 pass
             line = self.file.readline()
+        dataframe = pd.DataFrame(records, columns=header)
+        dataframe.to_excel(excel_writer=writer, sheet_name=self.cluster_name)
 
     def op_analysis(self, string):
         """
@@ -69,18 +111,6 @@ class ClusterAnalysis:
         return op
 
 
-    def cluster_name(self):
-        # str = self.file.readline()
-        # print(str)
-        for i in range(3):
-            str = self.file.readline()
-            if str == '':
-                print('end of file!')
-            print('line %d', i)
-            print(len(str))
-        return str
-
-
 class SubModule:
     def __init__(self):
         self.name = ''
@@ -95,29 +125,47 @@ class Op:
         self.metadata = ''
         self.window = ''
         self.other = ''
+        self.FLOPs = 0
 
         substr = string.split(' = ', 1)
         self.ID = substr[0]
-        if ',' in substr[1]:
+        # TODO
+        substr = split_by_comma_space(substr[1])
+        [self.outputs, self.inputs] = split_by_space(substr[0])
+        if len(substr) > 1:
+            self.other = substr[1]
+        else:
+            self.other = 'null'
+        '''
+        if '),' in substr[1]:  # maybe problems
             substr = split_by_comma_space(substr[1])
             [self.outputs, self.inputs] = split_by_space(substr[0])
             self.other = substr[1]
         else:
             [self.outputs, self.inputs] = substr[1].split(' ', 1)
             self.other = 'null'
+        '''
         if 'metadata' in self.other:
             # metadata get
-            pass
+            self.get_metadata(self.other)
         if 'window' in self.other:
             # conv
-            pass
+            self.get_window(self.other)
 
+    def get_metadata(self, string):
+        pos = string.find('metadata')
+        # print(find_between_brace(string[pos:])[0])
+        self.metadata = find_between_brace(string[pos:])[0]
 
-
+    def get_window(self, string):
+        pos = string.find('window')
+        self.window = find_between_brace(string[pos:])[0]
+        # print(self.ID + ': window -> ' + self.window)
 
 
 if __name__ == '__main__':
     flist = list_all_files('./data')
-    for i in range(2):
-        cluster = ClusterAnalysis('./data/' + flist[i])
-    # cluster.cluster_name()
+    for f in flist:
+        cluster = ClusterAnalysis('./data/' + f)
+    writer.save()
+    writer.close()

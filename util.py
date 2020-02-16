@@ -17,6 +17,10 @@ def find_between_quotes(string):
     return re.findall('"([^"]*)"', string)
 
 
+def find_between_brace(string):
+    return re.findall(r'\{.*?\}', string)
+
+
 def find_between_brackets(string, lhs_bracket, rhs_bracket):
     begin_idx = string.find(lhs_bracket) + 1
     end_idx = string.rfind(rhs_bracket)
