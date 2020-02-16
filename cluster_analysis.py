@@ -93,8 +93,10 @@ class ClusterAnalysis:
                 pass
             line = self.file.readline()
         dataframe = pd.DataFrame(records, columns=header)
+        records.clear()
         sheet = find_between_brackets(self.filename, '/module', 'after') + self.cluster_name
         dataframe.to_excel(excel_writer=writer, sheet_name=sheet)
+        writer.save()
 
     def op_analysis(self, string):
         """
@@ -169,7 +171,7 @@ if __name__ == '__main__':
     # print('file num:\t%d', len(flist))
     for f in flist:
         cluster = ClusterAnalysis('./data/' + f)
-    print("Start Saving...")
-    writer.save()
+    # print("Start Saving...")
+    # writer.save()
     writer.close()
     print("Mission Complete!")
