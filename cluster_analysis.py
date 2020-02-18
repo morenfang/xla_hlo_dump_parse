@@ -3,13 +3,17 @@ import pandas as pd
 
 header = [
     'ID',
-    'output',
-    'input',
+    'op_type',
+    'layer',
+    'out_type',
+    'out_shape',
+    'in_type',
+    'in_shape',
     'window',
-    'metadata',
+    'calls',
     'FLOPs'
 ]
-empty_line = ['-', '-', '-', '-', '-', '-']
+empty_line = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
 
 records = []
 writer = pd.ExcelWriter('xla_hlo_dump.xlsx')
@@ -32,7 +36,7 @@ class ClusterAnalysis:
                     substr = line.strip().split(' ', 1)
                     submodule = substr[0]
                     substr = substr[1].strip('{').split(' -> ')
-                    record = [submodule, substr[1], substr[0], '', '', '']
+                    record = [submodule, '', '', substr[1], '', substr[0], '', '', '', '']
                     records.append(record)
                     # print(substr)  # input & output
                     # line = self.file.readline()  # {}
@@ -53,7 +57,7 @@ class ClusterAnalysis:
                     substr = line.strip().split(' ', 2)
                     module = substr[1]
                     substr = substr[2].strip('{').split(' -> ')
-                    record = [module, substr[1], substr[0], '', '', '']
+                    record = [module, '', '', substr[1], '', substr[0], '', '', '', '']
                     records.append(record)
                     # print('ENTRY name: \t' + substr[1]) # ENTRY (main module) name
                     # line = self.file.readline()  # {}
@@ -83,7 +87,19 @@ class ClusterAnalysis:
                         # print('window: ' + op.window)
                         # print('metadata: ' + op.metadata)
                         # print('others: ' + op.other)
-                        record = [op.ID, op.outputs, op.inputs, op.window, op.metadata, op.FLOPs]
+                        # print(op.ID)
+                        # print(op.layer + " : " + op.type)
+                        record = [
+                            op.ID,
+                            op.type,
+                            op.layer,
+                            op.out_type,
+                            op.out_shape,
+                            op.in_type,
+                            op.in_shape,
+                            op.window,
+                            op.calls,
+                            op.FLOPs]
                         records.append(record)
                     else:
                         pass
@@ -92,6 +108,8 @@ class ClusterAnalysis:
             else:
                 pass
             line = self.file.readline()
+
+        # print(records)
         dataframe = pd.DataFrame(records, columns=header)
         records.clear()
         sheet = find_between_brackets(self.filename, '/module', 'after') + self.cluster_name
@@ -127,25 +145,30 @@ class Op:
         self.outputs = ''
         self.metadata = ''
         self.window = ''
+        self.calls = ''
         self.other = ''
         self.FLOPs = 0
+        # metadata : {layer, type}
+        self.layer = ''
+        self.type = ''
+        self.in_type = ''
+        self.out_type = ''
+        self.in_shape = ''
+        self.out_shape = ''
 
         substr = string.split(' = ', 1)
         self.ID = substr[0]
         # TODO
         substr = split_by_comma_space(substr[1])
         [self.outputs, self.inputs] = split_by_space(substr[0])
+        self.get_in_type_shape()
+        self.get_out_type_shape()
+        for i in range(len(substr)-1):
+            self.other += substr[i+1] + ' '
+        '''
         if len(substr) > 1:
             self.other = substr[1]
         else:
-            self.other = 'null'
-        '''
-        if '),' in substr[1]:  # maybe problems
-            substr = split_by_comma_space(substr[1])
-            [self.outputs, self.inputs] = split_by_space(substr[0])
-            self.other = substr[1]
-        else:
-            [self.outputs, self.inputs] = substr[1].split(' ', 1)
             self.other = 'null'
         '''
         if 'metadata' in self.other:
@@ -154,16 +177,66 @@ class Op:
         if 'window' in self.other:
             # conv
             self.get_window(self.other)
+        if 'calls' in self.other:
+            # calls
+            self.get_calls(self.other)
 
     def get_metadata(self, string):
         pos = string.find('metadata')
         # print(find_between_brace(string[pos:])[0])
         self.metadata = find_between_brace(string[pos:])[0]
+        self.type = self.get_attr('op_type', self.metadata)
+        self.layer = self.get_attr('op_name', self.metadata)
 
     def get_window(self, string):
         pos = string.find('window')
         self.window = find_between_brace(string[pos:])[0]
         # print(self.ID + ': window -> ' + self.window)
+
+    def get_calls(self, string):
+        lpos = string.find('calls')
+        rpos = string[lpos:].index(' ') + lpos
+        self.calls = find_assignment_rhs(string[lpos:rpos+1])
+        # print(self.calls)
+
+    def get_attr(self, key, string):
+        if key in string:
+            lpos = string.index(key)
+            rpos = string[lpos:].index('"', len(key)+2) + lpos
+            attr = find_assignment_rhs(string[lpos:rpos+1])
+            attr = attr.strip('"')
+            return attr
+        else:
+            return ''
+
+    def get_in_type_shape(self):
+        if len(self.inputs) > 0:
+            in_args = find_between_brackets(self.inputs, '(', ')')
+            arg_list = split_by_comma_space(in_args)
+            for arg in arg_list:
+                if '[' in arg:
+                    type = arg.split('[', 1)[0]
+                    shape = find_between_brackets(arg, '[', ']')
+                    self.in_type += type + ', '
+                    self.in_shape += '[' + shape + ']' + ', '
+        else:
+            pass
+
+    def get_out_type_shape(self):
+        if len(self.outputs) > 0:
+            if '(' in self.outputs:
+                out_args = find_between_brackets(self.outputs, '(', ')')
+            else:
+                out_args = self.outputs
+            arg_list = split_by_comma_space(out_args)
+            for arg in arg_list:
+                if '[' in arg:
+                    type = arg.split('[', 1)[0]
+                    shape = find_between_brackets(arg, '[', ']')
+                    self.out_type += type + ', '
+                    self.out_shape += '[' + shape + ']' + ', '
+        else:
+            pass
 
 
 if __name__ == '__main__':
