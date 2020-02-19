@@ -161,6 +161,7 @@ class Op:
         # TODO
         substr = split_by_comma_space(substr[1])
         [self.outputs, self.inputs] = split_by_space(substr[0])
+        # if 'get-tuple-element' in self.ID:
         self.get_in_type_shape()
         self.get_out_type_shape()
         for i in range(len(substr)-1):
@@ -212,12 +213,12 @@ class Op:
     def get_in_type_shape(self):
         if len(self.inputs) > 0:
             in_args = find_between_brackets(self.inputs, '(', ')')
-            arg_list = split_by_comma_space(in_args)
+            arg_list = in_args.split(', ')  # split_by_comma_space(in_args)
             for arg in arg_list:
                 if '[' in arg:
                     type = arg.split('[', 1)[0]
                     shape = find_between_brackets(arg, '[', ']')
-                    self.in_type += type + ', '
+                    self.in_type += type.strip('(') + ', '
                     self.in_shape += '[' + shape + ']' + ', '
         else:
             pass
